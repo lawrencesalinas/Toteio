@@ -1,0 +1,68 @@
+const products = [
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+  {
+    name: 'Beats by Dre',
+    price: 300,
+    description: 'best headphones',
+    rating: 5,
+    numReviews: 12,
+    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+  },
+]
+
+export default products

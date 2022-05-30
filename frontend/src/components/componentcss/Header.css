@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  font-size: 1.3rem;
+}
+
+.logo {
+  margin-left: 10px;
+  color: #000;
+  text-decoration: none;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+}
+
+li {
+  margin: 5px;
+  list-style: none;
+}

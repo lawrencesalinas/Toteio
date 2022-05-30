@@ -1,0 +1,26 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  margin: 0 auto;
+  background-color: #fbf5f3;
+  width: 90vw;
+  height: 50vh;
+  border-radius: 30px;
+}
+
+h2 {
+  margin: 50px;
+  text-align: center;
+}
+
+.products {
+  display: flex;
+  width: 80vw;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

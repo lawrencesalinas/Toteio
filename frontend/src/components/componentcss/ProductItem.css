@@ -1,0 +1,27 @@
+.ProductItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+
+  transition: transform 0.2s;
+  align-items: center;
+}
+
+.ProductItem:hover {
+  transform: scale(1.2);
+}
+.productImage {
+  border-radius: 30px;
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  background-color: #fbf5f3;
+}
+
+@media (max-width: 600px) {
+  .ProductItem {
+    width: 70vw;
+    margin: 20px 0;
+  }
+}
