@@ -1,0 +1,72 @@
+.Register {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80vw;
+}
+
+.form {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.form-group {
+  margin-top: 30px;
+  width: 80vw;
+  outline: none;
+}
+
+.emailInput,
+.nameInput,
+.passwordInput,
+.passwordConfirmInput {
+  width: 80vw;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+::placeholder {
+  margin-left: 30px;
+}
+
+h1 {
+  margin: 3% 0 2% 0;
+}
+
+.signupbtns {
+  display: flex;
+  flex-direction: column;
+}
+.signuphead {
+  display: flex;
+  margin-top: 40px;
+}
+
+.signuphead p {
+  font-size: 2em;
+  margin-right: 30px;
+}
+
+.signupbtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 2em;
+  border-radius: 100px;
+  background-color: black;
+  color: #fff;
+  transition: transform 0.2s;
+}
+
+.signupbtn:hover {
+  transform: scale(1.5);
+}

@@ -1,11 +1,12 @@
-import './componentcss/ProductItem.css'
+import '../componentcss/ProductItem.css'
 function ProductItem({ product }) {
-    const { name, img, description, rating, numReview } = product
+    const { name, img, description, rating, numReview, price } = product
     return (
         <div className='ProductItem'>
             <img src={img} alt="" className='productImage' />
             <div className="productInfo">
-                <h3>{name}</h3>
+                <p>{name}</p>
+                <p>${price}</p>
             </div>
 
         </div>
