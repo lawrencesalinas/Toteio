@@ -2,20 +2,27 @@
   display: flex;
   flex-direction: column;
   margin: 20px;
-  transition: transform 0.2s;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+  color: #fff;
+  border-radius: 20px;
 }
 
-.ProductItem:hover {
-  transform: scale(1.2);
-}
 .productImage {
+  overflow: hidden;
   border-radius: 20px;
   width: 200px;
-  height: 200px;
-  padding: 20px;
-  background-color: #fbf5f3;
+  height: 180px;
+  /* background-color: #fbf5f3; */
   margin-bottom: 8px;
-  box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease;
+  border: none;
+}
+
+.productImage:hover {
+  transform: scale(1.1) !important;
+  filter: brightness(80%);
 }
 
 .productInfo {

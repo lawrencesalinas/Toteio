@@ -9,6 +9,8 @@
 body {
   font-family: 'Montserrat', sans-serif;
   height: 100vh;
+  background-color: #181818;
+  color: #fff;
 }
 
 a {

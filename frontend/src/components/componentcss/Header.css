@@ -1,25 +1,36 @@
 .header {
+  position: absolute;
   display: flex;
-  justify-content: space-between;
   padding: 15px;
   font-size: 1.3rem;
+  width: 100vw;
+  z-index: 3;
 }
 
 .logo {
-  margin-left: 10px;
-  color: #000;
+  margin: 0 auto;
   text-decoration: none;
+  margin-left: 40px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
 }
 
 ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   padding-right: 15px;
+  margin-top: 4px;
+  margin-right: 20px;
 }
 
 li {
-  margin: 5px;
+  font-size: 20px;
+  margin: 5px 12px;
   list-style: none;
   color: #000;
   outline: none;
+}
+a {
+  color: white;
 }

@@ -23,8 +23,8 @@ function Register() {
 
 
     return (
-        <div className="Register">
-            <h1>Welcome Back!</h1>
+        <div className="Register" data-aos='fade-in' data-aos-delay='600'>
+            <h1>Create Account</h1>
             <form className="form">
                 <div className="form-group">
                     <input className='nameInput' type="text" name='name' id='name' value={name} placeholder='Enter your name' onChange={onChange} />
@@ -41,8 +41,7 @@ function Register() {
             </form>
             <div className="signupbtns">
                 <div className="signuphead">
-                    <p>Sign up</p>
-                    <button className="signupbtn"><FaUserPlus /></button>
+                    <button className="signupbtn">Sign up {" "}<FaUserPlus /></button>
                 </div>
                 {/* OAtuh */}
             </div>

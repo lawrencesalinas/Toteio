@@ -1,19 +1,42 @@
 .Home {
-  font-family: ;
+  position: relative;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
 .banner img {
   margin: 0 auto;
-  /* background-color: #fbf5f3; */
-  /* background: url('https://images.unsplash.com/photo-1431068799455-80bae0caf685?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'); */
-
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
-  height: 70vh;
+  height: 100vh;
+}
+
+.banner h1 {
+  position: absolute;
+  bottom: 35%;
+  right: 10%;
+}
+
+.banner button {
+  position: absolute;
+  bottom: 34%;
+  right: 29%;
+  width: 140px;
+  height: 35px;
+  font-size: 15px;
+  overflow: hidden;
+  background-color: black;
+  color: #fff;
+  border: none;
 }
 
 .second-banner img {
@@ -23,8 +46,9 @@
 
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vw;
-  height: 60vh;
+  width: 65vw;
+  height: 90vh;
+  margin-top: 60px;
 }
 
 h2 {
@@ -33,37 +57,59 @@ h2 {
 }
 
 .products {
+  /* background-color: #fff; */
   display: flex;
   width: 80vw;
+  height: 100vh;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .categories {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 80vw;
+}
+
+hr {
+  width: 80vw;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  color: #fff;
 }
 
 .category-img {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  width: 650px;
   position: relative;
+  transition: 0.5s all ease-in-out;
+  margin: 30px;
 }
 
 .category-img img {
-  width: 350px;
-  height: 400px;
+  width: 750px;
+  height: 700px;
+  transition: transform 0.5s ease;
   margin: 30px;
-  filter: brightness(50%);
-  transition: transform 0.4s;
-  position: relative;
-  z-index: 0;
 }
 
-.category-img h5 {
+.category-img > h5 {
   position: absolute;
+  filter: brightness(100%);
+  color: #fff;
+  font-size: 25px;
 }
 
-.categories img:hover {
-  transform: scale(1.1);
+.category-img:hover img {
+  transform: scale(1.1) !important;
+  filter: brightness(80%);
 }

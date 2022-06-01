@@ -13,7 +13,7 @@ const products = [
     description: 'best headphones',
     rating: 5,
     numReviews: 12,
-    img: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921101_rd.jpg;maxHeight=640;maxWidth=550',
+    img: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
   },
   {
     name: 'Beats by Dre',

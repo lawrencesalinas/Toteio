@@ -8,19 +8,20 @@ import '../componentcss/Header.css'
 function Header() {
     return (
 
-        <header className='header'>
+        <header className='header' data-aos='fade-in'>
             <div className="logo">
-                <Link to='/'>E-store</Link>
+                <Link to='/'>Tote.io</Link>
             </div>
-            <ul>
-                <li>
-                    <Link to='/register'>              <FaUser /></Link>
-                </li>
-                <li>
-                    <Link to='/cart'>              <IoCart /></Link>
-                </li>
-            </ul>
-
+            <div>
+                <ul>
+                    <li>
+                        <Link to='/register'>              <FaUser /></Link>
+                    </li>
+                    <li>
+                        <Link to='/cart'>              <IoCart /></Link>
+                    </li>
+                </ul>
+            </div>
         </header>
     )
 }

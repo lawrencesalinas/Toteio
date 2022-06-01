@@ -3,13 +3,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 60px;
-  padding-bottom: 50px;
+  margin-top: 145px;
 }
 .icons {
   margin-top: 20px;
   display: flex;
-  font-size: 2rem;
+  font-size: 1.3rem;
+}
+
+p {
+  font-size: 1rem;
 }
 
 .icons p {
