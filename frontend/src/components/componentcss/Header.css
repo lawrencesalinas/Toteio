@@ -34,3 +34,8 @@ li {
 a {
   color: white;
 }
+
+.navs {
+  display: flex;
+  justify-content: center;
+}

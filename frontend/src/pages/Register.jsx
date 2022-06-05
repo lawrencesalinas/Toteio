@@ -1,5 +1,7 @@
 import "./pagecss/Register.css"
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { useSelector, useDispatch } from 'react-redux'
 import { FaUserPlus } from 'react-icons/fa'
 
 function Register() {
@@ -22,10 +24,17 @@ function Register() {
     }
 
 
+    const onSubmit = (e) => {
+        e.preventDefault()
+        if (password !== confirmPassword) {
+            toast.error('passwords do not match')
+        }
+    }
+
     return (
         <div className="Register" data-aos='fade-in' data-aos-delay='600'>
             <h1>Create Account</h1>
-            <form className="form">
+            <form className="form" onSubmit={onSubmit}>
                 <div className="form-group">
                     <input className='nameInput' type="text" name='name' id='name' value={name} placeholder='Enter your name' onChange={onChange} />
                 </div>
@@ -36,7 +45,7 @@ function Register() {
                     <input className='passwordInput' type="text" name='password' id='password' value={password} placeholder='Enter your password' onChange={onChange} />
                 </div>
                 <div className="form-group">
-                    <input className='passwordConfirmInput' type="text" name='passwordConfirm' id='passwordConfirm' value={confirmPassword} placeholder='Confirm password' onChange={onChange} />
+                    <input className='passwordConfirmInput' type="text" name='confirmPassword' id='confirmPassword' value={confirmPassword} placeholder='Confirm password' onChange={onChange} />
                 </div>
             </form>
             <div className="signupbtns">
