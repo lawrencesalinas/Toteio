@@ -1,0 +1,17 @@
+.side-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 180px;
+  margin-left: 100px;
+}
+
+.sidenav-links li {
+  color: #fff;
+  margin: 30px 0;
+}

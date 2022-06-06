@@ -33,21 +33,21 @@ function Home() {
             <hr data-aos='fade-up' data-aos-delay='100' />
             <div className="categories">
 
-                <div className="category-img" data-aos='fade-right' data-aos-delay='700'>
+                <div className="category-img" data-aos='fade-right' data-aos-delay='400'>
                     <Link to="/shoes">
                         <img src={shoesImg} alt="" className='main-image' />
                     </Link>
                     <h5>SHOES</h5>
                 </div>
-                <div className="category-img" data-aos='fade-right' data-aos-delay='900'>
+                <div className="category-img" data-aos='fade-right' data-aos-delay='600'>
                     <Link to='/tech'>
-                        <img src={techImg} alt="" />
+                        <img src={techImg} alt="" className='main-image' />
                     </Link>
                     <h5>TECH</h5>
                 </div>
-                <div className="category-img" data-aos='fade-right' data-aos-delay='1100'>
+                <div className="category-img" data-aos='fade-right' data-aos-delay='800'>
                     <Link to='clothes'>
-                        <img src={clothImg} alt="" />
+                        <img src={clothImg} alt="" className='main-image' />
                     </Link>
                     <h5>CLOTHES</h5>
                 </div>

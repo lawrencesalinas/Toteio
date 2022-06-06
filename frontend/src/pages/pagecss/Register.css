@@ -25,16 +25,16 @@
 .nameInput,
 .passwordInput,
 .passwordConfirmInput {
-  width: 30vw;
+  width: 325px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
   outline: none;
+  padding: 20px;
 }
 ::placeholder {
   font-size: 15px;
-  padding: 10px;
 }
 
 h1 {
@@ -64,16 +64,51 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 325px;
   height: 40px;
-  font-size: 1.5em;
-  border-radius: 10px;
-  background-color: black;
+  font-size: 1.1em;
+  border-radius: 30px;
+  background-color: #8a2be2;
   color: #fff;
-  transition: transform 0.2s;
+  transition: background-color 0.5s ease;
+  border: none;
 }
 
 .signupbtn:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.05); */
+  background-color: #6317a9;
+}
+
+.or {
+  width: 250px;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  margin-top: 50px;
+}
+
+.or span {
   background-color: #181818;
+  padding: 0 10px;
+}
+
+.create-act-btn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 323px;
+  height: 40px;
+  font-size: 1.1em;
+  border-radius: 30px;
+  background-color: #000;
+  border: solid 2px #fff;
+  color: #fff;
+  transition: background-color 0.5s ease-in;
+}
+
+.create-act-btn:hover {
+  background-color: #fff;
+  color: #000;
 }
