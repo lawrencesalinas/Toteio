@@ -1,11 +1,12 @@
 import SideNav from '../components/layouts/SideNav'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { updateUser, reset } from '../features/auth/authSlice'
 import { toast } from 'react-toastify'
 import './pagecss/Profile.css'
 import Modal from 'react-modal'
-import { model } from 'mongoose'
+
 
 const customStyles = {
     content: {
@@ -24,14 +25,28 @@ const customStyles = {
     }
 }
 
+Modal.setAppElement('#root')
+
 
 function ProfileSettings() {
-    const { user } = useSelector((state) => state.auth)
+    const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth)
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [name, setName] = useState(user.name)
 
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+        if (isSuccess) {
+            toast.success('User info updated')
+            dispatch(reset())
+        }
+    }, [isError, isSuccess, user, message, navigate, dispatch])
 
 
 
@@ -41,10 +56,19 @@ function ProfileSettings() {
 
     const onNameSubmit = (e) => {
         e.preventDefault()
+        const userData = {
+            updatedName: name,
+        }
+        dispatch(updateUser(userData))
+        closeModal()
+
+    }
+    if (isLoading) {
+        return 'loading...'
     }
 
     return (
-        <div className="profile">
+        <div className="profile" data-aos='fade-in'>
             <div className="sidenav">
                 <SideNav />
             </div>
@@ -63,7 +87,7 @@ function ProfileSettings() {
                             <button className="btn-close" onClick={closeModal}>X</button>
                             <form onSubmit={onNameSubmit} className='modal-form'>
                                 <label>Name</label>
-                                <input type='text' name="noteText" id="noteText" className='form-control' placeholder='Note text' value={name} onChange={(e) => setName(e.target.value)}></input>
+                                <input type='text' name="updatedName" id="updatedName" className='form-control' placeholder='name' value={name} onChange={(e) => setName(e.target.value)}></input>
 
                                 <div>
                                     <button type='submit' className="btn">Submit</button>
@@ -75,7 +99,7 @@ function ProfileSettings() {
                         <div className="user-info">
                             <p>Email</p>
                             <p>{user.email}</p>
-                            <p className='underline'>Edit</p>
+                            <button className='underline' onClick={openModal}>Edit</button>
                         </div>
                     </div>
                     <div className="column">
@@ -84,17 +108,17 @@ function ProfileSettings() {
                             <button className='addnew-btn'>+ <span>Add New</span></button>
                         </div>
                         <div className="user-info">
-                            <br />
+
                             <br />
                             <p>Password</p>
                             <p>*********</p>
-                            <p className='underline'>Reset</p>
+                            <button className='underline' onClick={openModal}>Edit</button>
                         </div>
                     </div>
                     <div className="column">
                         <div className="user-info">
                             <p className='phone'>Phone Number</p>
-                            <button>+<span>Add New</span></button>
+                            <button className='addnew-btn'>+ <span>Add New</span></button>
                         </div>
                     </div>
                 </div>
