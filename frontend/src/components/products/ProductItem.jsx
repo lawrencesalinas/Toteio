@@ -1,11 +1,12 @@
 import '../componentcss/ProductItem.css'
 function ProductItem({ product }) {
-    const { name, img, description, rating, numReview, price } = product
+    console.log(product);
+    const { title, imgUrl, description, rating, numReview, price } = product
     return (
-        <div className='ProductItem' data-aos='fade-left' data-aos-delay='400'>
-            <img src={img} alt="" className='productImage' />
+        <div className='ProductItem' data-aos='fade-in' data-aos-delay='50'>
+            <img src={imgUrl} alt="" className='productImage' />
             <div className="productInfo">
-                <p>{name}</p>
+                <p>{title}</p>
                 <p>${price}</p>
             </div>
 

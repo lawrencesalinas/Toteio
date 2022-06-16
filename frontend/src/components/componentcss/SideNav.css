@@ -12,6 +12,10 @@
 }
 
 .sidenav-links li {
-  color: #fff;
+  color: #181818;
   margin: 30px 0;
+}
+
+.side-nav li a {
+  color: #181818;
 }

@@ -27,6 +27,7 @@
   position: absolute;
   bottom: 200px;
   right: 5%;
+  color: #fff;
 }
 
 .banner-text button {
@@ -60,12 +61,13 @@ h2 {
   /* background-color: #fff; */
   display: flex;
   width: 80vw;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin-bottom: 100px;
 }
 
 .categories {

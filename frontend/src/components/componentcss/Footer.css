@@ -1,9 +1,14 @@
 .Footer {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 145px;
+  background-color: #181818;
+  color: #fff;
+  padding: 40px 0;
 }
 .icons {
   margin-top: 20px;

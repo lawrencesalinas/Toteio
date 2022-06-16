@@ -6,23 +6,23 @@ import '../componentcss/Header.css'
 
 
 
-function Header() {
+function Header({ linkcolor }) {
     const { user } = useSelector((state) => state.auth)
     return (
 
         <header className='header' data-aos='fade-in'>
             <div className="logo">
-                <Link to='/'>Tote.io</Link>
+                <Link to='/' style={{ color: linkcolor }}>Tote.io</Link>
             </div>
             <div>
-                <ul data-aos='fade-in'>
+                <ul data-aos='fade-in' >
                     {user ? (
                         <>
                             <li>
-                                <Link to='/profile'>              <FaUser /></Link>
+                                <Link to='/profile' style={{ color: linkcolor }}>              <FaUser /></Link>
                             </li>
                             <li>
-                                <Link to='/cart'>              <IoCart /></Link>
+                                <Link to='/create-product' style={{ color: linkcolor }} >              <IoCart /></Link>
                             </li>
                         </>
                     ) : (

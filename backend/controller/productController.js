@@ -31,11 +31,9 @@ const getProduct = asyncHandler(async (req, res) => {
 // @route  POST /api/products
 // @access Private
 const createProduct = asyncHandler(async (req, res) => {
-  const { title, price, imgUrl, description } = req.body
+  const { title, price, image, description } = req.body
 
-  const user = await User.findByPk(req.user.id)
-
-  if (!title || !price || !imgUrl || !description) {
+  if (!title || !price || !image || !description) {
     res.status(400)
     throw new Error('Please enter all fields')
   }
@@ -48,7 +46,7 @@ const createProduct = asyncHandler(async (req, res) => {
   const product = await req.user.createProduct({
     title: title,
     price: price,
-    imgUrl: imgUrl,
+    imgUrl: image,
     description: description,
   })
   res.status(201).json(product)

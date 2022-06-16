@@ -11,13 +11,13 @@ import Register from './pages/Register'
 import Product from './pages/Product'
 import Profile from './pages/Profile'
 import ProfileSettings from './pages/ProfileSettings'
+import UserProducts from './pages/UserProducts'
 
 function App() {
   return (
     <>
       <Router>
         <div className='container'>
-          <Header />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='create-product' element={<CreateProduct />} />
@@ -29,6 +29,9 @@ function App() {
             </Route>
             <Route path='/profile-settings' element={<PrivateRoute />}>
               <Route path='/profile-settings' element={<ProfileSettings />} />
+            </Route>
+            <Route path='/my-products' element={<PrivateRoute />}>
+              <Route path='/my-products' element={<UserProducts />} />
             </Route>
           </Routes>
           <Footer />

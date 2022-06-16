@@ -29,6 +29,11 @@ function SideNav() {
                     </Link>
                 </li>
                 <li>
+                    <Link to='/my-products'>
+                        <h4><FaUser /> My Products</h4>
+                    </Link>
+                </li>
+                <li>
                     <h4 onClick={onLogout}><FaSignOutAlt /> Sign Out</h4>
                 </li>
             </ul>

@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const User = require('../models/userModel')
+const Product = require('../models/productModel')
 
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.findAll()
@@ -108,6 +109,18 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc   Get user products
+// @route  GET /api/products
+// @access Private
+const getUserProducts = asyncHandler(async (req, res) => {
+  const products = await Product.findAll({ where: { userId: req.user.id } })
+  if (!products) {
+    res.status(404)
+    throw new Error('No products found')
+  }
+  res.status(200).json(products)
+})
+
 // Generate token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -120,5 +133,6 @@ module.exports = {
   registerUser,
   loginUser,
   getUserProfile,
+  getUserProducts,
   updateUser,
 }

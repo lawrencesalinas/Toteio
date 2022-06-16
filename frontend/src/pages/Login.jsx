@@ -59,7 +59,7 @@ function Login() {
 
     const { email, password } = formData
     return (
-        <div className='Register' data-aos='fade-in' data-aos-delay='400'>
+        <div className='Register' data-aos='fade-in' >
             <h1>Welcome Back!</h1>
             <form className='form' onSubmit={onSubmit}>
                 <div className="form-group">

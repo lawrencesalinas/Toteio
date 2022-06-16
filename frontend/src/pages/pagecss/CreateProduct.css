@@ -1,6 +1,7 @@
 .create-product {
   margin: 0;
   padding: 0;
+  height: 85vh;
 }
 
 .form-group {
@@ -9,4 +10,14 @@
   margin-top: 30px;
   width: 80vw;
   outline: none;
+}
+
+.form-group input {
+  width: 325px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  outline: none;
+  padding: 20px;
 }

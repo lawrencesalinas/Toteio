@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
+import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
 import './pagecss/Profile.css'
 
 function Profile() {
     return (
+
         <div className="profile">
+            <Header color='#181818' />
             <div className="sidenav">
                 <SideNav />
             </div>

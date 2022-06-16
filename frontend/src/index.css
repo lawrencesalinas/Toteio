@@ -7,11 +7,20 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   height: 100vh;
-  background-color: #181818;
-  color: #fff;
+  /* background-color: #181818;
+  color: #fff; */
+  background-color: #fff;
+  color: #181818;
   overflow-x: hidden; /* Hide vertical scrollbar */
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 a {

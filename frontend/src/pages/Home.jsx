@@ -35,6 +35,7 @@ function Home() {
     console.log(products);
     return (
         <div className="Home">
+            <Header linkcolor='#fff' />
             <div className='banner' data-aos='fade-in'>
 
 
@@ -48,19 +49,19 @@ function Home() {
             <hr />
             <div className="categories">
 
-                <div className="category-img" data-aos='fade-right' data-aos-delay='400'>
+                <div className="category-img" data-aos='fade-right' data-aos-delay='50'>
                     <Link to="/shoes">
                         <img src={shoesImg} alt="" className='main-image' />
                     </Link>
                     <h5>SHOES</h5>
                 </div>
-                <div className="category-img" data-aos='fade-right' data-aos-delay='600'>
+                <div className="category-img" data-aos='fade-right' data-aos-delay='150'>
                     <Link to='/tech'>
                         <img src={techImg} alt="" className='main-image' />
                     </Link>
                     <h5>TECH</h5>
                 </div>
-                <div className="category-img" data-aos='fade-right' data-aos-delay='800'>
+                <div className="category-img" data-aos='fade-right' data-aos-delay='250'>
                     <Link to='clothes'>
                         <img src={clothImg} alt="" className='main-image' />
                     </Link>

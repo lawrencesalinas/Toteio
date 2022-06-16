@@ -6,6 +6,7 @@ import { updateUser, reset } from '../features/auth/authSlice'
 import { toast } from 'react-toastify'
 import './pagecss/Profile.css'
 import Modal from 'react-modal'
+import Header from '../components/layouts/Header'
 
 
 const customStyles = {
@@ -20,10 +21,12 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         position: 'relative',
         borderRadius: '30px',
-        boxShadow: "0 2px 2px 2px rgba"
+        boxShadow: "0 5px 5px 5px rgba(0, 0, 0, 0.2)"
 
     }
 }
+
+
 
 Modal.setAppElement('#root')
 
@@ -68,7 +71,9 @@ function ProfileSettings() {
     }
 
     return (
+
         <div className="profile" data-aos='fade-in'>
+            <Header linkcolor='#181818' />
             <div className="sidenav">
                 <SideNav />
             </div>
@@ -82,7 +87,7 @@ function ProfileSettings() {
                             <p>{user.name}</p>
                             <button className='underline' onClick={openModal}>Edit</button>
                         </div>
-                        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel='Update Name'>
+                        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel='Update Name' >
                             <h2 className='h2-modal'>Edit Name</h2>
                             <button className="btn-close" onClick={closeModal}>X</button>
                             <form onSubmit={onNameSubmit} className='modal-form'>

@@ -64,7 +64,7 @@ function Register() {
     }
 
     return (
-        <div className="Register" data-aos='fade-in' data-aos-delay='400'>
+        <div className="Register" data-aos='fade-in' >
             <h1>Create Account</h1>
             <form className="form" onSubmit={onSubmit}>
                 <div className="form-group">

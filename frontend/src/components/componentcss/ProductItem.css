@@ -4,7 +4,7 @@
   margin: 20px;
   transition: transform 0.5s ease;
   overflow: hidden;
-  color: #fff;
+  color: #181818;
 }
 
 .productImage {
@@ -22,7 +22,7 @@
 
 .productImage:hover {
   transform: scale(1.1) !important;
-  filter: brightness(80%);
+  filter: brightness(95%);
 }
 
 .productInfo {

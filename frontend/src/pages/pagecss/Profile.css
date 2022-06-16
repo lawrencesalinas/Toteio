@@ -1,5 +1,5 @@
 .profile {
-  height: 70vh;
+  height: 83vh;
   padding: 0;
   margin: 0;
   display: flex;
@@ -58,24 +58,24 @@
 
 .underline {
   border: none;
-  color: #fff;
+  color: #181818;
   text-decoration: underline;
-  background-color: #181818;
+  background-color: #fff;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .addnew-btn {
   font-size: 15px;
-  color: #fff;
-  background-color: #181818;
+  color: #181818;
+  background-color: lightgray;
   border: none;
 }
 
 .addnew-btn span {
-  margin-left: 10px;
   text-decoration: none;
-  color: #fff;
-  background-color: #181818;
+  color: #181818;
+  background-color: #fff;
 }
 
 .modal-form {

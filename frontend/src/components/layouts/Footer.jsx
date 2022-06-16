@@ -4,7 +4,7 @@ const footerYear = new Date().getFullYear()
 
 function Footer() {
     return (
-        <footer className="Footer">
+        <footer className='Footer' >
             <p>Copyright &copy; {footerYear} All rights reserved </p>
             <div className="icons">
                 <p>  <FaGithub /></p>
