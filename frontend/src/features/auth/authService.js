@@ -44,6 +44,8 @@ const updateUser = async (userData, token) => {
   return response.data
 }
 
+
+
 // export functions we created
 const authService = {
   register,

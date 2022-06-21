@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login, reset } from '../features/auth/authSlice'
 import { Link } from 'react-router-dom'
+import Spinner from "../components/shared/Spinner"
 
 
 function Login() {
@@ -54,7 +55,7 @@ function Login() {
     // ----------------------------------------------------------------/
 
     if (isLoading) {
-        return 'Loading..'
+        return <Spinner />
     }
 
     const { email, password } = formData

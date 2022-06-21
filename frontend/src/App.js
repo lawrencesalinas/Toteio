@@ -5,6 +5,7 @@ import Footer from './components/layouts/Footer'
 import Header from './components/layouts/Header'
 import PrivateRoute from './components/shared/PrivateRoute'
 import CreateProduct from './pages/CreateProduct'
+import EditProduct from './pages/EditProduct'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -20,10 +21,15 @@ function App() {
         <div className='container'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='create-product' element={<CreateProduct />} />
-            <Route path='product' element={<Product />} />
+            <Route path='product/:id' element={<Product />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/create-product' element={<PrivateRoute />}>
+              <Route path='/create-product' element={<CreateProduct />} />
+            </Route>
+            <Route path='/edit-product/:id' element={<PrivateRoute />}>
+              <Route path='/edit-product/:id' element={<EditProduct />} />
+            </Route>
             <Route path='/profile' element={<PrivateRoute />}>
               <Route path='/profile' element={<Profile />} />
             </Route>

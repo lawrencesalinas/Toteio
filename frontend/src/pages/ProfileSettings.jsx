@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import './pagecss/Profile.css'
 import Modal from 'react-modal'
 import Header from '../components/layouts/Header'
+import Spinner from '../components/shared/Spinner'
 
 
 const customStyles = {
@@ -66,13 +67,14 @@ function ProfileSettings() {
         closeModal()
 
     }
+
     if (isLoading) {
-        return 'loading...'
+        return <Spinner />
     }
 
     return (
 
-        <div className="profile" data-aos='fade-in'>
+        <div className="profile" >
             <Header linkcolor='#181818' />
             <div className="sidenav">
                 <SideNav />

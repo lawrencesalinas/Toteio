@@ -4,15 +4,14 @@
   height: 85vh;
 }
 
-.form-group {
+.product-form-group {
   display: flex;
-  justify-content: center;
   margin-top: 30px;
   width: 80vw;
   outline: none;
 }
 
-.form-group input {
+.product-form-group input {
   width: 325px;
   height: 40px;
   border-radius: 30px;

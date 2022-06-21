@@ -1,27 +1,27 @@
 import './pagecss/CreateProduct.css'
 import './pagecss/Profile.css'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { createProduct, reset } from '../features/product/productSlice'
+import { reset, getProduct, editProduct } from '../features/product/productSlice'
 import { toast } from 'react-toastify'
 import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
-import Spinner from "../components/shared/Spinner"
 
+// import { CreateProduct } from '../features/product/productSlice'
 
-function CreateProduct() {
-    const [isMounted, setIsMounted] = useState(false)
+function EditProduct() {
     const { user } = useSelector((state) => state.auth)
-    const { isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
-
+    const { product, isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
 
     const [formData, setFormData] = useState({
-        title: '',
-        price: '',
-        image: '',
-        description: ''
+        title: product.title,
+        price: product.price,
+        image: product.imgUrl,
+        description: product.description
     })
+
+    const { id } = useParams()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -29,24 +29,22 @@ function CreateProduct() {
     const { title, price, image, description } = formData
 
     useEffect(() => {
-
         if (isError) {
             toast.error(message)
         }
 
         if (isSuccess) {
-            console.log('this is user SELLL', isSuccess);
             dispatch(reset())
-            toast.success('success')
-            navigate('/profile')
-        }
-        dispatch(reset())
+            toast.success('success updating')
 
-    }, [, isError, isSuccess, navigate, message, dispatch])
+        }
+
+    }, [isError, message, id])
 
     const onSubmit = (e) => {
         e.preventDefault()
-        dispatch(createProduct({ title, price, image, description }))
+        dispatch(editProduct({ title, price, image, description, id }))
+
     }
 
 
@@ -60,7 +58,7 @@ function CreateProduct() {
     }
 
     if (isLoading) {
-        return <Spinner />
+        return 'hello'
     }
 
     return (
@@ -100,7 +98,7 @@ function CreateProduct() {
                     <input className='' type="file" name='image' id='image' />
                 </div> */}
                         <br />
-                        <button className='signupbtn'>List</button>
+                        <button className='signupbtn'>Update</button>
                     </form>
                 </div>
             </div >
@@ -109,4 +107,4 @@ function CreateProduct() {
     )
 }
 
-export default CreateProduct
+export default EditProduct

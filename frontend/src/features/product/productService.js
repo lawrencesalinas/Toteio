@@ -5,7 +5,13 @@ const API_USER_URL = 'http://localhost:8000/api/users/products'
 
 const getProducts = async () => {
   const response = await axios.get(`${API_URL}`)
-  console.log(response)
+
+  return response.data
+}
+
+const getProduct = async (productId) => {
+  const response = await axios.get(`${API_URL}/${productId}`)
+
   return response.data
 }
 
@@ -31,14 +37,30 @@ const getUserProducts = async (token) => {
   }
 
   const response = await axios.get(API_USER_URL, config)
-  console.log(response)
+
+  return response.data
+}
+
+// Edit user Product
+const editProduct = async (productData, id, token) => {
+  console.log('i got called', productData)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.put(`${API_URL}/edit/${id}`, productData, config)
+
   return response.data
 }
 
 const productService = {
   getProducts,
+  getProduct,
   createProduct,
   getUserProducts,
+  editProduct,
 }
 
 export default productService

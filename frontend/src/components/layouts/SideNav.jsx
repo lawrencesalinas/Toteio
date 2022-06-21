@@ -1,5 +1,6 @@
 import '../componentcss/SideNav.css'
-import { FaHome, FaUser, FaSignOutAlt } from 'react-icons/fa'
+import { FaHome, FaUser, FaSignOutAlt, FaHeadphones } from 'react-icons/fa'
+import { MdSell } from 'react-icons/md'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../../features/auth/authSlice'
@@ -30,7 +31,12 @@ function SideNav() {
                 </li>
                 <li>
                     <Link to='/my-products'>
-                        <h4><FaUser /> My Products</h4>
+                        <h4><FaHeadphones /> My Products</h4>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/create-product'>
+                        <h4><MdSell /> Sell</h4>
                     </Link>
                 </li>
                 <li>

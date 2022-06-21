@@ -15,15 +15,12 @@ const getProducts = asyncHandler(async (req, res) => {
 // @route  GET /api/products
 // @access Public
 const getProduct = asyncHandler(async (req, res) => {
-  const user = await Product.findByPk(req.user.id)
-
-  if (!user) {
-    res.status(401)
-    throw new Error('User not found')
-  }
-
   const product = await Product.findByPk(req.params.id)
 
+  if (!product) {
+    res.status(404)
+    throw new Error('Product not found')
+  }
   res.status(200).json(product)
 })
 
@@ -56,20 +53,27 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route  GET /api/products/edit/:id
 // @access Public
 const getEditProduct = asyncHandler(async (req, res) => {
+  const user = await User.findByPk(req.user.id)
+
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
   const prodId = req.params.id
-  const product = await req.user.getProducts({ where: { id: prodId } })
-  res.status(200).json(product[0])
+  const product = await Product.findByPk(prodId)
+  console.log(product)
+  res.status(200).json(product)
 })
 
 // @desc   Edit Product
 // @route  POST /api/products/edit/:id
 // @access Private
 const postEditProduct = asyncHandler(async (req, res) => {
-  const { title, price, imgUrl, description } = req.body
+  const { title, price, image, description } = req.body
   const prodId = req.params.id
   const updatedTitle = title
   const updatedPrice = price
-  const updatedImgUrl = imgUrl
+  const updatedImgUrl = image
   const updatedDescription = description
 
   const product = await Product.findByPk(prodId)

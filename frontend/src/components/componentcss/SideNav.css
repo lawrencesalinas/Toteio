@@ -19,3 +19,11 @@
 .side-nav li a {
   color: #181818;
 }
+
+.side-nav li {
+  transition: transform 0.3s ease;
+}
+
+.side-nav li:hover {
+  transform: scale(1.2);
+}

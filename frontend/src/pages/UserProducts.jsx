@@ -2,6 +2,10 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import ProductItem from '../components/products/ProductItem'
 import { getUserProducts, reset } from '../features/product/productSlice'
+import Header from '../components/layouts/Header'
+import SideNav from '../components/layouts/SideNav'
+import './pagecss/Profile.css'
+import Spinner from '../components/shared/Spinner'
 
 function UserProducts() {
     const { products, isLoading, isSuccess } = useSelector((state) => state.products)
@@ -10,38 +14,46 @@ function UserProducts() {
 
     // clear sttate on unmount
     useEffect(() => {
+
         return () => {
             if (isSuccess) {
-                dispatch(reset())
+                console.log('I RESETTED', dispatch(reset()));
+                console.log('this is user PRODUCTS', isSuccess);
             }
         }
+
     }, [isSuccess, dispatch])
 
     useEffect(() => {
         dispatch(getUserProducts())
-    }, [dispatch])
+        // console.log(isSuccess);/
 
-    console.log(products);
+
+    }, [dispatch], isSuccess)
+
+    if (isLoading) {
+        return <Spinner />
+    }
 
     return (
-        <>
-            <h1 data-aos='zoom-in'>Tickets</h1>
-            <div className="tickets">
-                <div className="ticket-headings" data-aos='zoom-in'>
-                    <div>Data</div>
-                    <div>Product</div>
-                    <div>Status</div>
-                    <div></div>
-                </div>
-                <div className="products">
+
+        <div className="profile" >
+            <Header linkcolor='#181818' />
+            <div className="sidenav">
+                <SideNav />
+            </div>
+            <div className="content">
+                <h1 className='heading-profile'>My Products</h1>
+                <div className="user-products">
                     {
                         products.map((product, index) => (
-                            <ProductItem product={product} key={index} />
+                            <ProductItem product={product} key={product.id} />
                         ))
                     }
                 </div>
             </div>
-        </>
+        </div>
+
     )
 }
 

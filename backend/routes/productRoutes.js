@@ -14,6 +14,6 @@ router.route('/').get(getProducts).post(protect, createProduct)
 
 router.route('/:id').get(getProduct)
 
-router.route('/edit/:id').get(getEditProduct).put(postEditProduct)
+router.route('/edit/:id').get(protect, getEditProduct).put(postEditProduct)
 
 module.exports = router

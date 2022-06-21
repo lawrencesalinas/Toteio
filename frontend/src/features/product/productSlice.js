@@ -29,6 +29,25 @@ export const getProducts = createAsyncThunk(
     }
   }
 )
+// Get  Products
+export const getProduct = createAsyncThunk(
+  'product/get',
+  async (productId, thunkAPI) => {
+    try {
+      //   const token = thunkAPI.getState().auth.user.token
+      return await productService.getProduct(productId)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
 
 // Create new product
 export const createProduct = createAsyncThunk(
@@ -70,11 +89,42 @@ export const getUserProducts = createAsyncThunk(
   }
 )
 
+// Edit User Products
+export const editProduct = createAsyncThunk(
+  'product/edit',
+  async (productData, thunkAPI) => {
+    try {
+      console.log('testing123')
+      const token = thunkAPI.getState().auth.user.token
+      console.log('test123', token, productData)
+      return await productService.editProduct(
+        productData,
+        productData.id,
+        token
+      )
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    reset: (state) => initialState,
+    reset: (state) => {
+      state.isLoading = false
+      state.isError = false
+      state.isSuccess = false
+      state.message = ''
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -84,9 +134,22 @@ export const productSlice = createSlice({
       .addCase(getProducts.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
+
         state.products = action.payload
       })
       .addCase(getProducts.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(getProduct.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getProduct.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.product = action.payload
+      })
+      .addCase(getProduct.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
@@ -103,12 +166,23 @@ export const productSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      .addCase(editProduct.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(editProduct.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+      })
+      .addCase(editProduct.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
       .addCase(getUserProducts.pending, (state) => {
         state.isLoading = true
       })
       .addCase(getUserProducts.fulfilled, (state, action) => {
         state.isLoading = false
-        state.isSuccess = true
         state.products = action.payload
       })
       .addCase(getUserProducts.rejected, (state, action) => {

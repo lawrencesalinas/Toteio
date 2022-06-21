@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { register, reset } from '../features/auth/authSlice'
 import { Link, useNavigate } from "react-router-dom"
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
+import Spinner from "../components/shared/Spinner"
 
 function Register() {
     const [showPassword, setShowPassword] = useState(false)
@@ -59,8 +60,9 @@ function Register() {
             dispatch(register(userData))
         }
     }
+
     if (isLoading) {
-        return 'Loading....'
+        return <Spinner />
     }
 
     return (
