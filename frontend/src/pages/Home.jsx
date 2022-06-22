@@ -6,6 +6,7 @@ import { getProducts, reset } from '../features/product/productSlice'
 // import products from '../examples'
 import ProductItem from '../components/products/ProductItem'
 import Header from '../components/layouts/Header'
+import Spinner from '../components/shared/Spinner'
 // import products from '../examples'
 
 function Home() {
@@ -32,7 +33,9 @@ function Home() {
     }, [dispatch])
 
 
-    console.log(products);
+    if (isLoading) {
+        return <Spinner />
+    }
     return (
         <div className="Home">
             <Header linkcolor='#fff' />

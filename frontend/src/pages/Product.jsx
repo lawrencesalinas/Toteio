@@ -1,25 +1,43 @@
 import './pagecss/Product.css'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { getProduct } from '../features/product/productSlice'
+import { getProduct, deleteProduct, reset } from '../features/product/productSlice'
 import Header from '../components/layouts/Header'
 import Spinner from "../components/shared/Spinner"
 
+
 function Product() {
     const { user } = useSelector(state => state.auth)
-    const { product, isLoading, isError, message } = useSelector(state => state.products)
+    const { product, isLoading, isError, isSuccess, message } = useSelector(state => state.products)
 
     const { id } = useParams()
-    const dispatch = useDispatch()
-    useEffect(() => {
-        if (isError) {
-            toast.error(message)
-        }
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (isSuccess) {
+            toast.success('Deleted Successfully')
+            dispatch(reset())
+            navigate('/my-products')
+
+        }
+    }, [isError, message, id, isSuccess, dispatch, navigate])
+
+    useEffect(() => {
         dispatch(getProduct(id))
-    }, [isError, message, id])
+    }, [dispatch])
+
+
+    const deleteHandler = () => {
+        if (window.confirm('Are you sure')) {
+            dispatch(deleteProduct(id))
+            dispatch(reset())
+
+        }
+    }
 
     if (isLoading) {
         return <Spinner />
@@ -29,7 +47,6 @@ function Product() {
         <>
             <Header linkcolor='#181818' />
             <div className="product" data-aos='fade-in' data-aos-delay='50'>
-
                 <div className="top">
                     <div className="images">
                         <img src={product.imgUrl} alt="" className='product-img' />
@@ -74,7 +91,7 @@ function Product() {
                                 <Link to={`/edit-product/${id}`}>
                                     <button className='editbtn'>Edit </button>
                                 </Link>
-                                <button className='deletebtn'>Delete </button>
+                                <button className='deletebtn' onClick={deleteHandler}>Delete </button>
                             </div>
                         ) :
                             (
@@ -84,10 +101,6 @@ function Product() {
                                 </div>
 
                             )}
-
-
-
-
                     </div>
 
                 </div>

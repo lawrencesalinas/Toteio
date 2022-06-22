@@ -8,7 +8,10 @@ import './pagecss/Profile.css'
 import Spinner from '../components/shared/Spinner'
 
 function UserProducts() {
+
     const { products, isLoading, isSuccess } = useSelector((state) => state.products)
+
+
 
     const dispatch = useDispatch()
 
@@ -46,7 +49,7 @@ function UserProducts() {
                 <h1 className='heading-profile'>My Products</h1>
                 <div className="user-products">
                     {
-                        products.map((product, index) => (
+                        products.map((product) => (
                             <ProductItem product={product} key={product.id} />
                         ))
                     }

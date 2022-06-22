@@ -43,15 +43,27 @@ const getUserProducts = async (token) => {
 
 // Edit user Product
 const editProduct = async (productData, id, token) => {
-  console.log('i got called', productData)
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   }
 
-  const response = await axios.put(`${API_URL}/edit/${id}`, productData, config)
+  const response = await axios.put(`${API_URL}/${id}`, productData, config)
 
+  return response.data
+}
+
+const deleteProduct = async (productId, token) => {
+  console.log('service')
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.delete(`${API_URL}/${productId}`, config)
+  console.log(response, 'response')
   return response.data
 }
 
@@ -61,6 +73,7 @@ const productService = {
   createProduct,
   getUserProducts,
   editProduct,
+  deleteProduct,
 }
 
 export default productService

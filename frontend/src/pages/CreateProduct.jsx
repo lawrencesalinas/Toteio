@@ -11,8 +11,6 @@ import Spinner from "../components/shared/Spinner"
 
 
 function CreateProduct() {
-    const [isMounted, setIsMounted] = useState(false)
-    const { user } = useSelector((state) => state.auth)
     const { isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
 
 
@@ -42,7 +40,7 @@ function CreateProduct() {
         }
         dispatch(reset())
 
-    }, [, isError, isSuccess, navigate, message, dispatch])
+    }, [isError, isSuccess, navigate, message, dispatch])
 
     const onSubmit = (e) => {
         e.preventDefault()

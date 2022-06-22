@@ -49,26 +49,15 @@ const createProduct = asyncHandler(async (req, res) => {
   res.status(201).json(product)
 })
 
-// @desc   Get Edit Product
-// @route  GET /api/products/edit/:id
-// @access Public
-const getEditProduct = asyncHandler(async (req, res) => {
-  const user = await User.findByPk(req.user.id)
-
-  if (!user) {
+// @desc   Edit Product
+// @route  PUT /api/products/:id
+// @access Private
+const editProduct = asyncHandler(async (req, res) => {
+  if (!req.user) {
     res.status(401)
     throw new Error('User not found')
   }
-  const prodId = req.params.id
-  const product = await Product.findByPk(prodId)
-  console.log(product)
-  res.status(200).json(product)
-})
 
-// @desc   Edit Product
-// @route  POST /api/products/edit/:id
-// @access Private
-const postEditProduct = asyncHandler(async (req, res) => {
   const { title, price, image, description } = req.body
   const prodId = req.params.id
   const updatedTitle = title
@@ -87,13 +76,22 @@ const postEditProduct = asyncHandler(async (req, res) => {
   res.status(201).json(product)
 })
 
-// const deleteProduct = asyncHandler(async (req, res) => {
-//   //   req.user.getProducts({ where: { id: prodId } })
-// })
+// @desc   Delete Product
+// @route  DELETE /api/products/:id
+// @access Private
+const deleteProduct = asyncHandler(async (req, res) => {
+  if (!req.user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+  const product = await Product.findByPk(req.params.id)
+  product.destroy()
+  res.status(201).json({ message: 'Deleted Successfully' })
+})
 module.exports = {
   getProducts,
   getProduct,
   createProduct,
-  getEditProduct,
-  postEditProduct,
+  editProduct,
+  deleteProduct,
 }

@@ -11,7 +11,7 @@ const getUsers = asyncHandler(async (req, res) => {
 })
 
 // @desc    Register a new user
-// @route   /app/users
+// @route   /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
@@ -55,7 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 // @desc    login a  userit
-// @route   /app/login
+// @route   /api/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
@@ -77,7 +77,7 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 // @desc    Get current user
-// @route   /app/users/me
+// @route   /api/users/me
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
   // res.status(200).json(req.user)
@@ -90,7 +90,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 })
 
 // @desc    update user
-// @route   /app/users
+// @route   /api/users
 // @access  Private
 const updateUser = asyncHandler(async (req, res) => {
   const { updatedName, updatedEmail, updatedAddress, updatedPhone } = req.body
@@ -110,7 +110,7 @@ const updateUser = asyncHandler(async (req, res) => {
 })
 
 // @desc   Get user products
-// @route  GET /api/products
+// @route  GET /api/users/products
 // @access Private
 const getUserProducts = asyncHandler(async (req, res) => {
   const products = await Product.findAll({ where: { userId: req.user.id } })
