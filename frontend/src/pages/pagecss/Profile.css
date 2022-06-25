@@ -136,7 +136,7 @@
   height: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   /* overflow: hidden; */
   margin-bottom: 100px;

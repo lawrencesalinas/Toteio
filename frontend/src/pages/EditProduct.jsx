@@ -3,15 +3,13 @@ import './pagecss/Profile.css'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { reset, getProduct, editProduct } from '../features/product/productSlice'
+import { reset, editProduct } from '../features/product/productSlice'
 import { toast } from 'react-toastify'
 import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
-
-// import { CreateProduct } from '../features/product/productSlice'
+import Spinner from '../components/shared/Spinner'
 
 function EditProduct() {
-    const { user } = useSelector((state) => state.auth)
     const { product, isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
 
     const [formData, setFormData] = useState({
@@ -28,18 +26,20 @@ function EditProduct() {
 
     const { title, price, image, description } = formData
 
+
     useEffect(() => {
         if (isError) {
             toast.error(message)
         }
 
         if (isSuccess) {
-            dispatch(reset())
             toast.success('success updating')
+            dispatch(reset())
+            navigate(`/product/${id}`)
 
         }
 
-    }, [isError, message, id])
+    }, [isError, message, isSuccess, dispatch, navigate, id])
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -58,7 +58,7 @@ function EditProduct() {
     }
 
     if (isLoading) {
-        return 'hello'
+        return <Spinner />
     }
 
     return (

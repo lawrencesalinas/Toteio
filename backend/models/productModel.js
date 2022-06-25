@@ -14,6 +14,12 @@ const Product = sequelize.define('product', {
     type: Sequelize.DOUBLE,
     allowNull: false,
   },
+  // brand: {
+  //   type: Sequelize.STRING,
+  // },
+  // category: {
+  //   type: Sequelize.STRING,
+  // },
   imgUrl: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -20,8 +20,8 @@ function UserProducts() {
 
         return () => {
             if (isSuccess) {
-                console.log('I RESETTED', dispatch(reset()));
-                console.log('this is user PRODUCTS', isSuccess);
+                dispatch(reset())
+
             }
         }
 
@@ -39,23 +39,32 @@ function UserProducts() {
     }
 
     return (
-
         <div className="profile" >
             <Header linkcolor='#181818' />
             <div className="sidenav">
                 <SideNav />
             </div>
             <div className="content">
-                <h1 className='heading-profile'>My Products</h1>
-                <div className="user-products">
-                    {
-                        products.map((product) => (
-                            <ProductItem product={product} key={product.id} />
-                        ))
-                    }
-                </div>
+                {
+                    products && products.length > 0 ? (<>
+                        <h1 className='heading-profile'>My Products</h1>
+                        <div className="user-products">
+                            {products.map((product) => (
+                                <ProductItem product={product} key={product.id} />
+                            ))
+                            }
+                        </div>
+                    </>) : <h1 className='heading-profile'>No Products vailable</h1>
+                }
+
             </div>
         </div>
+
+
+
+
+
+
 
     )
 }

@@ -28,7 +28,12 @@ const getProduct = asyncHandler(async (req, res) => {
 // @route  POST /api/products
 // @access Private
 const createProduct = asyncHandler(async (req, res) => {
-  const { title, price, image, description } = req.body
+  console.log(req.body, 'bodyyyyyy')
+
+  const { title, price, description, image } = req.body
+  console.log(title)
+
+  console.log('I am image', image)
 
   if (!title || !price || !image || !description) {
     res.status(400)

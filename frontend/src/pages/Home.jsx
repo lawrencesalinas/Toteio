@@ -39,7 +39,7 @@ function Home() {
     return (
         <div className="Home">
             <Header linkcolor='#fff' />
-            <div className='banner' data-aos='fade-in'>
+            <div className='banner'>
 
 
                 <img src="https://images.unsplash.com/photo-1431068799455-80bae0caf685?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
@@ -52,8 +52,8 @@ function Home() {
             <hr />
             <div className="categories">
 
-                <div className="category-img" data-aos='fade-right' data-aos-delay='50'>
-                    <Link to="/shoes">
+                <div className="category-img" data-aos='fade-right' data-aos-delay='70'>
+                    <Link to="/category">
                         <img src={shoesImg} alt="" className='main-image' />
                     </Link>
                     <h5>SHOES</h5>
@@ -74,16 +74,16 @@ function Home() {
 
 
 
-
-            <h1 >Featured Products</h1>
+            {products && products.length > 0 ? (
+                <h1 >Featured Products</h1>) : <></>}
 
 
             <div className="products">
-                {
+                {products && products.length > 0 ? (
                     products.map((product, index) => (
                         <ProductItem product={product} key={index} />
                     ))
-                }
+                ) : <></>}
             </div>
 
             {/* <div className='second-banner'>

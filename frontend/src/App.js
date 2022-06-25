@@ -13,6 +13,7 @@ import Product from './pages/Product'
 import Profile from './pages/Profile'
 import ProfileSettings from './pages/ProfileSettings'
 import UserProducts from './pages/UserProducts'
+import Category from './pages/Category'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='product/:id' element={<Product />} />
+            <Route path='/category' element={<Category />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/create-product' element={<PrivateRoute />}>

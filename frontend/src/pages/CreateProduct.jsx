@@ -1,5 +1,6 @@
 import './pagecss/CreateProduct.css'
 import './pagecss/Profile.css'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -10,21 +11,18 @@ import SideNav from '../components/layouts/SideNav'
 import Spinner from "../components/shared/Spinner"
 
 
+
 function CreateProduct() {
     const { isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
 
-
-    const [formData, setFormData] = useState({
-        title: '',
-        price: '',
-        image: '',
-        description: ''
-    })
+    const [title, setTitle] = useState('')
+    const [price, setPrice] = useState('')
+    const [description, setDescription] = useState('')
+    const [image, setImage] = useState('')
+    const [uploading, setUploading] = useState(false)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
-    const { title, price, image, description } = formData
 
     useEffect(() => {
 
@@ -36,25 +34,40 @@ function CreateProduct() {
             console.log('this is user SELLL', isSuccess);
             dispatch(reset())
             toast.success('success')
-            navigate('/profile')
+            navigate('/my-products')
         }
         dispatch(reset())
 
     }, [isError, isSuccess, navigate, message, dispatch])
 
-    const onSubmit = (e) => {
-        e.preventDefault()
-        dispatch(createProduct({ title, price, image, description }))
+    const uploadFileHandler = async (e) => {
+        console.log('i am uploading');
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+
+            const { data } = await axios.post('http://localhost:8000/api/uploads', formData, config)
+
+            setImage(data)
+            console.log(data, 'setimage');
+            setUploading(false)
+        } catch (error) {
+            console.error(error)
+            setUploading(false)
+        }
     }
 
-
-    const onChange = (e) => {
-        setFormData((prevState) => (
-            {
-                ...prevState,
-                [e.target.name]: e.target.value
-            }
-        ))
+    const onSubmit = (e) => {
+        e.preventDefault()
+        dispatch(createProduct({ title, price, description, image }))
     }
 
     if (isLoading) {
@@ -73,30 +86,45 @@ function CreateProduct() {
                 <div className='create-product'>
                     <form onSubmit={onSubmit}>
                         <div className="product-form-group">
-                            <input className='' type="text" name='title' id='title' placeholder='Enter product name' value={title} onChange={onChange} />
+                            <input className='' type="text" name='title' id='title' placeholder='Enter product name' value={title} onChange={(e) => setTitle(e.target.value)} />
                         </div>
-                        {/* <div className="form-group">
-                    <label for="cars">Categories</label>
-                    <select name="categories" id="categories">
-                        <option value="volvo">Shoes</option>
-                        <option value="saab">Tech</option>
-                        <option value="mercedes">Clothing</option>
-                    </select>
+                        <div className="product-form-group">
+                            <input className='' type="text" name='price' id='price' placeholder='Enter price' value={price} onChange={(e) => setPrice(e.target.value)} />
+                        </div>
+                        <div className="product-form-group">
+                            <input className='' type="text" name='description' id='description' placeholder='Enter product description' value={description} onChange={(e) => setDescription(e.target.value)} />
+                        </div>
+                        {/* <div className="category-form-gruop">
+                            <label for="cars">Categories</label>
+                            <select name="categories" id="categories">
+                                <option value="volvo">Shoes</option>
+                                <option value="saab">Tech</option>
+                                <option value="mercedes">Clothing</option>
+                            </select>
+                        </div> */}
 
 
-                </div> */}
                         <div className="product-form-group">
-                            <input className='' type="text" name='price' id='price' placeholder='Enter price' value={price} onChange={onChange} />
+                            <label>Image</label>
+                            <input
+                                type='text'
+                                name='image'
+                                placeholder='Enter image url'
+                                value={image}
+                                onChange={(e) => setImage(e.target.value)}
+                            />
+                            <input
+                                name='file'
+                                id='file'
+                                type='file'
+                                onChange={uploadFileHandler}
+                            />
+                            {uploading && <Spinner />}
                         </div>
-                        <div className="product-form-group">
-                            <input className='' type="text" name='description' id='description' placeholder='Enter product description' value={description} onChange={onChange} />
-                        </div>
-                        <div className="product-form-group">
-                            <input className='' type="text" name='image' id='image' placeholder='Enter product description' value={image} onChange={onChange} />
-                        </div>
-                        {/* <div className="file">
-                    <input className='' type="file" name='image' id='image' />
-                </div> */}
+                        {/* <div className="product-form-group">
+                            <input className='' type="text" name='image' id='image' placeholder='uoload image' value={image} onChange={onChange} />
+                        </div> */}
+
                         <br />
                         <button className='signupbtn'>List</button>
                     </form>

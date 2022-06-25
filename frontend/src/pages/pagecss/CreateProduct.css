@@ -20,3 +20,15 @@
   outline: none;
   padding: 20px;
 }
+
+.category-form-gruop {
+  background-color: yellow;
+  border: solid 2px black;
+}
+
+.no-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
