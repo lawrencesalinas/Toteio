@@ -1,0 +1,14 @@
+.shoppingbag-item-container {
+  height: 100%;
+}
+
+.shoppingbag-item {
+  display: flex;
+  height: 100%;
+  border-bottom: 1px solid yellow;
+}
+
+.shoppingbag-item img {
+  width: 100px;
+  height: 100px;
+}

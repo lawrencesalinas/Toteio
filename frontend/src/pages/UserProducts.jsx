@@ -12,7 +12,6 @@ function UserProducts() {
     const { products, isLoading, isSuccess } = useSelector((state) => state.products)
 
 
-
     const dispatch = useDispatch()
 
     // clear sttate on unmount

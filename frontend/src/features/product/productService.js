@@ -17,7 +17,6 @@ const getProduct = async (productId) => {
 
 // Create new Product
 const createProduct = async (productData, token) => {
-  console.log(productData, 'DATAAAAACERATE')
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -26,7 +25,6 @@ const createProduct = async (productData, token) => {
 
   const response = await axios.post(API_URL, productData, config)
 
-  console.log(response)
   return response.data
 }
 
