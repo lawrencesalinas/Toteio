@@ -25,7 +25,7 @@ function Category() {
         dispatch(getProducts())
     }, [dispatch])
 
-    console.log(products);
+
     return (
         <div className="category">
             <Header />
@@ -48,7 +48,7 @@ function Category() {
                 </div>
                 <div className="category-products">
                     {products.map((product) => (
-                        <CategoryItem product={product} />
+                        <CategoryItem product={product} key={product.id} />
                     ))}
 
                 </div>

@@ -5,9 +5,9 @@
   height: 100%;
   box-sizing: border-box;
   width: 260px;
-  box-shadow: 0 3px 3px 3px rgb(0, 0, 0, 0.2);
+  /* box-shadow: 0 3px 3px 3px rgb(0, 0, 0, 0.2); */
   padding: 30px 10px 0 10px;
-  margin: 30px;
+  margin: 20px;
 }
 
 .category-item img {
@@ -20,7 +20,7 @@
 }
 
 .category-item {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .category-info {
@@ -41,6 +41,10 @@
   text-shadow: 1px 0 #181818;
   letter-spacing: 1px;
   font-weight: bold;
+}
+
+.category-item:hover {
+  opacity: 0.8;
 }
 
 .image-heart {

@@ -19,6 +19,7 @@ function CreateProduct() {
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
+    const [formImage, setFormImage] = useState('')
     const [uploading, setUploading] = useState(false)
 
     const navigate = useNavigate()
@@ -57,13 +58,16 @@ function CreateProduct() {
             const { data } = await axios.post('http://localhost:8000/api/uploads', formData, config)
 
             setImage(data)
-            console.log(data, 'setimage');
+            setFormImage(`http://localhost:8000${data}`)
+
             setUploading(false)
         } catch (error) {
             console.error(error)
             setUploading(false)
         }
     }
+
+
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -103,9 +107,8 @@ function CreateProduct() {
                             </select>
                         </div> */}
 
-
+                        {/* 
                         <div className="product-form-group">
-                            <label>Image</label>
                             <input
                                 type='text'
                                 name='image'
@@ -113,14 +116,21 @@ function CreateProduct() {
                                 value={image}
                                 onChange={(e) => setImage(e.target.value)}
                             />
-                            <input
-                                name='file'
-                                id='file'
-                                type='file'
-                                onChange={uploadFileHandler}
-                            />
+
                             {uploading && <Spinner />}
-                        </div>
+                        </div> */}
+                        {formImage && formImage !== '' ? (
+                            <div className="form-image">
+                                <img src={formImage} alt="" />
+                            </div>
+
+                        ) : <></>}
+                        <input className='form-filepicker'
+                            name='file'
+                            id='file'
+                            type='file'
+                            onChange={uploadFileHandler}
+                        />
                         {/* <div className="product-form-group">
                             <input className='' type="text" name='image' id='image' placeholder='uoload image' value={image} onChange={onChange} />
                         </div> */}

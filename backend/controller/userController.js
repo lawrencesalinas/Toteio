@@ -41,6 +41,8 @@ const registerUser = asyncHandler(async (req, res) => {
     password: hashPassword,
   })
 
+  user.createShoppingBag()
+
   if (user) {
     res.status(200).json({
       id: user.id,
@@ -113,6 +115,18 @@ const updateUser = asyncHandler(async (req, res) => {
 // @route  GET /api/users/products
 // @access Private
 const getUserProducts = asyncHandler(async (req, res) => {
+  const products = await Product.findAll({ where: { userId: req.user.id } })
+  if (!products) {
+    res.status(404)
+    throw new Error('No products found')
+  }
+  res.status(200).json(products)
+})
+
+// @desc   Add to cart
+// @route  GET /api/users/products
+// @access Private
+const addToCart = asyncHandler(async (req, res) => {
   const products = await Product.findAll({ where: { userId: req.user.id } })
   if (!products) {
     res.status(404)

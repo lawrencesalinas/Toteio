@@ -32,3 +32,15 @@
   align-items: center;
   height: 95vh;
 }
+
+.form-image {
+  margin: 20px 0;
+}
+
+.form-filepicker {
+  margin: 20px 0;
+}
+.form-image img {
+  width: 100px;
+  height: 100px;
+}

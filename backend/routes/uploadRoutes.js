@@ -32,9 +32,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage: fileStorage, fileFilter: fileFilter })
 
 router.post('/', upload.single('image'), (req, res) => {
-  console.log('I MADE ITTTTTT!!!!!!!!!!!!!', req.file)
   const path = req.file.path.split('/').slice(1).join('/')
-  console.log(path)
 
   res.send(`/${path}`)
 })

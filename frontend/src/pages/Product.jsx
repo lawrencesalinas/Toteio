@@ -12,6 +12,10 @@ function Product() {
     const { user } = useSelector(state => state.auth)
     const { product, isLoading, isError, isSuccess, message } = useSelector(state => state.products)
 
+    const image = `http://localhost:8000${product.imgUrl}`
+
+
+
     const { id } = useParams()
 
     const navigate = useNavigate()
@@ -39,6 +43,12 @@ function Product() {
         }
     }
 
+    const addToCartHandler = () => {
+
+    }
+
+
+
     if (isLoading) {
         return <Spinner />
     }
@@ -49,7 +59,7 @@ function Product() {
             <div className="product" data-aos='fade-in' data-aos-delay='50'>
                 <div className="top">
                     <div className="images">
-                        <img src={product.imgUrl} alt="" className='product-img' />
+                        <img src={image} alt="" className='product-img' />
                         <div className="image-tile">
                             <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_2_2000.jpg" alt="" className='tile-img' />
                             <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_2_2000.jpg" alt="" className='tile-img' />
@@ -97,7 +107,7 @@ function Product() {
                             (
 
                                 <div className="product-button">
-                                    <button className='signupbtn'>Add to Cart </button>
+                                    <button className='signupbtn' onClick={addToCartHandler}>Add to Bag </button>
                                 </div>
 
                             )}

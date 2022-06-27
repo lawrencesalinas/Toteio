@@ -14,6 +14,7 @@ import Profile from './pages/Profile'
 import ProfileSettings from './pages/ProfileSettings'
 import UserProducts from './pages/UserProducts'
 import Category from './pages/Category'
+import ShoppingBag from './pages/ShoppingBag'
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             <Route path='/category' element={<Category />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/cart' element={<PrivateRoute />}>
+              <Route path='/cart' element={<ShoppingBag />} />
+            </Route>
             <Route path='/create-product' element={<PrivateRoute />}>
               <Route path='/create-product' element={<CreateProduct />} />
             </Route>

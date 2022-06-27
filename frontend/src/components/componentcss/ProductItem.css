@@ -30,6 +30,13 @@
   flex-direction: column;
   margin: 5px 0 0 5px;
 }
+
+.productInfo-price {
+  color: #181818;
+  text-shadow: 1px 0 #181818;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
 .productInfo > p {
   margin: 2px;
 }
