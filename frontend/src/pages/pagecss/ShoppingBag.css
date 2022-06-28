@@ -1,2 +1,23 @@
+.shoppingbag {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.shoppingbag h1,
+.shoppingbag h2 {
+  text-align: left;
+}
+
 .shoppingBag-items {
+  height: 100%;
+  /* border: solid red 2px; */
+}
+
+.shoppingbag h2 {
+  /* border: solid 2px blue; */
+  margin: 20px 0 0 0;
+  padding: 0;
 }

@@ -14,8 +14,21 @@ const getShoppingBag = async (token) => {
   return response.data
 }
 
+const addToShoppingBag = async (productId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.post(API_URL, productId, config)
+  console.log(response)
+  return response.data
+}
+
 const shoppingBagService = {
   getShoppingBag,
+  addToShoppingBag,
 }
 
 export default shoppingBagService

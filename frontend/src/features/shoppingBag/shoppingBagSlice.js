@@ -9,13 +9,32 @@ const initialState = {
   message: '',
 }
 
-// Get  Products
+// Get  user shoppingbag
 export const getShoppingBag = createAsyncThunk(
   'shoppingBag/getAll',
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
       return await ShoppingBagService.getShoppingBag(token)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+export const addToShoppingBag = createAsyncThunk(
+  'shoppingbag/add',
+  async (productId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await ShoppingBagService.addToShoppingBag(productId, token)
     } catch (error) {
       const message =
         (error.response &&
@@ -50,6 +69,18 @@ export const ShoppingBagSlice = createSlice({
         state.shoppingBag = action.payload
       })
       .addCase(getShoppingBag.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(addToShoppingBag.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(addToShoppingBag.fulfilled, (state) => {
+        state.isLoading = false
+        state.isSuccess = true
+      })
+      .addCase(addToShoppingBag.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

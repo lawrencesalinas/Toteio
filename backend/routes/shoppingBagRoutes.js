@@ -3,10 +3,15 @@ const router = express.Router()
 const {
   getShoppingBag,
   addToShoppingBag,
+  deleteShoppingBagItem,
 } = require('../controller/shoppingBagController')
 
 const { protect } = require('../middleware/authMiddleWare')
 
-router.route('/').get(protect, getShoppingBag).post(protect, addToShoppingBag)
+router
+  .route('/')
+  .get(protect, getShoppingBag)
+  .post(protect, addToShoppingBag)
+  .delete(protect, deleteShoppingBagItem)
 
 module.exports = router

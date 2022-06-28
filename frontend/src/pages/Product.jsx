@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { getProduct, deleteProduct, reset } from '../features/product/productSlice'
+import { addToShoppingBag } from '../features/shoppingBag/shoppingBagSlice'
 import Header from '../components/layouts/Header'
 import Spinner from "../components/shared/Spinner"
 
@@ -44,7 +45,7 @@ function Product() {
     }
 
     const addToCartHandler = () => {
-
+        dispatch(addToShoppingBag({ productId: id }))
     }
 
 
