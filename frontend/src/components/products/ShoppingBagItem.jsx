@@ -1,10 +1,16 @@
 import '../componentcss/ShoppingBagItem.css'
 import { FaTrash } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
+import { deleteShoppingBagItem } from '../../features/shoppingBag/shoppingBagSlice'
 
-function ShoppingBagItem({ product }) {
-    const { title, imgUrl, price } = product
+function ShoppingBagItem({ product, handleDeleteItem }) {
+    const { title, imgUrl, price, id } = product
     const { productId, quantity } = product.shoppingBagItem
+
     const image = `http://localhost:8000${imgUrl}`
+
+    const dispatch = useDispatch()
+
     return (
         <div className="shoppingbag-item-container">
             <div className="shoppingbag-item">
@@ -12,7 +18,7 @@ function ShoppingBagItem({ product }) {
                 <p className='bag-info'>{title}</p>
                 <p className='bag-info price-info'>${price}</p>
                 <p className='bag-info'>qty: <span className='price-info'>{quantity}</span></p>
-                <p className='trash-info'><FaTrash /></p>
+                <p className='trash-info' onClick={() => handleDeleteItem(id)}><FaTrash /></p>
             </div>
 
 

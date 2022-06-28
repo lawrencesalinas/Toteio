@@ -46,6 +46,7 @@ function Product() {
 
     const addToCartHandler = () => {
         dispatch(addToShoppingBag({ productId: id }))
+        toast.success('item added to shopping bag')
     }
 
 

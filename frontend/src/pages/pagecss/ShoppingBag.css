@@ -3,7 +3,11 @@
   flex-direction: column;
   margin-left: 100px;
   height: 100%;
-  margin-bottom: 20px;
+  padding-bottom: 55vh;
+}
+
+.bag-container {
+  margin-top: 100px;
 }
 
 .shoppingbag h1,

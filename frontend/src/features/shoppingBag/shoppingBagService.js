@@ -26,9 +26,24 @@ const addToShoppingBag = async (productId, token) => {
   return response.data
 }
 
+const deleteShoppingBagItem = async (productId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  console.log('service')
+
+  const response = await axios.delete(`${API_URL}/${productId}`, config)
+  console.log(response, 'response')
+  return response.data
+}
+
 const shoppingBagService = {
   getShoppingBag,
   addToShoppingBag,
+  deleteShoppingBagItem,
 }
 
 export default shoppingBagService

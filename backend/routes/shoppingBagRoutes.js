@@ -8,10 +8,8 @@ const {
 
 const { protect } = require('../middleware/authMiddleWare')
 
-router
-  .route('/')
-  .get(protect, getShoppingBag)
-  .post(protect, addToShoppingBag)
-  .delete(protect, deleteShoppingBagItem)
+router.route('/').get(protect, getShoppingBag).post(protect, addToShoppingBag)
+
+router.route('/:id').delete(protect, deleteShoppingBagItem)
 
 module.exports = router

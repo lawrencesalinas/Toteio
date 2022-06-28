@@ -41,13 +41,16 @@ const addToShoppingBag = asyncHandler(async (req, res) => {
 })
 
 const deleteShoppingBagItem = asyncHandler(async (req, res) => {
-  const { productId } = req.body
+  console.log('delete is hit')
+  const productId = req.params.id
+  console.log(req.user)
 
   if (!req.user) {
     res.status(401)
     throw new Error('User not found')
   }
   const shoppingBag = await req.user.getShoppingBag()
+
   const products = await shoppingBag.getProducts({ where: { id: productId } })
   const product = products[0]
   product.shoppingBagItem.destroy()

@@ -22,6 +22,8 @@
 
 .trash-info {
   margin-left: 100px;
+  color: red;
+  cursor: pointer;
 }
 
 .price-info {
