@@ -20,6 +20,9 @@ const Product = sequelize.define('product', {
   // category: {
   //   type: Sequelize.STRING,
   // },
+  // countInStock: {
+  //   type: Sequelize.INTEGER,
+  // },
   imgUrl: {
     type: Sequelize.STRING,
     allowNull: false,

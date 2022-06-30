@@ -11,6 +11,8 @@ const Product = require('./models/productModel')
 const User = require('./models/userModel')
 const ShoppingBag = require('./models/shoppingBagModel')
 const ShoppingBagItem = require('./models/shoppingBagItemModel')
+const Order = require('./models/orderModel')
+const OrderItem = require('./models/orderItemModel')
 
 dotenv.config()
 
@@ -32,6 +34,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/products/', require('./routes/productRoutes'))
 app.use('/api/shoppingBag/', require('./routes/shoppingBagRoutes'))
+app.use('/api/orders/', require('./routes/orderRoutes'))
 app.use('/api/uploads/', require('./routes/uploadRoutes'))
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to My E-store' })
@@ -46,6 +49,9 @@ User.hasOne(ShoppingBag)
 ShoppingBag.belongsTo(User)
 ShoppingBag.belongsToMany(Product, { through: ShoppingBagItem })
 Product.belongsToMany(ShoppingBag, { through: ShoppingBagItem })
+Order.belongsTo(User)
+User.hasMany(Order)
+Order.belongsToMany(Product, { through: OrderItem })
 
 sequelize
   // .sync({ force: true })

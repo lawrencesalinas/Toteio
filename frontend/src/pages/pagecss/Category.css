@@ -25,8 +25,9 @@
   height: 100%;
 }
 
-.side-nav {
+.side-nav-category {
   width: 25vw;
+  border: blue solid 3px;
 }
 
 .category-products {
@@ -39,7 +40,7 @@
   height: 100%;
 }
 
-.side-nav ul {
+.side-nav-category ul {
   display: flex;
   flex-direction: column;
 }

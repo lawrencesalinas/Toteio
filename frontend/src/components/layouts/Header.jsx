@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import '../componentcss/Header.css'
 
 
@@ -21,7 +21,7 @@ function Header({ linkcolor }) {
                                 <Link to='/profile' style={{ color: linkcolor }}><FaUser /></Link>
                             </li>
                             <li>
-                                <Link to='/profile' style={{ color: linkcolor }}><FaHeart /></Link>
+                                <Link to='/profile' style={{ color: '#ff7b7b' }}><FaHeart /></Link>
                             </li>
                             <li>
                                 <Link to='/cart' style={{ color: linkcolor }} ><FaShoppingBag /></Link>

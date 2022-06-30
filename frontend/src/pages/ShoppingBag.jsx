@@ -1,12 +1,15 @@
 import './pagecss/ShoppingBag.css'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getShoppingBag, deleteShoppingBagItem, reset } from '../features/shoppingBag/shoppingBagSlice'
 import Header from '../components/layouts/Header';
 import ShoppingBagItem from '../components/products/ShoppingBagItem';
+import Spinner from '../components/shared/Spinner'
+import { toast } from 'react-toastify'
 
 function ShoppingBag() {
-    const [trigger, setTrigger] = useState(false)
+
     const { shoppingBag, isLoading, isError, isSuccess, message } = useSelector(state => state.shoppingBag)
 
     const numberOfItems = shoppingBag.length
@@ -17,13 +20,20 @@ function ShoppingBag() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
         dispatch(getShoppingBag())
         dispatch(reset())
-    }, [dispatch, isSuccess])
+    }, [dispatch, isSuccess, message, isError])
 
 
     const handleDeleteItem = (id) => {
         dispatch(deleteShoppingBagItem(id))
+    }
+
+    if (isLoading) {
+        return <Spinner />
     }
 
     return (
@@ -31,19 +41,37 @@ function ShoppingBag() {
             <Header />
             <div className="shoppingbag">
                 <div className="bag-container">
-                    <h2>Shopping Bag</h2>
-                    <div className="shoppingBag-items">
-                        {shoppingBag && numberOfItems > 0 ? (
+                    <div className="bag-information">
+                        <h2>Shopping Bag</h2>
+                        <div className="shoppingBag-items">
+                            {shoppingBag && numberOfItems > 0 ? (
 
-                            shoppingBag.map((product) => (
-                                <ShoppingBagItem product={product} key={product.id} handleDeleteItem={handleDeleteItem} />
-                            ))
-                        ) :
-                            <h2>Your Cart is Empty</h2>
-                        }
+                                shoppingBag.map((product) => (
+                                    <ShoppingBagItem product={product} key={product.id} handleDeleteItem={handleDeleteItem} />
+                                ))
+                            ) :
+                                <div className="shoppingbag-item-container">
+                                    <h2 className='empty-cart'>Your shopping bag is empty. Go back</h2>
+                                    <Link to={'/'}>
+                                        <button className='signupbtn '>Continue Shopping</button>
+                                    </Link>
+                                </div>
+                            }
+                        </div>
                     </div>
-                    <h2>Subtotal ({totalItems}) Items</h2>
-                    <h2>${totalPrice} total</h2>
+                    <div className="bag-total">
+                        <h3 className='price-info'>Order Summarry</h3>
+                        <h4>Subtotal ({totalItems}) Items</h4>
+
+                        <h3 className='price-info'>Order Total:  <span className='total-price'>${totalPrice}</span></h3>
+                        {totalItems === 0 ? (
+                            <button type='button' className='signupbtn disabled' >Checkout</button>
+                        ) : (
+                            <button type='button' className='signupbtn ' >Checkout</button>
+                        )
+                        }
+
+                    </div>
                 </div>
             </div>
         </>

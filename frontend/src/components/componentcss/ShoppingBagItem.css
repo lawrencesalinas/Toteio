@@ -1,27 +1,27 @@
 .shoppingbag-item-container {
-  margin-top: 50px;
-  width: 60vw;
+  margin-top: 20px;
+  width: 50vw;
 }
 
 .shoppingbag-item {
   display: flex;
   height: 100%;
-  border-bottom: 1px solid lightgray;
+  /* border-bottom: 1px solid lightgray; */
 }
 
 .shoppingbag-item img {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 65px;
   margin-bottom: 15px;
 }
 
 .bag-info {
   width: 150px;
-  margin-left: 45px;
+  margin-left: 20px;
 }
 
 .trash-info {
-  margin-left: 100px;
+  margin-left: 70px;
   color: red;
   cursor: pointer;
 }

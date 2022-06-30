@@ -15,6 +15,7 @@ import ProfileSettings from './pages/ProfileSettings'
 import UserProducts from './pages/UserProducts'
 import Category from './pages/Category'
 import ShoppingBag from './pages/ShoppingBag'
+import Order from './pages/Order'
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path='/my-products' element={<PrivateRoute />}>
               <Route path='/my-products' element={<UserProducts />} />
+            </Route>
+            <Route path='/checkout' element={<PrivateRoute />}>
+              <Route path='/checkout' element={<Order />} />
             </Route>
           </Routes>
           <Footer />

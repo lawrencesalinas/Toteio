@@ -9,7 +9,7 @@ function ProductItem({ product }) {
 
 
     return (
-        <div className='ProductItem' data-aos='fade-in' data-aos-delay='50'>
+        <div className='ProductItem' >
             <Link to={`/product/${id}`} >
                 <img src={image} alt="" className='productImage' />
                 <div className="productInfo">
@@ -17,7 +17,7 @@ function ProductItem({ product }) {
                     <p className='productInfo-price'>${price}</p>
                 </div>
             </Link>
-        </div>
+        </div >
     )
 }
 

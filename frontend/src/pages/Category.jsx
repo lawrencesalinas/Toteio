@@ -37,6 +37,9 @@ function Category() {
                 <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
                 <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
             </div>
+            <img src="" alt="" />
+
+
 
             <div className="category-content">
                 <div className="side-nav">
@@ -47,6 +50,7 @@ function Category() {
                     </ul>
                 </div>
                 <div className="category-products">
+                    <img src="" alt="" />
                     {products.map((product) => (
                         <CategoryItem product={product} key={product.id} />
                     ))}
