@@ -2,10 +2,22 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:8000/api/products'
 const API_USER_URL = 'http://localhost:8000/api/users/products'
+const API_ADMIN_URL = 'http://localhost:8000/api/products/admin'
 
 const getProducts = async () => {
   const response = await axios.get(`${API_URL}`)
 
+  return response.data
+}
+
+const getAdminProducts = async () => {
+  const response = await axios.get(`${API_ADMIN_URL}`)
+
+  return response.data
+}
+
+const getAllShoes = async () => {
+  const response = await axios.get(`${API_URL}/shoes`)
   return response.data
 }
 
@@ -68,12 +80,14 @@ const deleteProduct = async (productId, token) => {
 }
 
 const productService = {
+  getAdminProducts,
   getProducts,
   getProduct,
   createProduct,
   getUserProducts,
   editProduct,
   deleteProduct,
+  getAllShoes,
 }
 
 export default productService

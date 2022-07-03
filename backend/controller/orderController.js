@@ -4,6 +4,9 @@ const Product = require('../models/productModel')
 const ShoppingBagItem = require('../models/shoppingBagItemModel')
 const Order = require('../models/orderModel')
 
+// @desc   Add shoppingbag  to orders
+// @route  POST /api/orders
+// @access Private
 const postOrder = asyncHandler(async (req, res) => {
   const shoppingBag = await req.user.getShoppingBag()
   const products = await shoppingBag.getProducts()
@@ -18,6 +21,16 @@ const postOrder = asyncHandler(async (req, res) => {
   res.status(201).json(orderProducts)
 })
 
+// @desc   Add products to shopping bag
+// @route  POST /api/shoppingBag
+// @access Private
+const getOrders = asyncHandler(async (req, res) => {
+  const orders = req.user.getOrder()
+  const orderItems = orders
+  res.send(orders)
+})
+
 module.exports = {
   postOrder,
+  getOrders,
 }

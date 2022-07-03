@@ -5,16 +5,18 @@ import '../componentcss/Header.css'
 
 
 
-function Header({ linkcolor }) {
+
+function Header({ linkcolor, bgcolor }) {
     const { user } = useSelector((state) => state.auth)
     return (
 
-        <header className='header' data-aos='fade-in'>
+        <header className='header' style={{ backgroundColor: bgcolor }}>
             <div className="logo">
                 <Link to='/' style={{ color: linkcolor }}>Tote.io</Link>
             </div>
+
             <div>
-                <ul data-aos='fade-in' >
+                <ul>
                     {user ? (
                         <>
                             <li>
@@ -24,16 +26,16 @@ function Header({ linkcolor }) {
                                 <Link to='/profile' style={{ color: '#ff7b7b' }}><FaHeart /></Link>
                             </li>
                             <li>
-                                <Link to='/cart' style={{ color: linkcolor }} ><FaShoppingBag /></Link>
+                                <Link to='/cart' style={{ color: '#FFFDD0' }} ><FaShoppingBag /></Link>
                             </li>
                         </>
                     ) : (
                         <>
                             <li>
-                                <Link to='/login'>              <FaUser /></Link>
+                                <Link to='/login' style={{ color: linkcolor }}>              <FaUser /></Link>
                             </li>
                             <li>
-                                <Link to='/cart'>              <FaShoppingBag /></Link>
+                                <Link to='/cart' style={{ color: linkcolor }}>              <FaShoppingBag /></Link>
                             </li>
                         </>)
                     }

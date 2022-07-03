@@ -62,47 +62,50 @@ function EditProduct() {
     }
 
     return (
+        <>
+            <Header linkcolor='#fff' bgcolor='#181818' />
+            <div className="profile" >
 
-        <div className="profile" >
-            <Header linkcolor='#181818' />
-            <div className="sidenav">
-                <SideNav />
-            </div>
-            <div className="content">
-                <h1 className='heading-profile'>Sell an item</h1>
-                <div className='create-product'>
-                    <form onSubmit={onSubmit}>
-                        <div className="product-form-group">
-                            <input className='' type="text" name='title' id='title' placeholder='Enter product name' value={title} onChange={onChange} />
-                        </div>
-                        {/* <div className="form-group">
-                    <label for="cars">Categories</label>
-                    <select name="categories" id="categories">
-                        <option value="volvo">Shoes</option>
-                        <option value="saab">Tech</option>
-                        <option value="mercedes">Clothing</option>
-                    </select>
-
-
-                </div> */}
-                        <div className="product-form-group">
-                            <input className='' type="text" name='price' id='price' placeholder='Enter price' value={price} onChange={onChange} />
-                        </div>
-                        <div className="product-form-group">
-                            <input className='' type="text" name='description' id='description' placeholder='Enter product description' value={description} onChange={onChange} />
-                        </div>
-                        <div className="product-form-group">
-                            <input className='' type="text" name='image' id='image' placeholder='Enter product description' value={image} onChange={onChange} />
-                        </div>
-                        {/* <div className="file">
-                    <input className='' type="file" name='image' id='image' />
-                </div> */}
-                        <br />
-                        <button className='signupbtn'>Update</button>
-                    </form>
+                <div className="sidenav">
+                    <SideNav />
                 </div>
+                <div className="content">
+                    <h1 className='heading-profile'>Sell an item</h1>
+                    <div className='create-product'>
+                        <form onSubmit={onSubmit}>
+                            <div className="product-form-group">
+                                <input className='' type="text" name='title' id='title' placeholder='Enter product name' value={title} onChange={onChange} />
+                            </div>
+                            {/* <div className="form-group">
+                  <label for="cars">Categories</label>
+                  <select name="categories" id="categories">
+                      <option value="volvo">Shoes</option>
+                      <option value="saab">Tech</option>
+                      <option value="mercedes">Clothing</option>
+                  </select>
+
+
+              </div> */}
+                            <div className="product-form-group">
+                                <input className='' type="text" name='price' id='price' placeholder='Enter price' value={price} onChange={onChange} />
+                            </div>
+                            <div className="product-form-group">
+                                <input className='' type="text" name='description' id='description' placeholder='Enter product description' value={description} onChange={onChange} />
+                            </div>
+                            <div className="product-form-group">
+                                <input className='' type="text" name='image' id='image' placeholder='Enter product description' value={image} onChange={onChange} />
+                            </div>
+                            {/* <div className="file">
+                  <input className='' type="file" name='image' id='image' />
+              </div> */}
+                            <br />
+                            <button className='signupbtn'>Update</button>
+                        </form>
+                    </div>
+                </div >
             </div >
-        </div >
+        </>
+
 
     )
 }

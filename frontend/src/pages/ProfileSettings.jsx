@@ -73,65 +73,68 @@ function ProfileSettings() {
     }
 
     return (
+        <>
+            <Header linkcolor='#fff' bgcolor='#181818' />
+            <div className="profile" >
 
-        <div className="profile" >
-            <Header linkcolor='#181818' />
-            <div className="sidenav">
-                <SideNav />
-            </div>
-            <div className="content">
-                <h1 className='heading-profile'>Profile Settings</h1>
-                <div className="profile-section">
+                <div className="sidenav">
+                    <SideNav />
+                </div>
+                <div className="content">
+                    <h1 className='heading-profile'>Profile Settings</h1>
+                    <div className="profile-section">
 
-                    <div className="column">
-                        <div className="user-info" >
-                            <p>Name</p>
-                            <p>{user.name}</p>
-                            <button className='underline' onClick={openModal}>Edit</button>
+                        <div className="column">
+                            <div className="user-info" >
+                                <p>Name</p>
+                                <p>{user.name}</p>
+                                <button className='underline' onClick={openModal}>Edit</button>
+                            </div>
+                            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel='Update Name' >
+                                <h2 className='h2-modal'>Edit Name</h2>
+                                <button className="btn-close" onClick={closeModal}>X</button>
+                                <form onSubmit={onNameSubmit} className='modal-form'>
+                                    <label>Name</label>
+                                    <input type='text' name="updatedName" id="updatedName" className='form-control' placeholder='name' value={name} onChange={(e) => setName(e.target.value)}></input>
+
+                                    <div>
+                                        <button type='submit' className="btn">Submit</button>
+                                    </div>
+                                </form>
+                            </Modal>
+
+
+                            <div className="user-info">
+                                <p>Email</p>
+                                <p>{user.email}</p>
+                                <button className='underline' onClick={openModal}>Edit</button>
+                            </div>
                         </div>
-                        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel='Update Name' >
-                            <h2 className='h2-modal'>Edit Name</h2>
-                            <button className="btn-close" onClick={closeModal}>X</button>
-                            <form onSubmit={onNameSubmit} className='modal-form'>
-                                <label>Name</label>
-                                <input type='text' name="updatedName" id="updatedName" className='form-control' placeholder='name' value={name} onChange={(e) => setName(e.target.value)}></input>
+                        <div className="column">
+                            <div className="user-info" >
+                                <p>Address</p>
+                                <button className='addnew-btn'>+ <span>Add New</span></button>
+                            </div>
+                            <div className="user-info">
 
-                                <div>
-                                    <button type='submit' className="btn">Submit</button>
-                                </div>
-                            </form>
-                        </Modal>
-
-
-                        <div className="user-info">
-                            <p>Email</p>
-                            <p>{user.email}</p>
-                            <button className='underline' onClick={openModal}>Edit</button>
+                                <br />
+                                <p>Password</p>
+                                <p>*********</p>
+                                <button className='underline' onClick={openModal}>Edit</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="column">
-                        <div className="user-info" >
-                            <p>Address</p>
-                            <button className='addnew-btn'>+ <span>Add New</span></button>
-                        </div>
-                        <div className="user-info">
-
-                            <br />
-                            <p>Password</p>
-                            <p>*********</p>
-                            <button className='underline' onClick={openModal}>Edit</button>
-                        </div>
-                    </div>
-                    <div className="column">
-                        <div className="user-info">
-                            <p className='phone'>Phone Number</p>
-                            <button className='addnew-btn'>+ <span>Add New</span></button>
+                        <div className="column">
+                            <div className="user-info">
+                                <p className='phone'>Phone Number</p>
+                                <button className='addnew-btn'>+ <span>Add New</span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div >
+            </div >
+        </>
+
     )
 }
 

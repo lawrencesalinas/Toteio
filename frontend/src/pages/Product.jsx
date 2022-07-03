@@ -7,6 +7,7 @@ import { getProduct, deleteProduct, reset } from '../features/product/productSli
 import { addToShoppingBag } from '../features/shoppingBag/shoppingBagSlice'
 import Header from '../components/layouts/Header'
 import Spinner from "../components/shared/Spinner"
+import NavBar from '../components/layouts/NavBar'
 
 
 function Product() {
@@ -57,8 +58,10 @@ function Product() {
 
     return (
         <>
-            <Header linkcolor='#181818' />
+            <Header linkcolor='#fff' bgcolor='#181818' />
+
             <div className="product" data-aos='fade-in' data-aos-delay='50'>
+                <NavBar />
                 <div className="top">
                     <div className="images">
                         <img src={image} alt="" className='product-img' />

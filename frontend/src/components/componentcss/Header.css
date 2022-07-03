@@ -1,10 +1,10 @@
 .header {
-  position: absolute;
   display: flex;
-  padding: 15px;
+  /* padding: 15px; */
   font-size: 1.3rem;
   width: 100vw;
-  z-index: 3;
+  z-index: 100000;
+  padding-top: 10px;
 }
 
 .logo {
@@ -13,7 +13,7 @@
   margin-left: 40px;
   color: #fff;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 ul {

@@ -2,12 +2,12 @@ import './pagecss/Home.css'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getProducts, reset } from '../features/product/productSlice'
-// import products from '../examples'
+import { getAAllShoes, getAdminProducts, getUserProducts, reset } from '../features/product/productSlice'
 import ProductItem from '../components/products/ProductItem'
 import Header from '../components/layouts/Header'
 import Spinner from '../components/shared/Spinner'
-// import products from '../examples'
+import NavBar from '../components/layouts/NavBar'
+
 
 function Home() {
     const shoesImg = 'https://images.unsplash.com/photo-1516478177764-9fe5bd7e9717?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
@@ -16,7 +16,7 @@ function Home() {
 
     const { products, isLoading, isSuccess } = useSelector((state) => state.products)
 
-
+    console.log(products);
     const dispatch = useDispatch()
 
     // clear sttate on unmount
@@ -29,7 +29,7 @@ function Home() {
     }, [isSuccess, dispatch])
 
     useEffect(() => {
-        dispatch(getProducts())
+        dispatch(getAdminProducts())
     }, [dispatch])
 
 
@@ -38,34 +38,36 @@ function Home() {
     }
     return (
         <div className="Home">
-            <Header linkcolor='#fff' />
+            <div className="header-home">
+                <Header linkcolor='#fff' />
+            </div>
+
             <div className='banner'>
-
-
                 <img src="https://images.unsplash.com/photo-1431068799455-80bae0caf685?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
                 <div className="banner-text">
                     <h1 data-aos='fade-right' data-aos-delat='400'>DISCOVER NEW TECHNOLOGY</h1>
                     <Link to='product'>  <button data-aos='fade-right' data-aos-delat='400'>SHOP TECH</button></Link>
                 </div>
             </div>
+            <NavBar />
             <h1>Essentials</h1>
             <hr />
             <div className="categories">
 
                 <div className="category-img" data-aos='fade-right' data-aos-delay='70'>
-                    <Link to="/category">
+                    <Link to="/category/shoes">
                         <img src={shoesImg} alt="" className='main-image' />
                     </Link>
                     <h5>SHOES</h5>
                 </div>
                 <div className="category-img" data-aos='fade-right' data-aos-delay='150'>
-                    <Link to='/tech'>
+                    <Link to='/category/tech'>
                         <img src={techImg} alt="" className='main-image' />
                     </Link>
                     <h5>TECH</h5>
                 </div>
                 <div className="category-img" data-aos='fade-right' data-aos-delay='250'>
-                    <Link to='clothes'>
+                    <Link to='/category/clothes'>
                         <img src={clothImg} alt="" className='main-image' />
                     </Link>
                     <h5>CLOTHES</h5>

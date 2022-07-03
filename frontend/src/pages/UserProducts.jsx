@@ -6,6 +6,7 @@ import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
 import './pagecss/Profile.css'
 import Spinner from '../components/shared/Spinner'
+import NavBar from '../components/layouts/NavBar'
 
 function UserProducts() {
 
@@ -38,26 +39,30 @@ function UserProducts() {
     }
 
     return (
-        <div className="profile" >
-            <Header linkcolor='#181818' />
-            <div className="sidenav">
-                <SideNav />
-            </div>
-            <div className="content">
-                {
-                    products && products.length > 0 ? (<>
-                        <h1 className='heading-profile'>My Products</h1>
-                        <div className="user-products">
-                            {products.map((product) => (
-                                <ProductItem product={product} key={product.id} />
-                            ))
-                            }
-                        </div>
-                    </>) : <h1 className='heading-profile'>No Products vailable</h1>
-                }
+        <>
+            <Header linkcolor='#fff' bgcolor='#181818' />
+            <NavBar />
+            <div className="profile" >
+                <div className="sidenav">
+                    <SideNav />
+                </div>
+                <div className="content">
+                    {
+                        products && products.length > 0 ? (<>
+                            <h1 className='heading-profile'>My Products</h1>
+                            <div className="user-products">
+                                {products.map((product) => (
+                                    <ProductItem product={product} key={product.id} />
+                                ))
+                                }
+                            </div>
+                        </>) : <h1 className='heading-profile'>No Products vailable</h1>
+                    }
 
+                </div>
             </div>
-        </div>
+        </>
+
 
 
 

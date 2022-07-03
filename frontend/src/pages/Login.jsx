@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { login, reset } from '../features/auth/authSlice'
 import { Link } from 'react-router-dom'
 import Spinner from "../components/shared/Spinner"
-
+import Header from "../components/layouts/Header"
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -59,8 +59,12 @@ function Login() {
     }
 
     const { email, password } = formData
-    return (
+    return (<>
+        <div data-aos='fade-in'>
+            <Header linkcolor='#fff' bgcolor='#181818' />
+        </div>
         <div className='Register' data-aos='fade-in' >
+
             <h1>Welcome Back!</h1>
             <form className='form' onSubmit={onSubmit}>
                 <div className="form-group">
@@ -86,6 +90,8 @@ function Login() {
 
             </form>
         </div>
+    </>
+
     )
 }
 

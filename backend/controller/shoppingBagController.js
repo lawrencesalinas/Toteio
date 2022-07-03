@@ -4,17 +4,19 @@ const Product = require('../models/productModel')
 const ShoppingBagItem = require('../models/shoppingBagItemModel')
 
 // @desc   Get all user cart items
-// @route  GET /api/cart
-// @access Public
+// @route  GET /api/shoppingBag
+// @access Private
 const getShoppingBag = asyncHandler(async (req, res) => {
   const shoppingBag = await req.user.getShoppingBag()
 
   const products = await shoppingBag.getProducts()
 
-  // const products = await
   res.status(200).json(products)
 })
 
+// @desc   Add products to shopping bag
+// @route  POST /api/shoppingBag
+// @access Private
 const addToShoppingBag = asyncHandler(async (req, res) => {
   const { productId } = req.body
 
@@ -40,6 +42,9 @@ const addToShoppingBag = asyncHandler(async (req, res) => {
   res.status(201).json({ product, quantity })
 })
 
+// @desc  Delete products from shopping bag
+// @route  DELETE /api/shoppingBag
+// @access Private
 const deleteShoppingBagItem = asyncHandler(async (req, res) => {
   console.log('delete is hit')
   const productId = req.params.id

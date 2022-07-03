@@ -5,13 +5,18 @@ const {
   getProduct,
   createProduct,
   editProduct,
-
   deleteProduct,
+  getAdminProducts,
+  getAllShoes,
 } = require('../controller/productController')
 
 const { protect } = require('../middleware/authMiddleWare')
 
 router.route('/').get(getProducts).post(protect, createProduct)
+
+router.route('/admin').get(getAdminProducts)
+
+router.route('/shoes').get(getAllShoes)
 
 router
   .route('/:id')

@@ -7,6 +7,7 @@ import Header from '../components/layouts/Header';
 import ShoppingBagItem from '../components/products/ShoppingBagItem';
 import Spinner from '../components/shared/Spinner'
 import { toast } from 'react-toastify'
+import NavBar from '../components/layouts/NavBar';
 
 function ShoppingBag() {
 
@@ -39,6 +40,7 @@ function ShoppingBag() {
     return (
         <>
             <Header />
+            <NavBar />
             <div className="shoppingbag">
                 <div className="bag-container">
                     <div className="bag-information">
@@ -67,7 +69,11 @@ function ShoppingBag() {
                         {totalItems === 0 ? (
                             <button type='button' className='signupbtn disabled' >Checkout</button>
                         ) : (
-                            <button type='button' className='signupbtn ' >Checkout</button>
+                            <Link to={'/checkout'}>
+
+
+                                <button type='button' className='signupbtn ' >Checkout</button>
+                            </Link>
                         )
                         }
 

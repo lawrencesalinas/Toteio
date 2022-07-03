@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 100%;
   box-sizing: border-box;
   width: 260px;
   /* box-shadow: 0 3px 3px 3px rgb(0, 0, 0, 0.2); */

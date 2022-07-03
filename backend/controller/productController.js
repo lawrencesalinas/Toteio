@@ -28,7 +28,16 @@ const getProduct = asyncHandler(async (req, res) => {
 // @route  POST /api/products
 // @access Private
 const createProduct = asyncHandler(async (req, res) => {
-  const { title, price, description, image } = req.body
+  const {
+    title,
+    price,
+    description,
+    image,
+    condition,
+    gender,
+    category,
+    brand,
+  } = req.body
 
   if (!title || !price || !image || !description) {
     res.status(400)
@@ -45,6 +54,10 @@ const createProduct = asyncHandler(async (req, res) => {
     price: price,
     imgUrl: image,
     description: description,
+    condition: condition,
+    gender: gender,
+    category: category,
+    brand: brand,
   })
   res.status(201).json(product)
 })
@@ -88,10 +101,40 @@ const deleteProduct = asyncHandler(async (req, res) => {
   product.destroy()
   res.status(201).json({ message: 'Deleted Successfully' })
 })
+
+// @desc   Get admin Products
+// @route  GET /api/products/admin
+// @access Public
+const getAdminProducts = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ where: { isAdmin: true } })
+  const products = await Product.findAll({ where: { userId: user.id } })
+  res.status(201).json(products)
+})
+
+// @desc   Get All shoes
+// @route  GET /api/products/menshoes
+// @access Public
+const getAllShoes = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ where: { isAdmin: true } })
+  const products = await Product.findAll({ where: { category: 'shoes' } })
+  res.status(201).json(products)
+})
+
+// @desc   Get men shoes
+// @route  GET /api/products/menshoes
+// @access Public
+const getMenShoes = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ where: { isAdmin: true } })
+  const products = await Product.findAll({ where: { userId: user.id } })
+  res.status(201).json(products)
+})
+
 module.exports = {
   getProducts,
   getProduct,
   createProduct,
   editProduct,
   deleteProduct,
+  getAdminProducts,
+  getAllShoes,
 }

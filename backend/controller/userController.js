@@ -14,7 +14,7 @@ const getUsers = asyncHandler(async (req, res) => {
 // @route   /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body
+  const { name, email, password, isAdmin } = req.body
   console.log(req.body)
   //   Validation
   if (!name || !email || !password) {
@@ -39,11 +39,20 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password: hashPassword,
+    isAdmin: isAdmin,
   })
 
   user.createShoppingBag()
 
-  if (user) {
+  if (user.isAdmin) {
+    res.status(200).json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      isAdmin: true,
+      token: generateToken(user.id),
+    })
+  } else if (user) {
     res.status(200).json({
       id: user.id,
       name: user.name,
@@ -63,9 +72,18 @@ const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ where: { email } })
+  const userAdmin = await User.findOne({ where: { email, isAdmin: true } })
 
   // Check user and passwords match
-  if (user && (await bcrypt.compare(password, user.password))) {
+  if (userAdmin && (await bcrypt.compare(password, user.password))) {
+    res.status(200).json({
+      id: userAdmin.id,
+      name: userAdmin.name,
+      email: userAdmin.email,
+      isAdmin: userAdmin.isAdmin,
+      token: generateToken(user.id),
+    })
+  } else if (user && (await bcrypt.compare(password, user.password))) {
     res.status(201).json({
       id: user.id,
       name: user.name,
@@ -115,18 +133,6 @@ const updateUser = asyncHandler(async (req, res) => {
 // @route  GET /api/users/products
 // @access Private
 const getUserProducts = asyncHandler(async (req, res) => {
-  const products = await Product.findAll({ where: { userId: req.user.id } })
-  if (!products) {
-    res.status(404)
-    throw new Error('No products found')
-  }
-  res.status(200).json(products)
-})
-
-// @desc   Add to cart
-// @route  GET /api/users/products
-// @access Private
-const addToCart = asyncHandler(async (req, res) => {
   const products = await Product.findAll({ where: { userId: req.user.id } })
   if (!products) {
     res.status(404)

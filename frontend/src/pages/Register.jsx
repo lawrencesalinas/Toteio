@@ -6,6 +6,7 @@ import { register, reset } from '../features/auth/authSlice'
 import { Link, useNavigate } from "react-router-dom"
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import Spinner from "../components/shared/Spinner"
+import Header from "../components/layouts/Header"
 
 function Register() {
     const [showPassword, setShowPassword] = useState(false)
@@ -66,40 +67,47 @@ function Register() {
     }
 
     return (
-        <div className="Register" data-aos='fade-in' >
-            <h1>Create Account</h1>
-            <form className="form" onSubmit={onSubmit}>
-                <div className="form-group">
-                    <input className='nameInput' type="text" name='name' id='name' value={name} placeholder='Enter your name' onChange={onChange} required />
-                </div>
-                <div className="form-group">
-                    <input className='emailInput' type="email" name='email' id='email' value={email} placeholder='Enter your email' onChange={onChange} required />
-                </div>
-                <div className="form-group">
-                    <input className='passwordInput' type={showPassword ? 'text' : 'password'} name='password' id='password' value={password} placeholder='Enter your password' onChange={onChange} required />
-                </div>
-                <div className="form-group">
-                    <input className='passwordConfirmInput' type={showPassword ? 'text' : 'password'} name='confirmPassword' id='confirmPassword' value={confirmPassword} placeholder='Confirm password' onChange={onChange} required />
-                </div>
-                <div className="signupbtns">
-                    <div className="signuphead">
-                        <button className="signupbtn">SIGN UP {" "}</button>
+        <>
+            <div data-aos='fade-in'>
+                <Header linkcolor='#fff' bgcolor='#181818' />
+            </div>
+            <div className="Register" data-aos='fade-in' >
+                <h1>Create Account</h1>
+                <form className="form" onSubmit={onSubmit}>
+                    <div className="form-group">
+                        <input className='nameInput' type="text" name='name' id='name' value={name} placeholder='Enter your name' onChange={onChange} required />
                     </div>
-
-                    <h4 className='or'><span>OR</span></h4>
-
-                    <div className="signuphead">
-                        <Link to='/login'>
-                            <button className="create-act-btn">SIGN IN</button>
-                        </Link>
+                    <div className="form-group">
+                        <input className='emailInput' type="email" name='email' id='email' value={email} placeholder='Enter your email' onChange={onChange} required />
                     </div>
-                    {/* OAtuh */}
-                </div>
-            </form>
+                    <div className="form-group">
+                        <input className='passwordInput' type={showPassword ? 'text' : 'password'} name='password' id='password' value={password} placeholder='Enter your password' onChange={onChange} required />
+                    </div>
+                    <div className="form-group">
+                        <input className='passwordConfirmInput' type={showPassword ? 'text' : 'password'} name='confirmPassword' id='confirmPassword' value={confirmPassword} placeholder='Confirm password' onChange={onChange} required />
+                    </div>
+                    <div className="signupbtns">
+                        <div className="signuphead">
+                            <button className="signupbtn">SIGN UP {" "}</button>
+                        </div>
+
+                        <h4 className='or'><span>OR</span></h4>
+
+                        <div className="signuphead">
+                            <Link to='/login'>
+                                <button className="create-act-btn">SIGN IN</button>
+                            </Link>
+                        </div>
+                        {/* OAtuh */}
+                    </div>
+                </form>
 
 
 
-        </div>
+            </div>
+        </>
+
+
     )
 }
 
