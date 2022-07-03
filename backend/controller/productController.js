@@ -106,17 +106,36 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @route  GET /api/products/admin
 // @access Public
 const getAdminProducts = asyncHandler(async (req, res) => {
-  const user = await User.findOne({ where: { isAdmin: true } })
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
   const products = await Product.findAll({ where: { userId: user.id } })
   res.status(201).json(products)
 })
 
 // @desc   Get All shoes
-// @route  GET /api/products/menshoes
+// @route  GET /api/products/shoes
 // @access Public
 const getAllShoes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({ where: { isAdmin: true } })
-  const products = await Product.findAll({ where: { category: 'shoes' } })
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+  const products = await Product.findAll({
+    where: { userId: user.id, category: 'shoes' },
+  })
+  res.status(201).json(products)
+})
+
+// @desc   Get women shoes
+// @route  GET /api/products/menshoes
+// @access Public
+const getWomenShoes = asyncHandler(async (req, res) => {
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+  const products = await Product.findAll({
+    where: { userId: user.id, category: 'shoes', gender: 'women' },
+  })
   res.status(201).json(products)
 })
 
@@ -124,8 +143,51 @@ const getAllShoes = asyncHandler(async (req, res) => {
 // @route  GET /api/products/menshoes
 // @access Public
 const getMenShoes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({ where: { isAdmin: true } })
-  const products = await Product.findAll({ where: { userId: user.id } })
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+  const products = await Product.findAll({
+    where: { userId: user.id, category: 'shoes', gender: 'men' },
+  })
+  res.status(201).json(products)
+})
+
+// @desc   Get All clothes
+// @route  GET /api/products/shoes
+// @access Public
+const getAllClothes = asyncHandler(async (req, res) => {
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+  const products = await Product.findAll({
+    where: { userId: user.id, category: 'clothing' },
+  })
+  res.status(201).json(products)
+})
+
+// @desc   Get women clothes
+// @route  GET /api/products/menshoes
+// @access Public
+const getWomenClothes = asyncHandler(async (req, res) => {
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+  const products = await Product.findAll({
+    where: { userId: user.id, category: 'clothes', gender: 'women' },
+  })
+  res.status(201).json(products)
+})
+
+// @desc   Get men clothes
+// @route  GET /api/products/menshoes
+// @access Public
+const getMenClothes = asyncHandler(async (req, res) => {
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+  const products = await Product.findAll({
+    where: { userId: user.id, category: 'clothing', gender: 'men' },
+  })
   res.status(201).json(products)
 })
 
@@ -137,4 +199,9 @@ module.exports = {
   deleteProduct,
   getAdminProducts,
   getAllShoes,
+  getMenShoes,
+  getWomenShoes,
+  getAllClothes,
+  getWomenClothes,
+  getMenClothes,
 }

@@ -1,20 +1,19 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { getAdminProducts, reset, getUserProducts, getAAllShoes } from '../../features/product/productSlice'
-
-
-
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { getAdminProducts, reset, getUserProducts, getAAllShoes, getProducts } from '../../features/product/productSlice'
 import CategoryItem from './CategoryItem'
-
 import { GiRunningShoe, GiTShirt } from 'react-icons/gi'
 import { FaHeadphones } from 'react-icons/fa'
+import Spinner from '../shared/Spinner'
+import { get } from 'mongoose'
 
 
 function CategoryContent({ images, categoryText, changeHeading, location, pathMatchRoute, }) {
     const { products, isLoading, isSuccess } = useSelector((state) => state.products)
 
     const navigate = useNavigate()
+    const { categoryName } = useParams()
 
     const dispatch = useDispatch()
 
@@ -28,25 +27,38 @@ function CategoryContent({ images, categoryText, changeHeading, location, pathMa
 
 
 
+    console.log(categoryName);
 
     useEffect(() => {
-        const getAllProducts = async () => {
-            await dispatch(getUserProducts())
+        // const getAllProducts = async () => {
+        //     dispatch(getAdminProducts())
+        //     dispatch(reset())
+        // }
+
+        // const getShoes = async () => {
+        //     dispatch(getAAllShoes())
+        //     dispatch(reset())
+        // }
+        try {
+            const getProducts = async () => {
+                if (categoryName === 'shoes') {
+                    return dispatch(getAAllShoes())
+
+
+                } else if (categoryName === 'tech') {
+                    return dispatch(getAdminProducts())
+                } else {
+
+                }
+            }
+            getProducts()
+        } catch (error) {
+            console.log(error);
         }
-
-        const getShoes = async () => {
-            await dispatch(getAAllShoes())
-        }
-
-        if (pathMatchRoute('/category/shoes')) {
-            return getAllProducts
-        } else if (pathMatchRoute('/category/tech')) {
-            return getShoes
-        }
-
-
-
-    }, [dispatch])
+    }, [dispatch, categoryName])
+    if (isLoading) {
+        return <Spinner />
+    }
     return (
         <>
             <>

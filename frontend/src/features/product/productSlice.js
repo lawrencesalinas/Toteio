@@ -50,13 +50,13 @@ export const getAdminProducts = createAsyncThunk(
   }
 )
 
-// Get  Admin Products
+// Get  Admin shoe Products
 export const getAAllShoes = createAsyncThunk(
   'product/getAllShoes',
   async (_, thunkAPI) => {
     try {
       // const token = thunkAPI.getState().auth.user.token
-      return await productService.getAAllShoes()
+      return await productService.getAllShoes()
     } catch (error) {
       const message =
         (error.response &&
@@ -204,7 +204,6 @@ export const productSlice = createSlice({
       })
       .addCase(getAdminProducts.fulfilled, (state, action) => {
         state.isLoading = false
-
         state.products = action.payload
       })
       .addCase(getAdminProducts.rejected, (state, action) => {
@@ -217,7 +216,6 @@ export const productSlice = createSlice({
       })
       .addCase(getAAllShoes.fulfilled, (state, action) => {
         state.isLoading = false
-
         state.products = action.payload
       })
       .addCase(getAAllShoes.rejected, (state, action) => {
@@ -231,6 +229,7 @@ export const productSlice = createSlice({
       })
       .addCase(getProduct.fulfilled, (state, action) => {
         state.isLoading = false
+
         state.product = action.payload
       })
       .addCase(getProduct.rejected, (state, action) => {

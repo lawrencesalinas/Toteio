@@ -18,6 +18,7 @@ const getAdminProducts = async () => {
 
 const getAllShoes = async () => {
   const response = await axios.get(`${API_URL}/shoes`)
+
   return response.data
 }
 
