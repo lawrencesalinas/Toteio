@@ -1,28 +1,11 @@
 import '../componentcss/NavBar.css'
+import { Link } from 'react-router-dom'
 
 function NavBar() {
     console.log();
 
     return (
         <nav className="nav-bar-container">
-
-            {/* {window.scrollY > nav.offsetHeight + 150 ? (<ul className='nav-bar'>
-                <li>
-                    Men
-                </li>
-                <li>
-                    Women
-                </li>
-                <li>
-                    Shoes
-                </li>
-                <li>
-                    Tech
-                </li>
-                <li>
-                    Clothing
-                </li>
-            </ul>) : ( */}
             <ul className='nav-bar'>
                 <li>
                     Men
@@ -31,13 +14,13 @@ function NavBar() {
                     Women
                 </li>
                 <li>
-                    Shoes
+                    <Link to='/category/shoes'>Shoes</Link>
                 </li>
                 <li>
-                    Tech
+                    <Link to='/category/tech'>Tech</Link>
                 </li>
                 <li>
-                    Clothing
+                    <Link to='/category/clothing'>Clothes</Link>
                 </li>
             </ul>
             {/* )} */}

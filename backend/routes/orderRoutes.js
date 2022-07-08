@@ -4,6 +4,6 @@ const { getOrders, postOrder } = require('../controller/orderController')
 
 const { protect } = require('../middleware/authMiddleWare')
 
-router.route('/').get(getOrders).post(protect, postOrder)
+router.route('/').get(protect, getOrders).post(protect, postOrder)
 
 module.exports = router

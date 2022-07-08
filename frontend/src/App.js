@@ -16,6 +16,7 @@ import UserProducts from './pages/UserProducts'
 import Category from './pages/Category'
 import ShoppingBag from './pages/ShoppingBag'
 import Order from './pages/Order'
+import Shipping from './pages/Shipping'
 
 function App() {
   return (
@@ -46,8 +47,8 @@ function App() {
             <Route path='/my-products' element={<PrivateRoute />}>
               <Route path='/my-products' element={<UserProducts />} />
             </Route>
-            <Route path='/checkout' element={<PrivateRoute />}>
-              <Route path='/checkout' element={<Order />} />
+            <Route path='/shipping' element={<PrivateRoute />}>
+              <Route path='/shipping' element={<Shipping />} />
             </Route>
           </Routes>
           <Footer />

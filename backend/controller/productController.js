@@ -6,8 +6,14 @@ const Product = require('../models/productModel')
 // @route  GET /api/products
 // @access Public
 const getProducts = asyncHandler(async (req, res) => {
-  console.log(req.body)
-  const products = await Product.findAll()
+  console.log(req.params.categoryName)
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+
+  const products = await Product.findAll({
+    where: { userId: user.id, category: req.params.categoryName },
+  })
   res.status(200).json(products)
 })
 
@@ -173,7 +179,7 @@ const getWomenClothes = asyncHandler(async (req, res) => {
     where: { email: process.env.ADMIN, isAdmin: true },
   })
   const products = await Product.findAll({
-    where: { userId: user.id, category: 'clothes', gender: 'women' },
+    where: { userId: user.id, category: 'clothing', gender: 'women' },
   })
   res.status(201).json(products)
 })
@@ -191,6 +197,19 @@ const getMenClothes = asyncHandler(async (req, res) => {
   res.status(201).json(products)
 })
 
+// @desc   Get All shoes
+// @route  GET /api/products/shoes
+// @access Public
+const getAllTech = asyncHandler(async (req, res) => {
+  const user = await User.findOne({
+    where: { email: process.env.ADMIN, isAdmin: true },
+  })
+  const products = await Product.findAll({
+    where: { userId: user.id, category: 'tech' },
+  })
+  res.status(201).json(products)
+})
+
 module.exports = {
   getProducts,
   getProduct,
@@ -204,4 +223,5 @@ module.exports = {
   getAllClothes,
   getWomenClothes,
   getMenClothes,
+  getAllTech,
 }

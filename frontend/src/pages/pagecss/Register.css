@@ -17,10 +17,14 @@
 }
 .form-group {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 30px;
-  width: 80vw;
+  /* width: 80vw */
   outline: none;
+}
+.form-group label {
+  margin-bottom: 8px;
 }
 
 .emailInput,

@@ -35,8 +35,10 @@ Modal.setAppElement('#root')
 function ProfileSettings() {
     const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth)
 
+
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [name, setName] = useState(user.name)
+
 
 
     const dispatch = useDispatch()

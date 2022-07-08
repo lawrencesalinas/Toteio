@@ -1,6 +1,9 @@
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
+
+const sendEmail = require('../util/sendEmail')
 
 const User = require('../models/userModel')
 const Product = require('../models/productModel')
@@ -15,6 +18,17 @@ const getUsers = asyncHandler(async (req, res) => {
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, isAdmin } = req.body
+
+  const message = `Hi ${name} ,
+
+  Welcome to Tote.io. I am thrilled to see you here!
+  
+  I am confident that Tote-io will help you find products that suits your needs
+ 
+  
+  Take care!
+  Lawrence Salinas`
+
   console.log(req.body)
   //   Validation
   if (!name || !email || !password) {
@@ -52,6 +66,7 @@ const registerUser = asyncHandler(async (req, res) => {
       isAdmin: true,
       token: generateToken(user.id),
     })
+    sendEmail(email, 'tote.ioshop@gmail.com', 'Welcome To Tote-io', message)
   } else if (user) {
     res.status(200).json({
       id: user.id,
@@ -59,6 +74,7 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       token: generateToken(user.id),
     })
+    sendEmail(email, 'tote.ioshop@gmail.com', 'Welcome to Tote-io', message)
   } else {
     res.status(400)
     throw new error('Invalid user data')
@@ -115,15 +131,19 @@ const getUserProfile = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
   const { updatedName, updatedEmail, updatedAddress, updatedPhone } = req.body
 
-  const user = await User.findByPk(req.user.id)
+  const user = req.user
+
   if (user) {
     await user.update({
       name: updatedName || user.name,
     })
 
+    console.log(user, 'HELLLLLLLOOOOO')
+
     await user.save()
     res.status(200).json(user)
   } else {
+    console.log('REJECT')
     res.status(404)
     throw new Error('User not found')
   }

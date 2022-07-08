@@ -30,47 +30,20 @@ function CategoryContent({ images, categoryText, changeHeading, location, pathMa
     console.log(categoryName);
 
     useEffect(() => {
-        // const getAllProducts = async () => {
-        //     dispatch(getAdminProducts())
-        //     dispatch(reset())
-        // }
+        dispatch(getProducts(categoryName))
 
-        // const getShoes = async () => {
-        //     dispatch(getAAllShoes())
-        //     dispatch(reset())
-        // }
-        try {
-            const getProducts = async () => {
-                if (categoryName === 'shoes') {
-                    return dispatch(getAAllShoes())
-
-
-                } else if (categoryName === 'tech') {
-                    return dispatch(getAdminProducts())
-                } else {
-
-                }
-            }
-            getProducts()
-        } catch (error) {
-            console.log(error);
-        }
     }, [dispatch, categoryName])
     if (isLoading) {
         return <Spinner />
     }
     return (
         <>
-            <>
-                <div className="header-images">
-                    <img src={images[0]} alt="" />
-                    <img src={images[1]} alt="" />
-                    <img src={images[2]} alt="" />
-                    <img src={images[3]} alt="" />
-                </div>
-            </>
-
-
+            <div className="header-images">
+                <img src={images[0]} alt="" />
+                <img src={images[1]} alt="" />
+                <img src={images[2]} alt="" />
+                <img src={images[3]} alt="" />
+            </div>
 
             <div className="category-content">
                 <div className="side-nav-category">

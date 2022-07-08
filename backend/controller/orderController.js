@@ -25,8 +25,8 @@ const postOrder = asyncHandler(async (req, res) => {
 // @route  POST /api/shoppingBag
 // @access Private
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = req.user.getOrder()
-  const orderItems = orders
+  // console.log(req.user)
+  const orders = await req.user.getOrders({ include: ['products'] })
   res.send(orders)
 })
 

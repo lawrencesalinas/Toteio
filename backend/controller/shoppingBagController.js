@@ -7,7 +7,13 @@ const ShoppingBagItem = require('../models/shoppingBagItemModel')
 // @route  GET /api/shoppingBag
 // @access Private
 const getShoppingBag = asyncHandler(async (req, res) => {
-  const shoppingBag = await req.user.getShoppingBag()
+  const user = req.user
+  console.log(user)
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+  const shoppingBag = await user.getShoppingBag()
 
   const products = await shoppingBag.getProducts()
 

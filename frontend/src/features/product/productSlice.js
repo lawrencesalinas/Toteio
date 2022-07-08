@@ -13,10 +13,10 @@ const initialState = {
 // Get  Products
 export const getProducts = createAsyncThunk(
   'product/getAll',
-  async (_, thunkAPI) => {
+  async (categoryName, thunkAPI) => {
     try {
       //   const token = thunkAPI.getState().auth.user.token
-      return await productService.getProducts()
+      return await productService.getProducts(categoryName)
     } catch (error) {
       const message =
         (error.response &&

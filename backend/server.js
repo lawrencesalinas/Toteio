@@ -54,7 +54,7 @@ User.hasMany(Order)
 Order.belongsToMany(Product, { through: OrderItem })
 
 sequelize
-  // ync({ force: true })
+  // .sync({ force: true })
   .sync()
 
 app.listen(PORT, () => {

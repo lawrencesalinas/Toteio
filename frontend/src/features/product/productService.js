@@ -4,15 +4,14 @@ const API_URL = 'http://localhost:8000/api/products'
 const API_USER_URL = 'http://localhost:8000/api/users/products'
 const API_ADMIN_URL = 'http://localhost:8000/api/products/admin'
 
-const getProducts = async () => {
-  const response = await axios.get(`${API_URL}`)
+const getProducts = async (categoryName) => {
+  const response = await axios.get(`${API_URL}/category/${categoryName}`)
 
   return response.data
 }
 
 const getAdminProducts = async () => {
   const response = await axios.get(`${API_ADMIN_URL}`)
-
   return response.data
 }
 

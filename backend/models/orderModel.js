@@ -9,6 +9,10 @@ const Order = sequelize.define('order', {
     allowNull: false,
     primaryKey: true,
   },
+  shippingAddress: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 })
 
 module.exports = Order

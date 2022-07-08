@@ -67,7 +67,7 @@ function Home() {
                     <h5>TECH</h5>
                 </div>
                 <div className="category-img" data-aos='fade-right' data-aos-delay='250'>
-                    <Link to='/category/clothes'>
+                    <Link to='/category/clothing'>
                         <img src={clothImg} alt="" className='main-image' />
                     </Link>
                     <h5>CLOTHES</h5>

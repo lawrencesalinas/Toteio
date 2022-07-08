@@ -69,7 +69,7 @@ function ShoppingBag() {
                         {totalItems === 0 ? (
                             <button type='button' className='signupbtn disabled' >Checkout</button>
                         ) : (
-                            <Link to={'/checkout'}>
+                            <Link to={'/shipping'}>
 
 
                                 <button type='button' className='signupbtn ' >Checkout</button>
