@@ -50,6 +50,9 @@ function App() {
             <Route path='/shipping' element={<PrivateRoute />}>
               <Route path='/shipping' element={<Shipping />} />
             </Route>
+            <Route path='/order' element={<PrivateRoute />}>
+              <Route path='/order' element={<Order />} />
+            </Route>
           </Routes>
           <Footer />
         </div>

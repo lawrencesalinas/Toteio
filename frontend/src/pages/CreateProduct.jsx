@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
 import Spinner from "../components/shared/Spinner"
+import NavBar from '../components/layouts/NavBar'
 
 
 
@@ -88,6 +89,7 @@ function CreateProduct() {
     return (
         <>
             <Header linkcolor='#fff' bgcolor='#181818' />
+            <NavBar />
             <div className="profile" >
 
                 <div className="sidenav">
@@ -108,9 +110,9 @@ function CreateProduct() {
                                 <label htmlFor="price">Price</label>
                                 <input className='' type="text" name='price' id='price' placeholder='Enter price' value={price} onChange={(e) => setPrice(e.target.value)} />
                             </div>
-                            <div className="product-form-group">
+                            <div className="product-form-group description">
                                 <label htmlFor="cars">Description</label>
-                                <input className='' type="text" name='description' id='description' placeholder='Enter product description' value={description} onChange={(e) => setDescription(e.target.value)} />
+                                <textarea className='' type="textarea" name='description' id='description' placeholder='Enter product description' value={description} onChange={(e) => setDescription(e.target.value)} />
                             </div>
 
                             <div className="category-form-gruop">

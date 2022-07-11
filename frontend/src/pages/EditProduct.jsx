@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
 import Spinner from '../components/shared/Spinner'
+import NavBar from '../components/layouts/NavBar'
 
 function EditProduct() {
     const { product, isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
@@ -64,6 +65,7 @@ function EditProduct() {
     return (
         <>
             <Header linkcolor='#fff' bgcolor='#181818' />
+            <NavBar />
             <div className="profile" >
 
                 <div className="sidenav">

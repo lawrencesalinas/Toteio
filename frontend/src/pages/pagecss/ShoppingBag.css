@@ -26,7 +26,16 @@
 
 .bag-total h3,
 .bag-total h4 {
-  margin: 25px 0 0 20px;
+  margin: 18px 0 0 20px;
+}
+
+.bag-total .order-info {
+  margin: 0 0 0 20px;
+}
+.bag-total .border {
+  padding-bottom: 30px;
+  border-bottom: solid 1px gray;
+  margin-right: 30px;
 }
 
 .bag-total button {
@@ -55,6 +64,10 @@
   margin-left: 80px;
 }
 
+.free {
+  margin-left: 110px;
+}
+
 .shoppingbag-item-container .empty-cart {
   margin-bottom: 20px;
 }
@@ -65,4 +78,8 @@
 
 .disabled:hover {
   background-color: #8a2be2;
+}
+
+.bag-total .card {
+  margin-top: 70px;
 }

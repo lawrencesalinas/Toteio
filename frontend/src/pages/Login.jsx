@@ -62,6 +62,7 @@ function Login() {
     return (<>
         <div data-aos='fade-in'>
             <Header linkcolor='#fff' bgcolor='#181818' />
+            
         </div>
         <div className='Register' data-aos='fade-in' >
 

@@ -8,9 +8,12 @@ const Order = require('../models/orderModel')
 // @route  POST /api/orders
 // @access Private
 const postOrder = asyncHandler(async (req, res) => {
+  console.log('hello')
+  const { shippingAddress } = req.body
+  console.log(shippingAddress)
   const shoppingBag = await req.user.getShoppingBag()
   const products = await shoppingBag.getProducts()
-  const order = await req.user.createOrder()
+  const order = await req.user.createOrder({ shippingAddress: shippingAddress })
   const orderProducts = await order.addProducts(
     products.map((product) => {
       product.orderItem = { quantity: product.shoppingBagItem.quantity }
@@ -18,7 +21,9 @@ const postOrder = asyncHandler(async (req, res) => {
       return product
     })
   )
-  res.status(201).json(orderProducts)
+  orderProducts.shippingAddress = shippingAddress
+
+  res.status(201).json([orderProducts, order])
 })
 
 // @desc   Add products to shopping bag

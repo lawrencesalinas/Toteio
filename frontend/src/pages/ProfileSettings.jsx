@@ -8,6 +8,7 @@ import './pagecss/Profile.css'
 import Modal from 'react-modal'
 import Header from '../components/layouts/Header'
 import Spinner from '../components/shared/Spinner'
+import NavBar from '../components/layouts/NavBar'
 
 
 const customStyles = {
@@ -77,6 +78,7 @@ function ProfileSettings() {
     return (
         <>
             <Header linkcolor='#fff' bgcolor='#181818' />
+            <NavBar />
             <div className="profile" >
 
                 <div className="sidenav">

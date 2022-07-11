@@ -6,6 +6,7 @@ const sequelize = require('./util/database')
 const cors = require('cors')
 const PORT = process.env.PORT || 8000
 const { errorHandler } = require('./middleware/errorMiddleware')
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 const Product = require('./models/productModel')
 const User = require('./models/userModel')

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Header from '../components/layouts/Header'
+import NavBar from '../components/layouts/NavBar'
 import SideNav from '../components/layouts/SideNav'
 import './pagecss/Profile.css'
 
@@ -8,6 +9,7 @@ function Profile() {
         <>
 
             <Header linkcolor='#fff' bgcolor='#181818' />
+            <NavBar />
             <div className="profile">
 
                 <div className="sidenav">

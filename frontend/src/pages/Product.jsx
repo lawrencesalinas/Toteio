@@ -72,9 +72,10 @@ function Product() {
                         </div>
                     </div>
 
-                    <div className="product-info">
+                    <div className="product-info ">
                         <h1 className='product-header'>{product.title}</h1>
                         <h3>${product.price}</h3>
+
                         {/* <p className='quantity'>Quantity</p>
                         <div className="quantity-btn">
                             <button>-</button>
@@ -88,13 +89,14 @@ function Product() {
                             </>
                         ) : <button className='cart-btn'>Add to Cart</button>} */}
                         <p className="description">Description</p>
-                        <p>{product.description}</p>
+                        <p className='decription-text'>{product.description}</p>
 
 
                     </div>
 
-                    <div className="product-info">
+                    <div className="product-info-btn">
                         <h3>${product.price}</h3>
+                        <h3>Condition: {product.condition}</h3>
                         <p className='quantity'>Quantity</p>
                         <div className="quantity-btn">
                             <button>-</button>

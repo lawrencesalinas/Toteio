@@ -121,6 +121,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     id: req.user.id,
     email: req.user.email,
     name: req.user.name,
+    isAdmin: req.isAdmin,
   }
   res.status(200).json(user)
 })

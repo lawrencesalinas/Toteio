@@ -31,7 +31,7 @@ function Shipping() {
 
     return (
         <>
-            <div data-aos='fade-in'>
+            <div>
                 <Header linkcolor='#fff' bgcolor='#181818' />
                 <NavBar />
             </div>
@@ -41,11 +41,11 @@ function Shipping() {
                 <form className='form' onSubmit={onSubmit}>
                     <div className="form-group">
                         <label htmlFor="address">Address</label>
-                        <input className='emailInput' type="text" name='address' id='address' ue={address} onChange={onChange} required />
+                        <input className='emailInput' type="text" name='address' id='address' placeholder='street' ue={address} onChange={onChange} required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="city">City</label>
-                        <input className='emailInput' type="text" name='city' id='city' value={city} onChange={onChange} required />
+                        <input className='emailInput' type="text" name='city' id='city' placeholder='city' value={city} onChange={onChange} required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="postalCode">Postal Code</label>
@@ -58,8 +58,8 @@ function Shipping() {
 
 
                     <div className="signuphead">
-                        <Link to='/register'>
-                            <button className="create-act-btn">Continue</button>
+                        <Link to='/order'>
+                            <button className="create-act-btn" onClick={onSubmit} >Continue</button>
                         </Link>
                     </div>
 

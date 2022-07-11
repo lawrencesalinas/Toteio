@@ -74,24 +74,24 @@ function CategoryContent({ images, categoryText, changeHeading, location, pathMa
                     </div>
 
 
-                    {/* <div className="gender-images">
-                        <img src="https://images.unsplash.com/photo-1511105043137-7e66f28270e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="" />
-                        <img src="https://images.unsplash.com/photo-1559334417-01b38aec66bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
-                    </div> */}
                     <div className="gender-images">
                         <div className="category-img" data-aos='fade-right' data-aos-delay='70'>
                             <Link to="/category/shoes">
-                                <img src="https://images.unsplash.com/photo-1625697501168-8db2e03c1046?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" alt="" className='main-image' />
+                                <img src={images[5]} alt="" className='main-image' />
                             </Link>
                             <h5>MEN</h5>
                         </div>
-                        <div className="category-img" data-aos='fade-right' data-aos-delay='150'>
+                        <div className="category-img" data-aos='fade-left' data-aos-delay='150'>
                             <Link to='/category/tech'>
-                                <img src="https://images.unsplash.com/photo-1559334417-01b38aec66bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" className='main-image' />
+                                <img src={images[6]} alt="" className='main-image' />
                             </Link>
                             <h5>WOMEN</h5>
                         </div>
                     </div>
+
+                    <hr />
+                    <h2 className=''>Men Shoes</h2>
+
 
 
 

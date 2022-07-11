@@ -1,13 +1,21 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:8000/api/products'
-const API_USER_URL = 'http://localhost:8000/api/users/products'
-const API_ADMIN_URL = 'http://localhost:8000/api/products/admin'
+const API_URL = 'http://localhost:8000/api/orders'
 
 const saveShippingAddress = (data) => {
   localStorage.setItem('shippingAddress', JSON.stringify(data))
 }
 
-const orderService = { saveShippingAddress }
+const postOrder = async (orderData) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = axios.post(API_URL, orderData, config)
+}
+
+const orderService = { saveShippingAddress, postOrder }
 
 export default orderService
