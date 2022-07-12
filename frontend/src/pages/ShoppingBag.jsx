@@ -49,7 +49,7 @@ function ShoppingBag() {
                             {shoppingBag && numberOfItems > 0 ? (
 
                                 shoppingBag.map((product) => (
-                                    <ShoppingBagItem product={product} key={product.id} handleDeleteItem={handleDeleteItem} />
+                                    <ShoppingBagItem product={product} quantity={product.shoppingBagItem.quantity} key={product.id} handleDeleteItem={handleDeleteItem} />
                                 ))
                             ) :
                                 <div className="shoppingbag-item-container">
@@ -67,12 +67,12 @@ function ShoppingBag() {
 
                         <h3 className='price-info'>Order Total:  <span className='total-price'>${totalPrice}</span></h3>
                         {totalItems === 0 ? (
-                            <button type='button' className='signupbtn disabled' >Checkout</button>
+                            <button type='button' className='signupbtn disabled' >Proceed to Checkout</button>
                         ) : (
                             <Link to={'/shipping'}>
 
 
-                                <button type='button' className='signupbtn ' >Checkout</button>
+                                <button type='button' className='signupbtn ' >Proceed to Checkout</button>
                             </Link>
                         )
                         }

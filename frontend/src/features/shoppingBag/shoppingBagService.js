@@ -11,6 +11,8 @@ const getShoppingBag = async (token) => {
 
   const response = await axios.get(API_URL, config)
   console.log(response)
+  localStorage.setItem('cartItems', JSON.stringify(response.data))
+
   return response.data
 }
 
@@ -22,7 +24,7 @@ const addToShoppingBag = async (productId, token) => {
   }
 
   const response = await axios.post(API_URL, productId, config)
-  console.log(response)
+
   return response.data
 }
 

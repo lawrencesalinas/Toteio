@@ -35,7 +35,20 @@ const getOrders = asyncHandler(async (req, res) => {
   res.send(orders)
 })
 
+// @desc   Add products to shopping bag
+// @route  POST /api/shoppingBag
+// @access Private
+const getOrder = asyncHandler(async (req, res) => {
+  // console.log(req.user)
+  const order = await req.user.getOrders({
+    where: { id: req.params.id },
+    include: ['products'],
+  })
+  res.send(order[0])
+})
+
 module.exports = {
   postOrder,
+  getOrder,
   getOrders,
 }

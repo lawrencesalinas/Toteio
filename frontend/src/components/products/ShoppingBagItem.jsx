@@ -3,9 +3,10 @@ import { FaTrash } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { deleteShoppingBagItem } from '../../features/shoppingBag/shoppingBagSlice'
 
-function ShoppingBagItem({ product, handleDeleteItem }) {
+function ShoppingBagItem({ product, quantity, handleDeleteItem }) {
     const { title, imgUrl, price, id } = product
-    const { productId, quantity } = product.shoppingBagItem
+
+
 
     const image = `http://localhost:8000${imgUrl}`
 

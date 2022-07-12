@@ -17,6 +17,7 @@ import Category from './pages/Category'
 import ShoppingBag from './pages/ShoppingBag'
 import Order from './pages/Order'
 import Shipping from './pages/Shipping'
+import Success from './pages/Success'
 
 function App() {
   return (
@@ -50,8 +51,11 @@ function App() {
             <Route path='/shipping' element={<PrivateRoute />}>
               <Route path='/shipping' element={<Shipping />} />
             </Route>
-            <Route path='/order' element={<PrivateRoute />}>
-              <Route path='/order' element={<Order />} />
+            <Route path='/order/:id' element={<PrivateRoute />}>
+              <Route path='/order/:id' element={<Order />} />
+            </Route>
+            <Route path='/success' element={<PrivateRoute />}>
+              <Route path='/success' element={<Success />} />
             </Route>
           </Routes>
           <Footer />

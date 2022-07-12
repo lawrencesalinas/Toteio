@@ -1,16 +1,20 @@
 import './pagecss/ShoppingBag.css'
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getShoppingBag, deleteShoppingBagItem, reset } from '../features/shoppingBag/shoppingBagSlice'
 import Header from '../components/layouts/Header';
 import ShoppingBagItem from '../components/products/ShoppingBagItem';
 import Spinner from '../components/shared/Spinner'
 import { toast } from 'react-toastify'
 import NavBar from '../components/layouts/NavBar';
+import { getOrder } from '../features/order/orderSlice';
+import PayButton from '../components/shared/PayButton';
 
-function ShoppingBag() {
+function Order() {
     const { user } = useSelector(state => state.auth)
+    const { order } = useSelector(state => state.orders)
     const { shoppingBag, isLoading, isError, isSuccess, message } = useSelector(state => state.shoppingBag)
 
     const [formData, setFormData] = useState({
@@ -19,6 +23,7 @@ function ShoppingBag() {
         postalCode: '',
         country: ''
     })
+
 
 
     const { address, city, postalCode, country } = formData
@@ -37,6 +42,27 @@ function ShoppingBag() {
 
     }
 
+    const orderData = { products: order.products }
+
+    const checkout = async (e) => {
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+
+            }
+            const response = await axios.post('http://localhost:8000/api/payments', orderData, config)
+            console.log(response);
+            return response.data
+
+        } catch (error) {
+            console.error(error)
+
+        }
+    }
+
 
 
     const numberOfItems = shoppingBag.length
@@ -45,6 +71,7 @@ function ShoppingBag() {
     const totalItems = shoppingBag.reduce((acc, item) => acc + item.shoppingBagItem.quantity, 0)
 
     const dispatch = useDispatch()
+    const { id } = useParams()
 
     // useEffect(() => {
     //     if (isError) {
@@ -54,10 +81,11 @@ function ShoppingBag() {
     //     dispatch(reset())
     // }, [dispatch, isSuccess, message, isError])
 
+    useEffect(() => {
+        dispatch(getOrder(id))
+    }, [dispatch])
 
-    const handleDeleteItem = (id) => {
-        // dispatch(deleteShoppingBagItem(id))
-    }
+    console.log(order);
 
     if (isLoading) {
         return <Spinner />
@@ -72,10 +100,10 @@ function ShoppingBag() {
                     <div className="bag-information">
                         <h2>Review and Pay</h2>
                         <div className="shoppingBag-items">
-                            {shoppingBag && numberOfItems > 0 ? (
+                            {order.products && order.products.length > 0 ? (
 
-                                shoppingBag.map((product) => (
-                                    <ShoppingBagItem product={product} key={product.id} handleDeleteItem={null} />
+                                order.products.map((product) => (
+                                    <ShoppingBagItem product={product} quantity={product.orderItem.quantity} key={product.id} handleDeleteItem={null} />
                                 ))
                             ) :
                                 <div className="shoppingbag-item-container">
@@ -102,12 +130,12 @@ function ShoppingBag() {
 
                         <h3 className='price-info'>Total Due:  <span className='total-price'>${totalPrice}</span></h3>
 
-                        <h3 className='price-info card'>Card</h3>
+                        {/* <h3 className='price-info card'>Card</h3> */}
 
-                        <form className='form' onSubmit={onSubmit}>
+                        {/* <form className='form' onSubmit={onSubmit}>
                             <div className="form-group">
                                 <label htmlFor="address">Name on Card</label>
-                                <input className='emailInput' type="text" name='address' id='address' ue={address} onChange={onChange} required />
+                                <input className='emailInput' type="text" name='address' id='address' value={address} onChange={onChange} required />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="city">Card Number</label>
@@ -125,10 +153,10 @@ function ShoppingBag() {
                                 <label htmlFor="country">CVV</label>
                                 <input className='emailInput' type="text" name='country' id='country' value={country} onChange={onChange} required />
                             </div>
-                        </form>
-                        <Link to={'/shipping'}>
-                            <button type='button' className='signupbtn ' >Place Order</button>
-                        </Link>
+                        </form> */}
+                        <PayButton orderItems={order.products} email={user.email} />
+                        {/* <button type='button' className='signupbtn ' onClick={checkout} >Place Order</button> */}
+
 
 
                     </div>
@@ -139,4 +167,4 @@ function ShoppingBag() {
     )
 }
 
-export default ShoppingBag
+export default Order
