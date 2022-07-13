@@ -11,7 +11,6 @@ router.post('/', async (req, res) => {
       line_items: req.body.orderItems.map((item) => {
         console.log(item)
 
-        console.log(`${process.env.SERVER_URL}/${item.imgUrl}`, 'qqqqq')
         return {
           price_data: {
             currency: 'usd',
