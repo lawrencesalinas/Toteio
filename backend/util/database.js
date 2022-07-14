@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
   process.env.DB_USERNAME,
   process.env.DB_PASS,
   {
-    dialect: process.env.DB_DIALECT,
+    dialect: 'mysql',
     host: process.env.HOST,
   }
 )
