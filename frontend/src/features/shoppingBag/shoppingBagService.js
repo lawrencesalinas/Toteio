@@ -1,6 +1,7 @@
 import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
-const API_URL = 'http://localhost:8000/api/shoppingBag'
+const API_URL = `${apiUrl}/api/shoppingBag`
 
 const getShoppingBag = async (token) => {
   const config = {

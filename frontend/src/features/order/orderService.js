@@ -1,6 +1,7 @@
 import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
-const API_URL = 'http://localhost:8000/api/orders'
+const API_URL = `${apiUrl}/api/orders`
 
 const saveShippingAddress = (data) => {
   localStorage.setItem('shippingAddress', JSON.stringify(data))

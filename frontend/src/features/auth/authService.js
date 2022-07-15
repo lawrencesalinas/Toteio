@@ -1,6 +1,7 @@
 import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
-const API_URL = `http://localhost:8000/api/users`
+const API_URL = `${apiUrl}/api/users`
 
 // Register user
 const register = async (userData) => {

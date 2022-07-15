@@ -1,8 +1,9 @@
 import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
-const API_URL = 'http://localhost:8000/api/products'
-const API_USER_URL = 'http://localhost:8000/api/users/products'
-const API_ADMIN_URL = 'http://localhost:8000/api/products/admin'
+const API_URL = `${apiUrl}/api/products`
+const API_USER_URL = `${apiUrl}/api/users/products`
+const API_ADMIN_URL = `${apiUrl}/api/products/admin`
 
 const getProducts = async (categoryName) => {
   const response = await axios.get(`${API_URL}/category/${categoryName}`)

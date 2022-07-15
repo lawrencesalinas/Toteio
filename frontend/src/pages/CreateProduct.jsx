@@ -1,6 +1,7 @@
 import './pagecss/CreateProduct.css'
 import './pagecss/Profile.css'
 import axios from 'axios'
+import apiUrl from '../apiConfig'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -10,6 +11,7 @@ import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
 import Spinner from "../components/shared/Spinner"
 import NavBar from '../components/layouts/NavBar'
+
 
 
 
@@ -61,10 +63,10 @@ function CreateProduct() {
                 },
             }
 
-            const { data } = await axios.post('http://localhost:8000/api/uploads', formData, config)
+            const { data } = await axios.post(`${apiUrl}/api/uploads`, formData, config)
 
             setImage(data)
-            setFormImage(`http://localhost:8000${data}`)
+            setFormImage(`${apiUrl}${data}`)
 
             setUploading(false)
         } catch (error) {
