@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
   // YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
-  production: 'toteio.com',
+  production: 'http://54.89.213.164:8000',
   development: 'http://127.0.0.1:8000',
 }
 
