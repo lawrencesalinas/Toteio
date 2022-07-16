@@ -11,7 +11,7 @@ const register = async (userData) => {
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data))
   }
-
+  console.log(response)
   return response.data
 }
 
@@ -23,7 +23,7 @@ const login = async (userData) => {
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data))
   }
-
+  console.log(response)
   return response.data
 }
 
