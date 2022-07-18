@@ -52,10 +52,13 @@ function CreateProduct() {
 
     const uploadFileHandler = async (e) => {
         console.log('i am uploading');
-        const file = e.target.files[0]
         const formData = new FormData()
-        formData.append('image', file)
+
         setUploading(true)
+        for (let i = 0; i < e.target.files.length; i++) {
+            formData.append("image", e.target.files[i]);
+        }
+
 
         try {
             const config = {
@@ -65,10 +68,12 @@ function CreateProduct() {
             }
 
             const { data } = await axios.post(`${apiUrl}/api/uploads`, formData, config)
-            // setFormImage(`${apiUrl}${data.imagePath}`)
-            setFormImage1(`${apiUrl}${data.imageKey}`)
-            setFormImage2(`${apiUrl}${data.imageKey}`)
-            setImage(`${apiUrl}${data.imageKey}`)
+            console.log(data);
+            setFormImage1(`${apiUrl}${data[0]}`)
+            setFormImage2(`${apiUrl}${data[1]}`)
+            // setFormImage2(`${apiUrl}${data.imageKey}`)
+            // setImage(`${apiUrl}${data.imageKey}`)
+
 
             setUploading(false)
         } catch (error) {
@@ -177,6 +182,7 @@ function CreateProduct() {
                                     id='file'
                                     type='file'
                                     onChange={uploadFileHandler}
+                                    multiple
                                 />
                             </div>
 

@@ -44,15 +44,21 @@ router.get('/:key', (req, res) => {
   readStream.pipe(res)
 })
 
-router.post('/', upload.single('image'), async (req, res) => {
+router.post('/', upload.array('image'), async (req, res) => {
   // const path = req.file.path.split('/').slice(1).join('/')
-  const file = req.file
-  const result = await uploadFile(file)
-  await unlinkFile(file.path)
-  console.log(result)
-  // res.send(`/${path}`)
-  res.send({ imageKey: `/api/uploads/${result.Key}` })
-  // res.send(result)
+  const files = req.files
+  const imagesFromS3 = []
+  for (let i = 0; i < files.length; i++) {
+    const result = await uploadFile(files[i])
+    console.log(result)
+
+    const imageKey = await `/api/uploads/${result.Key}`
+    imagesFromS3.push(imageKey)
+  }
+  // await unlinkFile(file.path)
+
+  res.send(imagesFromS3)
+  // res.send({ imageKey: `/api/uploads/${result.Key}` })
 })
 
 module.exports = router
