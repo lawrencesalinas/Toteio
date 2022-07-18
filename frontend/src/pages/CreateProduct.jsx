@@ -27,7 +27,8 @@ function CreateProduct() {
     const [gender, setGender] = useState('')
     const [brand, setBrand] = useState('')
     const [image, setImage] = useState('')
-    const [formImage, setFormImage] = useState('')
+    const [formImage1, setFormImage1] = useState('')
+    const [formImage2, setFormImage2] = useState('')
     const [uploading, setUploading] = useState(false)
 
     const navigate = useNavigate()
@@ -64,9 +65,10 @@ function CreateProduct() {
             }
 
             const { data } = await axios.post(`${apiUrl}/api/uploads`, formData, config)
-
-            setImage(data)
-            setFormImage(`${apiUrl}${data}`)
+            // setFormImage(`${apiUrl}${data.imagePath}`)
+            setFormImage1(`${apiUrl}${data.imageKey}`)
+            setFormImage2(`${apiUrl}${data.imageKey}`)
+            setImage(`${apiUrl}${data.imageKey}`)
 
             setUploading(false)
         } catch (error) {
@@ -159,13 +161,15 @@ function CreateProduct() {
                                 </select>
                             </div>
 
-                            {formImage && formImage !== '' ? (
+                            {formImage1 && formImage1 !== '' ? (
                                 <div className="form-image">
 
-                                    <img src={formImage} alt="" />
+                                    <img src={formImage1} alt="" />
+                                    <img src={formImage2} alt="" />
                                 </div>
 
                             ) : <></>}
+
                             <div className="category-form-gruop">
                                 <label htmlFor="image upload">Upload image</label>
                                 <input className='form-filepicker'
@@ -183,6 +187,9 @@ function CreateProduct() {
                     </div >
                 </div >
             </div >
+
+
+            <img src='/api/uploads/image-1658091627726.jpeg' alt="" />
 
         </>
 

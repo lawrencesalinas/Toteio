@@ -45,6 +45,11 @@ const createProduct = asyncHandler(async (req, res) => {
     brand,
   } = req.body
 
+  // const key = req.params.key
+  // const readStream = getFileStream(key)
+  // console.log('HELLOO I AM WORKING NOW')
+  // readStream.pipe(res)
+
   if (!title || !price || !image || !description) {
     res.status(400)
     throw new Error('Please enter all fields')

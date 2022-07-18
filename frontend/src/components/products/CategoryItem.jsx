@@ -1,10 +1,12 @@
 import '../componentcss/CategoryItem.css'
+import apiUrl from '../../apiConfig'
 import { FaRegHeart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 function CategoryItem({ product }) {
     const { title, imgUrl, description, rating, numReview, price, id } = product
-    const image = `http://localhost:8000${imgUrl}`
+    console.log(imgUrl);
+    // const image = `${apiUrl}${imgUrl}`
 
     return (
         <div className="category-item">
@@ -12,7 +14,7 @@ function CategoryItem({ product }) {
 
                 <p className='image-heart'><FaRegHeart /></p>
                 <div className="category-image">
-                    <img src={image} alt="" />
+                    <img src={imgUrl} alt="" />
                 </div>
                 <div className="category-info">
                     <p className='info-title'>{title}</p>

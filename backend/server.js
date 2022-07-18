@@ -36,7 +36,7 @@ app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/products/', require('./routes/productRoutes'))
 app.use('/api/shoppingBag/', require('./routes/shoppingBagRoutes'))
 app.use('/api/orders/', require('./routes/orderRoutes'))
-app.use('/api/uploads/', require('./routes/uploadRoutes'))
+app.use('/api/uploads', require('./routes/uploadRoutes'))
 app.use('/api/payments/', require('./routes/paymentRoutes'))
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to My E-store' })

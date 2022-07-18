@@ -14,7 +14,7 @@ function Product() {
     const { user } = useSelector(state => state.auth)
     const { product, isLoading, isError, isSuccess, message } = useSelector(state => state.products)
 
-    const image = `http://localhost:8000${product.imgUrl}`
+    const image = product.imgUrl
 
 
 
