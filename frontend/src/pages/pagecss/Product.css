@@ -8,7 +8,7 @@
 
 .top {
   margin: 0;
-  padding: 0;
+  padding-bottom: 200px;
   margin-top: 100px;
   display: flex;
   width: 90%;
@@ -78,8 +78,10 @@
 }
 
 .tile-img {
-  width: 130px;
-  margin: 20px 20px 0 0;
+  width: 14%;
+  height: 100px;
+  margin: 30px 30px 0 0;
+  cursor: pointer;
 }
 
 .editbtn {
@@ -130,8 +132,9 @@
 .decription-text {
   font-size: 0.8rem;
 }
+
 @media (max-width: 480px) {
-  .top {
+  /* .top {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -145,16 +148,16 @@
     width: 100vw;
     height: 90vh;
     margin-bottom: 20px;
-  }
+  } */
 
-  .product-info {
-    /* border: white solid 2px; */
+  /* .product-info {
+
     display: flex;
     flex-direction: column;
     width: 90vw;
-  }
+  } */
 
-  .cart-btn {
+  /* .cart-btn {
     width: 80vw;
     height: 4vh;
     background-color: blueviolet;
@@ -163,9 +166,41 @@
     border: none;
     cursor: pointer;
     transition: transform 0.5s;
+  } */
+
+  /* .tile-img {
+    display: none;
+  } */
+}
+
+@media (max-width: 600px) {
+  .top {
+    flex-direction: column;
   }
 
+  .product-img {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .image-tile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   .tile-img {
-    display: none;
+    width: 18%;
+  }
+
+  .editbtn {
+    margin: 0 auto;
+    height: 7.3vh;
+    width: 90%;
+  }
+
+  .deletebtn {
+    margin: 0 auto;
+    width: 90%;
+    height: 7.3vh;
   }
 }

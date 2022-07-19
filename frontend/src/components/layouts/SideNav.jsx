@@ -31,7 +31,7 @@ function SideNav() {
                 </li>
                 <li>
                     <Link to='/my-products'>
-                        <h4><FaHeadphones /> My Products</h4>
+                        <h4><FaHeadphones /> Products</h4>
                     </Link>
                 </li>
                 <li>

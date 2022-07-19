@@ -16,12 +16,6 @@ const getAdminProducts = async () => {
   return response.data
 }
 
-const getAllShoes = async () => {
-  const response = await axios.get(`${API_URL}/shoes`)
-
-  return response.data
-}
-
 const getProduct = async (productId) => {
   const response = await axios.get(`${API_URL}/${productId}`)
 
@@ -37,7 +31,7 @@ const createProduct = async (productData, token) => {
   }
 
   const response = await axios.post(API_URL, productData, config)
-
+  console.log(response)
   return response.data
 }
 
@@ -88,7 +82,6 @@ const productService = {
   getUserProducts,
   editProduct,
   deleteProduct,
-  getAllShoes,
 }
 
 export default productService

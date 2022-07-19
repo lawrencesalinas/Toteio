@@ -4,16 +4,18 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { getAdminProducts, reset, getUserProducts, getAAllShoes, getProducts } from '../../features/product/productSlice'
 import CategoryItem from './CategoryItem'
 import { GiRunningShoe, GiTShirt } from 'react-icons/gi'
-import { FaHeadphones } from 'react-icons/fa'
+import { FaHeadphones, FaSearch } from 'react-icons/fa'
 import Spinner from '../shared/Spinner'
 import { get } from 'mongoose'
 
 
-function CategoryContent({ images, categoryText, changeHeading, location, pathMatchRoute, }) {
+function CategoryContent({ path, images, categoryText, changeHeading, location, pathMatchRoute, }) {
     const { products, isLoading, isSuccess } = useSelector((state) => state.products)
 
     const navigate = useNavigate()
     const { categoryName } = useParams()
+
+
 
     const dispatch = useDispatch()
 
@@ -26,13 +28,12 @@ function CategoryContent({ images, categoryText, changeHeading, location, pathMa
     }, [isSuccess, dispatch])
 
 
-
-    console.log(categoryName);
+    const subcategoryTitle = `${location.search.substr(8, 13)} ${categoryName.toUpperCase()}`;
 
     useEffect(() => {
-        dispatch(getProducts(categoryName))
+        dispatch(getProducts(`${categoryName}${location.search}`))
 
-    }, [dispatch, categoryName])
+    }, [dispatch, categoryName, location.pathname, location.search])
     if (isLoading) {
         return <Spinner />
     }
@@ -47,6 +48,13 @@ function CategoryContent({ images, categoryText, changeHeading, location, pathMa
 
             <div className="category-content">
                 <div className="side-nav-category">
+                    <h3>Search</h3>
+                    <div className="search-nav">
+
+                        <input placeholder='Search' className='side-nav-search' />
+                        <p><FaSearch /></p>
+                    </div>
+
                     <ul className="navbarListItems">
                         <li className="navbarListItem" onClick={() => navigate('/category/shoes')}>
                             <GiRunningShoe fill={pathMatchRoute('/category/shoes') ? '#2c2c2c' : '#8f8f8f'} width='36px' height='36px' />
@@ -73,32 +81,35 @@ function CategoryContent({ images, categoryText, changeHeading, location, pathMa
                         <img className='image-banner' src={images[4]} alt="" />
                     </div>
 
+                    {categoryName === 'tech' ? null : (
+                        <div className="gender-images">
 
-                    <div className="gender-images">
-                        <div className="category-img" data-aos='fade-right' data-aos-delay='70'>
-                            <Link to="/category/shoes">
-                                <img src={images[5]} alt="" className='main-image' />
-                            </Link>
-                            <h5>MEN</h5>
+                            <div className="gender-img" data-aos='fade-right' data-aos-delay='70'>
+                                <Link to={`/category/${categoryName}?gender=men`}>
+                                    <img src={images[5]} alt="" className='main-image' />
+                                </Link>
+                                <h5>MEN</h5>
+                            </div>
+                            <div className="gender-img" data-aos='fade-left' data-aos-delay='150'>
+                                <Link to={`/category/${categoryName}?gender=women`}>
+                                    <img src={images[6]} alt="" className='main-image' />
+                                </Link>
+                                <h5>WOMEN</h5>
+                            </div>
                         </div>
-                        <div className="category-img" data-aos='fade-left' data-aos-delay='150'>
-                            <Link to='/category/tech'>
-                                <img src={images[6]} alt="" className='main-image' />
-                            </Link>
-                            <h5>WOMEN</h5>
-                        </div>
-                    </div>
+                    )}
+
 
                     <hr />
-                    <h2 className=''>Men Shoes</h2>
 
-
-
+                    <h2>{subcategoryTitle.toUpperCase()} </h2>
 
                     <div className="category-products">
-                        {products.map((product) => (
-                            <CategoryItem product={product} key={product.id} />
-                        ))}
+                        {products && products.length > 0 ? (
+                            products.map((product) => (
+                                <CategoryItem product={product} key={product.id} />
+                            ))
+                        ) : <></>}
 
                     </div>
                 </div>

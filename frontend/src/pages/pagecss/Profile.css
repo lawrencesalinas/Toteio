@@ -1,4 +1,5 @@
 .profile {
+  min-height: 80vh;
   height: 100%;
   padding: 0 0 200px 0;
   margin: 0;
@@ -10,11 +11,11 @@
 .content {
   box-sizing: border-box;
   height: 100%;
+  /* border: solid 2px black; */
 }
 
 .heading-profile {
   text-align: left;
-
   margin-top: 130px;
 }
 
@@ -149,4 +150,27 @@
   display: flex;
   justify-content: left;
   box-sizing: border-box;
+}
+
+@media (max-width: 930px) {
+  .profile {
+    flex-direction: column;
+    align-items: center;
+  }
+  .heading-profile {
+    text-align: left;
+    margin-top: 0;
+    font-size: 1.4rem;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+  }
+
+  .sidenav {
+    width: 100vw;
+  }
 }

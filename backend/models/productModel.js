@@ -31,9 +31,18 @@ const Product = sequelize.define('product', {
   gender: {
     type: Sequelize.STRING,
   },
-  imgUrl: {
+  imgUrl1: {
     type: Sequelize.STRING,
     allowNull: false,
+  },
+  imgUrl2: {
+    type: Sequelize.STRING,
+  },
+  imgUrl3: {
+    type: Sequelize.STRING,
+  },
+  imgUrl4: {
+    type: Sequelize.STRING,
   },
   description: {
     type: Sequelize.TEXT('long'),

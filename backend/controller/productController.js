@@ -6,15 +6,32 @@ const Product = require('../models/productModel')
 // @route  GET /api/products
 // @access Public
 const getProducts = asyncHandler(async (req, res) => {
-  console.log(req.params.categoryName)
+  const reqGender = req.query.gender
   const user = await User.findOne({
     where: { email: process.env.ADMIN, isAdmin: true },
   })
 
-  const products = await Product.findAll({
-    where: { userId: user.id, category: req.params.categoryName },
-  })
-  res.status(200).json(products)
+  // Get men or women clothes/shoes
+  if (reqGender) {
+    const products = await Product.findAll({
+      where: {
+        userId: user.id,
+        category: req.params.categoryName,
+        gender: reqGender,
+      },
+    })
+
+    res.status(200).json(products)
+  } else {
+    const products = await Product.findAll({
+      where: {
+        userId: user.id,
+        category: req.params.categoryName,
+      },
+    })
+
+    res.status(200).json(products)
+  }
 })
 
 // @desc   Get single Product
@@ -38,7 +55,10 @@ const createProduct = asyncHandler(async (req, res) => {
     title,
     price,
     description,
-    image,
+    image1,
+    image2,
+    image3,
+    image4,
     condition,
     gender,
     category,
@@ -50,7 +70,7 @@ const createProduct = asyncHandler(async (req, res) => {
   // console.log('HELLOO I AM WORKING NOW')
   // readStream.pipe(res)
 
-  if (!title || !price || !image || !description) {
+  if (!title || !price || !image1 || !description) {
     res.status(400)
     throw new Error('Please enter all fields')
   }
@@ -63,7 +83,10 @@ const createProduct = asyncHandler(async (req, res) => {
   const product = await req.user.createProduct({
     title: title,
     price: price,
-    imgUrl: image,
+    imgUrl1: image1,
+    imgUrl2: image2,
+    imgUrl3: image3,
+    imgUrl4: image4,
     description: description,
     condition: condition,
     gender: gender,
@@ -124,97 +147,6 @@ const getAdminProducts = asyncHandler(async (req, res) => {
   res.status(201).json(products)
 })
 
-// @desc   Get All shoes
-// @route  GET /api/products/shoes
-// @access Public
-const getAllShoes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { email: process.env.ADMIN, isAdmin: true },
-  })
-  const products = await Product.findAll({
-    where: { userId: user.id, category: 'shoes' },
-  })
-  res.status(201).json(products)
-})
-
-// @desc   Get women shoes
-// @route  GET /api/products/menshoes
-// @access Public
-const getWomenShoes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { email: process.env.ADMIN, isAdmin: true },
-  })
-  const products = await Product.findAll({
-    where: { userId: user.id, category: 'shoes', gender: 'women' },
-  })
-  res.status(201).json(products)
-})
-
-// @desc   Get men shoes
-// @route  GET /api/products/menshoes
-// @access Public
-const getMenShoes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { email: process.env.ADMIN, isAdmin: true },
-  })
-  const products = await Product.findAll({
-    where: { userId: user.id, category: 'shoes', gender: 'men' },
-  })
-  res.status(201).json(products)
-})
-
-// @desc   Get All clothes
-// @route  GET /api/products/shoes
-// @access Public
-const getAllClothes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { email: process.env.ADMIN, isAdmin: true },
-  })
-  const products = await Product.findAll({
-    where: { userId: user.id, category: 'clothing' },
-  })
-  res.status(201).json(products)
-})
-
-// @desc   Get women clothes
-// @route  GET /api/products/menshoes
-// @access Public
-const getWomenClothes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { email: process.env.ADMIN, isAdmin: true },
-  })
-  const products = await Product.findAll({
-    where: { userId: user.id, category: 'clothing', gender: 'women' },
-  })
-  res.status(201).json(products)
-})
-
-// @desc   Get men clothes
-// @route  GET /api/products/menshoes
-// @access Public
-const getMenClothes = asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { email: process.env.ADMIN, isAdmin: true },
-  })
-  const products = await Product.findAll({
-    where: { userId: user.id, category: 'clothing', gender: 'men' },
-  })
-  res.status(201).json(products)
-})
-
-// @desc   Get All shoes
-// @route  GET /api/products/shoes
-// @access Public
-const getAllTech = asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { email: process.env.ADMIN, isAdmin: true },
-  })
-  const products = await Product.findAll({
-    where: { userId: user.id, category: 'tech' },
-  })
-  res.status(201).json(products)
-})
-
 module.exports = {
   getProducts,
   getProduct,
@@ -222,11 +154,4 @@ module.exports = {
   editProduct,
   deleteProduct,
   getAdminProducts,
-  getAllShoes,
-  getMenShoes,
-  getWomenShoes,
-  getAllClothes,
-  getWomenClothes,
-  getMenClothes,
-  getAllTech,
 }

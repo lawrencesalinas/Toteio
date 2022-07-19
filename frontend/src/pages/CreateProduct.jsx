@@ -11,6 +11,7 @@ import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
 import Spinner from "../components/shared/Spinner"
 import NavBar from '../components/layouts/NavBar'
+import ProfileTopNav from '../components/layouts/ProfileTopNav'
 
 
 
@@ -26,9 +27,14 @@ function CreateProduct() {
     const [category, setCategory] = useState('tech')
     const [gender, setGender] = useState('')
     const [brand, setBrand] = useState('')
-    const [image, setImage] = useState('')
+    const [image1, setImage1] = useState('')
+    const [image2, setImage2] = useState('')
+    const [image3, setImage3] = useState('')
+    const [image4, setImage4] = useState('')
     const [formImage1, setFormImage1] = useState('')
     const [formImage2, setFormImage2] = useState('')
+    const [formImage3, setFormImage3] = useState('')
+    const [formImage4, setFormImage4] = useState('')
     const [uploading, setUploading] = useState(false)
 
     const navigate = useNavigate()
@@ -69,10 +75,15 @@ function CreateProduct() {
 
             const { data } = await axios.post(`${apiUrl}/api/uploads`, formData, config)
             console.log(data);
-            setFormImage1(`${apiUrl}${data[0]}`)
-            setFormImage2(`${apiUrl}${data[1]}`)
+            setFormImage1(`${apiUrl}/${data[0]}`)
+            setFormImage2(`${apiUrl}/${data[1]}`)
+            setFormImage3(`${apiUrl}/${data[2]}`)
+            setFormImage4(`${apiUrl}/${data[3]}`)
             // setFormImage2(`${apiUrl}${data.imageKey}`)
-            // setImage(`${apiUrl}${data.imageKey}`)
+            setImage1(`${apiUrl}/${data[0]}`)
+            setImage2(`${apiUrl}/${data[1]}`)
+            setImage3(`${apiUrl}/${data[2]}`)
+            setImage4(`${apiUrl}/${data[3]}`)
 
 
             setUploading(false)
@@ -87,7 +98,7 @@ function CreateProduct() {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        dispatch(createProduct({ title, condition, brand, price, description, category, image, gender }))
+        dispatch(createProduct({ title, condition, brand, price, description, category, image1, image2, image3, image4, gender }))
     }
 
     console.log(condition);
@@ -99,13 +110,16 @@ function CreateProduct() {
         <>
             <Header linkcolor='#fff' bgcolor='#181818' />
             <NavBar />
-            <div className="profile" >
 
+            <div className="profile" >
+                {/* <ProfileTopNav /> */}
                 <div className="sidenav">
                     <SideNav />
                 </div>
+
                 <div className="content">
                     {user.isAdmin ? (
+
                         <h1 className='heading-profile'>Sell </h1>
                     ) : <h1 className='heading-profile'>Sell your stuff locally</h1>}
 
@@ -120,7 +134,7 @@ function CreateProduct() {
                                 <input className='' type="text" name='price' id='price' placeholder='Enter price' value={price} onChange={(e) => setPrice(e.target.value)} />
                             </div>
                             <div className="product-form-group description">
-                                <label htmlFor="cars">Description</label>
+                                <label htmlFor="description">Description</label>
                                 <textarea className='' type="textarea" name='description' id='description' placeholder='Enter product description' value={description} onChange={(e) => setDescription(e.target.value)} />
                             </div>
 
@@ -132,7 +146,7 @@ function CreateProduct() {
                                     <label htmlFor="shoes">Shoes</label>
                                     <input type="radio" value='shoes' checked={category === 'shoes'} onChange={(e) => setCategory(e.target.value)} />
                                     <label htmlFor="clothing">Clothing</label>
-                                    <input type="radio" value="clothing" checked={category === 'clothing'} onChange={(e) => setCategory(e.target.value)} />
+                                    <input type="radio" value="clothes" checked={category === 'clothes'} onChange={(e) => setCategory(e.target.value)} />
                                     <label htmlFor="other">Other</label>
                                     <input type="radio" value="other" checked={category === 'other'} onChange={(e) => setCategory(e.target.value)} />
                                 </div>
@@ -140,9 +154,9 @@ function CreateProduct() {
                             {category === 'shoes' || category === 'clothing' ? (
                                 <div className="category-form-gruop">
                                     <div className="category-radio">
-                                        <label htmlFor="tech"> Men</label>
+                                        <label htmlFor="men"> Men</label>
                                         <input type="radio" value="men" checked={gender === 'men'} onChange={(e) => setGender(e.target.value)} />
-                                        <label htmlFor="shoes">Women</label>
+                                        <label htmlFor="women">Women</label>
                                         <input type="radio" value='women' checked={gender === 'women'} onChange={(e) => setGender(e.target.value)} />
 
                                     </div>
@@ -171,6 +185,8 @@ function CreateProduct() {
 
                                     <img src={formImage1} alt="" />
                                     <img src={formImage2} alt="" />
+                                    <img src={formImage3} alt="" />
+                                    <img src={formImage4} alt="" />
                                 </div>
 
                             ) : <></>}
@@ -188,7 +204,7 @@ function CreateProduct() {
 
 
                             <br />
-                            <button className='signupbtn'>List</button>
+                            <button className='listbtn'>List</button>
                         </form>
                     </div >
                 </div >

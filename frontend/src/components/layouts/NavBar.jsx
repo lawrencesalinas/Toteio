@@ -20,7 +20,7 @@ function NavBar() {
                     <Link to='/category/tech'>Tech</Link>
                 </li>
                 <li>
-                    <Link to='/category/clothing'>Clothes</Link>
+                    <Link to='/category/clothes'>Clothes</Link>
                 </li>
             </ul>
             {/* )} */}

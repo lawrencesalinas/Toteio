@@ -52,7 +52,7 @@ router.post('/', upload.array('image'), async (req, res) => {
     const result = await uploadFile(files[i])
     console.log(result)
 
-    const imageKey = await `/api/uploads/${result.Key}`
+    const imageKey = await `api/uploads/${result.Key}`
     imagesFromS3.push(imageKey)
   }
   // await unlinkFile(file.path)

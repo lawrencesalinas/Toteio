@@ -14,9 +14,7 @@ function Product() {
     const { user } = useSelector(state => state.auth)
     const { product, isLoading, isError, isSuccess, message } = useSelector(state => state.products)
 
-    const image = product.imgUrl
-
-
+    const [mainImage, setMainImage] = useState('')
 
     const { id } = useParams()
 
@@ -37,6 +35,8 @@ function Product() {
     }, [dispatch])
 
 
+
+
     const deleteHandler = () => {
         if (window.confirm('Are you sure')) {
             dispatch(deleteProduct(id))
@@ -50,6 +50,9 @@ function Product() {
         toast.success('item added to shopping bag')
     }
 
+    const imageClickHander = (e) => {
+        setMainImage(e.target.src)
+    }
 
 
     if (isLoading) {
@@ -64,11 +67,17 @@ function Product() {
                 <NavBar />
                 <div className="top">
                     <div className="images">
-                        <img src={image} alt="" className='product-img' />
+
+                        {mainImage === '' ? (
+                            <img src={product.imgUrl1} alt="" className='product-img' />) :
+                            (<img src={mainImage} alt="" className='product-img' />)
+                        }
+
                         <div className="image-tile">
-                            <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_2_2000.jpg" alt="" className='tile-img' />
-                            <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_2_2000.jpg" alt="" className='tile-img' />
-                            <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_2_2000.jpg" alt="" className='tile-img' />
+                            <img src={product.imgUrl1} alt="" className='tile-img' onClick={imageClickHander} />
+                            <img src={product.imgUrl2} alt="" className='tile-img' onClick={imageClickHander} />
+                            <img src={product.imgUrl3} alt="" className='tile-img' onClick={imageClickHander} />
+                            <img src={product.imgUrl4} alt="" className='tile-img' onClick={imageClickHander} />
                         </div>
                     </div>
 

@@ -1,27 +1,33 @@
 import '../componentcss/CategoryItem.css'
 import apiUrl from '../../apiConfig'
-import { FaRegHeart } from 'react-icons/fa'
+import { FaRegHeart, FaHeart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function CategoryItem({ product }) {
-    const { title, imgUrl, description, rating, numReview, price, id } = product
-    console.log(imgUrl);
-    // const image = `${apiUrl}${imgUrl}`
+    const { title, imgUrl1, description, rating, numReview, price, id } = product
+    const [fillHeart, setFillHeart] = useState(false)
 
     return (
         <div className="category-item">
-            <Link to={`/product/${id}`}>
+            <div className="category-image">
+                {fillHeart ? (
+                    <p className='image-heart' onClick={() => setFillHeart(false)}><FaHeart /></p>
+                ) : (
+                    <p className='image-heart' onClick={() => setFillHeart(true)}><FaRegHeart /></p>
+                )
 
-                <p className='image-heart'><FaRegHeart /></p>
-                <div className="category-image">
-                    <img src={imgUrl} alt="" />
-                </div>
-                <div className="category-info">
-                    <p className='info-title'>{title}</p>
-                    <p className='category-price'>${price}</p>
-                </div>
-            </Link >
-        </div>
+                }
+                <Link to={`/product/${id}`}>
+                    <img src={imgUrl1} alt="" />
+                </Link >
+            </div>
+            <div className="category-info">
+                <p className='info-title'>{title}</p>
+                <p className='category-price'>${price}</p>
+            </div>
+
+        </div >
 
     )
 }

@@ -39,7 +39,7 @@ function ShoppingBag() {
 
     return (
         <>
-            <Header />
+            <Header linkcolor='#fff' bgcolor='#181818' />
             <NavBar />
             <div className="shoppingbag">
                 <div className="bag-container">
@@ -67,12 +67,12 @@ function ShoppingBag() {
 
                         <h3 className='price-info'>Order Total:  <span className='total-price'>${totalPrice}</span></h3>
                         {totalItems === 0 ? (
-                            <button type='button' className='signupbtn disabled' >Proceed to Checkout</button>
+                            <button type='button' className='checkoutbtn disabled' >Proceed to Checkout</button>
                         ) : (
                             <Link to={'/shipping'}>
 
 
-                                <button type='button' className='signupbtn ' >Proceed to Checkout</button>
+                                <button type='button' className='checkoutbtn' >Proceed to Checkout</button>
                             </Link>
                         )
                         }

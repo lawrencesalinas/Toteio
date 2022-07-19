@@ -27,3 +27,25 @@
 .side-nav li:hover {
   transform: scale(1.2);
 }
+
+@media (max-width: 930px) {
+  .sidenav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  .side-nav li a {
+    color: #181818;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .side-nav li {
+    color: #181818;
+    font-size: 0.8rem;
+    margin: 15px;
+  }
+}

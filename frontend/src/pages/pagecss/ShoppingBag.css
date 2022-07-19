@@ -51,6 +51,7 @@
 .shoppingBag-items {
   padding-top: 30px;
   height: 100%;
+  width: 80%;
   /* border: solid red 2px; */
 }
 
@@ -82,4 +83,50 @@
 
 .bag-total .card {
   margin-top: 70px;
+}
+
+.bag-information {
+  margin-right: 5rem;
+}
+
+.checkoutbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 70%;
+  height: 40px;
+  border-radius: 30px;
+  background-color: #8a2be2;
+  color: #fff;
+  transition: background-color 0.5s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .shoppingbag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin: 0 auto;
+    height: 100%;
+    padding-bottom: 30vh;
+    width: 100vw;
+  }
+
+  .bag-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bag-total {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .shoppingbag-item-container .empty-cart {
+    font-size: 0.8rem;
+  }
 }

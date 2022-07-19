@@ -10,8 +10,6 @@ import Spinner from '../components/shared/Spinner'
 
 
 function Category() {
-    const { products, isLoading, isSuccess } = useSelector((state) => state.products)
-    const navigate = useNavigate()
     const location = useLocation()
 
     const shoeImages = [
@@ -46,20 +44,6 @@ function Category() {
     const techPageText = ['Find your perfect gadgets.']
     const clothingPageText = ['Show off your style.']
 
-    const dispatch = useDispatch()
-
-    // clear sttate on unmount
-    // useEffect(() => {
-    //     return () => {
-    //         if (isSuccess) {
-    //             dispatch(reset())
-    //         }
-    //     }
-    // }, [isSuccess, dispatch])
-
-    // useEffect(() => {
-    //     // dispatch(getAdminProducts())
-    // }, [dispatch])
 
 
     //--------check if route matches---//
@@ -69,7 +53,10 @@ function Category() {
         }
     }
 
-    const path = location.pathname.slice(10).toUpperCase()
+    console.log(location.pathname);
+
+    const path = location.pathname
+    // .slice(10).toUpperCase()
 
 
     const changeHeading = (route) => {
@@ -86,10 +73,9 @@ function Category() {
             <NavBar />
 
 
-            {pathMatchRoute('/category/shoes') ? (
+            {pathMatchRoute('/category/shoes') || pathMatchRoute('/category/menshoes') || pathMatchRoute('/category/womenshoes') ? (
                 <>
                     <CategoryContent
-
                         categoryText={shoePageText}
                         changeHeading={changeHeading}
                         images={shoeImages}
