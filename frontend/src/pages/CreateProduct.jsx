@@ -11,9 +11,6 @@ import Header from '../components/layouts/Header'
 import SideNav from '../components/layouts/SideNav'
 import Spinner from "../components/shared/Spinner"
 import NavBar from '../components/layouts/NavBar'
-import ProfileTopNav from '../components/layouts/ProfileTopNav'
-
-
 
 
 function CreateProduct() {
@@ -35,7 +32,7 @@ function CreateProduct() {
     const [formImage2, setFormImage2] = useState('')
     const [formImage3, setFormImage3] = useState('')
     const [formImage4, setFormImage4] = useState('')
-    const [uploading, setUploading] = useState(false)
+
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -57,10 +54,8 @@ function CreateProduct() {
     }, [isError, isSuccess, navigate, message, dispatch])
 
     const uploadFileHandler = async (e) => {
-        console.log('i am uploading');
         const formData = new FormData()
 
-        setUploading(true)
         for (let i = 0; i < e.target.files.length; i++) {
             formData.append("image", e.target.files[i]);
         }
@@ -74,22 +69,17 @@ function CreateProduct() {
             }
 
             const { data } = await axios.post(`${apiUrl}/api/uploads`, formData, config)
-            console.log(data);
+
             setFormImage1(`${apiUrl}/${data[0]}`)
             setFormImage2(`${apiUrl}/${data[1]}`)
             setFormImage3(`${apiUrl}/${data[2]}`)
             setFormImage4(`${apiUrl}/${data[3]}`)
-            // setFormImage2(`${apiUrl}${data.imageKey}`)
             setImage1(`${apiUrl}/${data[0]}`)
             setImage2(`${apiUrl}/${data[1]}`)
             setImage3(`${apiUrl}/${data[2]}`)
             setImage4(`${apiUrl}/${data[3]}`)
-
-
-            setUploading(false)
         } catch (error) {
             console.error(error)
-            setUploading(false)
         }
     }
 
@@ -217,9 +207,6 @@ function CreateProduct() {
                     </div >
                 </div >
             </div >
-
-
-            <img src='/api/uploads/image-1658091627726.jpeg' alt="" />
 
         </>
 

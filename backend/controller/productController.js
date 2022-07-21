@@ -118,32 +118,22 @@ const editProduct = asyncHandler(async (req, res) => {
     image4,
     gender,
   } = req.body
+
   const prodId = req.params.id
-  const updatedTitle = title
-  const updatedPrice = price
-  const updatedImgUrl1 = image1
-  const updatedImgUrl2 = image2
-  const updatedImgUrl3 = image3
-  const updatedImgUrl4 = image4
-  const updatedDescription = description
-  const updateConditiom = condition
-  const updateCategory = category
-  const updateBrand = brand
-  const updateGender = gender
 
   const product = await Product.findByPk(prodId)
 
   product.title = title
-  product.price = updatedPrice
-  product.imgUrl1 = updatedImgUrl1
-  product.imgUrl2 = updatedImgUrl2
-  product.imgUrl3 = updatedImgUrl3
-  product.imgUrl4 = updatedImgUrl4
-  product.description = updatedDescription
-  product.condition = updateConditiom
-  product.category = updateCategory
-  product.brand = updateBrand
-  product.gender = updateGender
+  product.price = price
+  product.imgUrl1 = image1
+  product.imgUrl2 = image2
+  product.imgUrl3 = image3
+  product.imgUrl4 = image4
+  product.description = description
+  product.condition = condition
+  product.category = category
+  product.brand = brand
+  product.gender = gender
   product.save()
 
   res.status(201).json(product)

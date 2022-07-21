@@ -16,20 +16,6 @@ function EditProduct() {
     const { product, isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
     const { user } = useSelector((state) => state.auth)
 
-    // const [formData, setFormData] = useState({
-    //     title: product.title,
-    //     price: product.price,
-    //     image: product.imgUrl,
-    //     description: product.description,
-    //     condition: product.condition,
-    //     category: product.category,
-    //     gener: product.gender,
-    //     brand: product.brand,
-    //     image1: product.image1,
-    //     image2: product.image2,
-    //     image3: product.image3,
-    //     image4: product.image4
-    // })
     const [title, setTitle] = useState(product.title)
     const [price, setPrice] = useState(product.price)
     const [description, setDescription] = useState(product.description)
@@ -45,20 +31,11 @@ function EditProduct() {
     const [formImage2, setFormImage2] = useState(product.image2)
     const [formImage3, setFormImage3] = useState(product.image3)
     const [formImage4, setFormImage4] = useState(product.image4)
-    const [uploading, setUploading] = useState(false)
-
-
-
-
-
-
 
     const { id } = useParams()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
-    // const {  title, condition, brand, price, description, category, image1, image2, image3, image4, gender, } = formData
 
 
     useEffect(() => {
@@ -86,7 +63,7 @@ function EditProduct() {
         console.log('i am uploading');
         const formData = new FormData()
 
-        setUploading(true)
+
         for (let i = 0; i < e.target.files.length; i++) {
             formData.append("image", e.target.files[i]);
         }
@@ -105,81 +82,22 @@ function EditProduct() {
             setFormImage2(`${apiUrl}/${data[1]}`)
             setFormImage3(`${apiUrl}/${data[2]}`)
             setFormImage4(`${apiUrl}/${data[3]}`)
-            // setFormImage2(`${apiUrl}${data.imageKey}`)
             setImage1(`${apiUrl}/${data[0]}`)
             setImage2(`${apiUrl}/${data[1]}`)
             setImage3(`${apiUrl}/${data[2]}`)
             setImage4(`${apiUrl}/${data[3]}`)
-
-
-            setUploading(false)
         } catch (error) {
             console.error(error)
-            setUploading(false)
+
         }
     }
 
-
-    // const onChange = (e) => {
-    //     setFormData((prevState) => (
-    //         {
-    //             ...prevState,
-    //             [e.target.name]: e.target.value
-    //         }
-    //     ))
-    // }
 
     if (isLoading) {
         return <Spinner />
     }
 
     return (
-        // <>
-        //     <Header linkcolor='#fff' bgcolor='#181818' />
-        //     <NavBar />
-        //     <div className="profile" >
-
-        //         <div className="sidenav">
-        //             <SideNav />
-        //         </div>
-        //         <div className="content">
-        //             <h1 className='heading-profile'>Sell an item</h1>
-        //             <div className='create-product'>
-        //                 <form onSubmit={onSubmit}>
-        //                     <div className="product-form-group">
-        //                         <input className='' type="text" name='title' id='title' placeholder='Enter product name' value={title} onChange={onChange} />
-        //                     </div>
-        //                     {/* <div className="form-group">
-        //           <label for="cars">Categories</label>
-        //           <select name="categories" id="categories">
-        //               <option value="volvo">Shoes</option>
-        //               <option value="saab">Tech</option>
-        //               <option value="mercedes">Clothing</option>
-        //           </select>
-
-
-        //       </div> */}
-        //                     <div className="product-form-group">
-        //                         <input className='' type="text" name='price' id='price' placeholder='Enter price' value={price} onChange={onChange} />
-        //                     </div>
-        //                     <div className="product-form-group">
-        //                         <input className='' type="text" name='description' id='description' placeholder='Enter product description' value={description} onChange={onChange} />
-        //                     </div>
-        //                     <div className="product-form-group">
-        //                         <input className='' type="text" name='image' id='image' placeholder='Enter product description' value={image} onChange={onChange} />
-        //                     </div>
-        //                     {/* <div className="file">
-        //           <input className='' type="file" name='image' id='image' />
-        //       </div> */}
-        //                     <br />
-        //                     <button className='signupbtn'>Update</button>
-        //                 </form>
-        //             </div>
-        //         </div >
-        //     </div >
-        // </>
-
-
         <>
             <Header linkcolor='#fff' bgcolor='#181818' />
             <NavBar />
@@ -291,10 +209,6 @@ function EditProduct() {
                     </div >
                 </div >
             </div >
-
-
-            <img src='/api/uploads/image-1658091627726.jpeg' alt="" />
-
         </>
 
 
