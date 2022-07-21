@@ -19,9 +19,7 @@ function NotFound() {
                     <Link to='/' className='btn-pg'>
                         <FaHome className='mr-2' />
                         Back to Home
-
                     </Link>
-
                 </div>
             </div>
         </>
