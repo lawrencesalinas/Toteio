@@ -18,6 +18,7 @@ import Order from './pages/Order'
 import Shipping from './pages/Shipping'
 import Success from './pages/Success'
 import Favorites from './pages/Favorites'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
             <Route path='/success' element={<PrivateRoute />}>
               <Route path='/success' element={<Success />} />
             </Route>
+            <Route path='/*' element={<NotFound />} />
           </Routes>
           <Footer />
         </div>

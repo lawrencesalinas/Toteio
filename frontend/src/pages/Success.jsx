@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Success() {
     return (
         <>
-            <Header />
+            <Header linkcolor='#fff' bgcolor='#181818' />
             <div className="success-container">
 
                 <div className="card">
