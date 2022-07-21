@@ -57,7 +57,7 @@ const editProduct = async (productData, id, token) => {
   }
 
   const response = await axios.put(`${API_URL}/${id}`, productData, config)
-
+  console.log(response)
   return response.data
 }
 

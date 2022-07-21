@@ -64,7 +64,7 @@ function CreateProduct() {
         for (let i = 0; i < e.target.files.length; i++) {
             formData.append("image", e.target.files[i]);
         }
-
+        formData.append('apiUrl', apiUrl)
 
         try {
             const config = {
@@ -98,7 +98,7 @@ function CreateProduct() {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        dispatch(createProduct({ title, condition, brand, price, description, category, image1, image2, image3, image4, gender }))
+        dispatch(createProduct({ title, condition, brand, price, description, category, image1, image2, image3, image4, gender, }))
     }
 
     if (isLoading) {
