@@ -20,11 +20,11 @@ function Header({ linkcolor, bgcolor }) {
                     {user ? (
                         <>
                             <li>
-                                <Link to='/profile' style={{ color: linkcolor }}><FaUser /></Link>
+                                <Link to='/profile-settings' style={{ color: linkcolor }}><FaUser /></Link>
                             </li>
-                            <li>
-                                <Link to='/profile' style={{ color: '#ff7b7b' }}><FaHeart /></Link>
-                            </li>
+                            {/* <li>
+                                <Link to='/favorites' style={{ color: '#ff7b7b' }}><FaHeart /></Link>
+                            </li> */}
                             <li>
                                 <Link to='/cart' style={{ color: '#FFFDD0' }} ><FaShoppingBag /></Link>
                             </li>

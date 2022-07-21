@@ -19,11 +19,11 @@ function SideNav() {
     return (
         <div className="side-nav">
             <ul className="sidenav-links">
-                <li>
+                {/* <li>
                     <Link to='/profile'>
                         <h4><FaHome /> Dashboard</h4>
                     </Link>
-                </li>
+                </li> */}
                 <li>
                     <Link to='/profile-settings'>
                         <h4><FaUser /> Profile Settings</h4>

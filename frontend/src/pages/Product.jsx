@@ -8,6 +8,7 @@ import { addToShoppingBag } from '../features/shoppingBag/shoppingBagSlice'
 import Header from '../components/layouts/Header'
 import Spinner from "../components/shared/Spinner"
 import NavBar from '../components/layouts/NavBar'
+import apiUrl from '../apiConfig'
 
 
 function Product() {
@@ -74,15 +75,24 @@ function Product() {
                         }
 
                         <div className="image-tile">
-                            <img src={product.imgUrl1} alt="" className='tile-img' onClick={imageClickHander} />
-                            <img src={product.imgUrl2} alt="" className='tile-img' onClick={imageClickHander} />
-                            <img src={product.imgUrl3} alt="" className='tile-img' onClick={imageClickHander} />
-                            <img src={product.imgUrl4} alt="" className='tile-img' onClick={imageClickHander} />
+                            {product.imgUrl1 !== `${apiUrl}/undefined` ? (
+                                <img src={product.imgUrl1} alt="" className='tile-img' onClick={imageClickHander} />
+                            ) : null}
+                            {product.imgUrl2 !== `${apiUrl}/undefined` ? (
+                                <img src={product.imgUrl2} alt="" className='tile-img' onClick={imageClickHander} />
+                            ) : null}
+                            {product.imgUrl3 !== `${apiUrl}/undefined` ? (
+                                <img src={product.imgUrl3} alt="" className='tile-img' onClick={imageClickHander} />
+                            ) : null}
+                            {product.imgUrl4 !== `${apiUrl}/undefined` ? (
+                                <img src={product.imgUrl4} alt="" className='tile-img' onClick={imageClickHander} />
+                            ) : null}
                         </div>
                     </div>
 
                     <div className="product-info ">
                         <h1 className='product-header'>{product.title}</h1>
+                        <p className='decription-text'>{product.brand}</p>
                         <h3>${product.price}</h3>
 
                         {/* <p className='quantity'>Quantity</p>
@@ -104,12 +114,12 @@ function Product() {
                     </div>
 
                     <div className="product-info-btn">
-                        <h3>${product.price}</h3>
+                        {/* <h3>${product.price}</h3> */}
                         <h3>Condition: {product.condition}</h3>
                         <p className='quantity'>Quantity</p>
                         <div className="quantity-btn">
                             <button>-</button>
-                            <p>3</p>
+                            <p>1</p>
                             <button>+</button>
                         </div>
                         {user && user.id === product.userId ? (

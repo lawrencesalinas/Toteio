@@ -50,12 +50,12 @@ router.post('/', upload.array('image'), async (req, res) => {
   const imagesFromS3 = []
   for (let i = 0; i < files.length; i++) {
     const result = await uploadFile(files[i])
+    await unlinkFile(files[i].path)
     console.log(result)
 
     const imageKey = await `api/uploads/${result.Key}`
     imagesFromS3.push(imageKey)
   }
-  // await unlinkFile(file.path)
 
   res.send(imagesFromS3)
   // res.send({ imageKey: `/api/uploads/${result.Key}` })

@@ -8,6 +8,7 @@ function PayButton({ orderItems, email }) {
         axios.post('http://localhost:8000/api/payments', {
             email,
             orderItems,
+            name: user.name,
             userId: user.id
         }).then((res) => {
             if (res.data.url) {

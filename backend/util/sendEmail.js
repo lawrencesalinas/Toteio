@@ -11,7 +11,7 @@ const sendEmail = (to, from, subject, text) => {
 
   sendGrid.send(msg, function (err, result) {
     if (err) {
-      console.log('Email not sent  error occured')
+      console.log('Email not sent  error occured', err)
     } else {
       console.log('Email was sent')
     }

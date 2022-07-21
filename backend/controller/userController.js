@@ -29,7 +29,6 @@ const registerUser = asyncHandler(async (req, res) => {
   Take care!
   Lawrence Salinas`
 
-  console.log(req.body)
   //   Validation
   if (!name || !email || !password) {
     res.status(400)

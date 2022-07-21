@@ -16,7 +16,7 @@ function Home() {
 
     const { products, isLoading, isSuccess } = useSelector((state) => state.products)
 
-    console.log(products);
+
     const dispatch = useDispatch()
 
     // clear sttate on unmount
@@ -45,14 +45,14 @@ function Home() {
             <div className='banner'>
                 <img src="https://images.unsplash.com/photo-1431068799455-80bae0caf685?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
                 <div className="banner-text">
-                    <h1 data-aos='fade-right' data-aos-delat='400'>DISCOVER NEW TECHNOLOGY</h1>
+                    <h1 data-aos='fade-right' data-aos-delat='400'>DISCOVER TECHNOLOGY FOR YOU</h1>
                     <Link to='/category/tech'>  <button data-aos='fade-right' data-aos-delat='400'>SHOP TECH</button></Link>
                 </div>
             </div>
             <div className='banner2'>
                 <img src="https://images.unsplash.com/photo-1608403890696-0f18a2960153?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
                 <div className="banner-text">
-                    <h1 data-aos='fade-right' data-aos-delat='400'>DISCOVER NEW TECHNOLOGY</h1>
+                    <h1 data-aos='fade-right' data-aos-delat='400'>DISCOVER TECHNOLOGY FOR YOU</h1>
                     <Link to='/category/tech'>  <button data-aos='fade-right' data-aos-delat='400'>SHOP TECH</button></Link>
                 </div>
             </div>

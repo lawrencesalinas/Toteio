@@ -53,7 +53,6 @@ function Category() {
         }
     }
 
-    console.log(location.pathname);
 
     const path = location.pathname
     // .slice(10).toUpperCase()

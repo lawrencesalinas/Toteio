@@ -101,7 +101,6 @@ function CreateProduct() {
         dispatch(createProduct({ title, condition, brand, price, description, category, image1, image2, image3, image4, gender }))
     }
 
-    console.log(condition);
     if (isLoading) {
         return <Spinner />
     }
@@ -182,11 +181,20 @@ function CreateProduct() {
 
                             {formImage1 && formImage1 !== '' ? (
                                 <div className="form-image">
+                                    {formImage1 !== `${apiUrl}/undefined` ? (
+                                        <img src={formImage1} alt="" />
+                                    ) : null}
 
-                                    <img src={formImage1} alt="" />
-                                    <img src={formImage2} alt="" />
-                                    <img src={formImage3} alt="" />
-                                    <img src={formImage4} alt="" />
+                                    {formImage2 !== `${apiUrl}/undefined` ? (
+                                        <img src={formImage2} alt="" />
+                                    ) : null}
+
+                                    {formImage3 !== `${apiUrl}/undefined` ? (
+                                        <img src={formImage3} alt="" />
+                                    ) : null}
+                                    {formImage4 !== `${apiUrl}/undefined` ? (
+                                        <img src={formImage4} alt="" />
+                                    ) : null}
                                 </div>
 
                             ) : <></>}

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { getAdminProducts, reset, getUserProducts, getAAllShoes, getProducts } from '../../features/product/productSlice'
@@ -14,8 +14,8 @@ function CategoryContent({ path, images, categoryText, changeHeading, location, 
 
     const navigate = useNavigate()
     const { categoryName } = useParams()
-
-
+    const [categoryItems, setCategoryItems] = useState([])
+    const [favoriteList, setFavoriteList] = useState([JSON.parse(localStorage.getItem('favorites'))])
 
     const dispatch = useDispatch()
 
@@ -28,12 +28,76 @@ function CategoryContent({ path, images, categoryText, changeHeading, location, 
     }, [isSuccess, dispatch])
 
 
+
+
+
     const subcategoryTitle = `${location.search.substr(8, 13)} ${categoryName.toUpperCase()}`;
 
     useEffect(() => {
         dispatch(getProducts(`${categoryName}${location.search}`))
+        // fetchData()
 
-    }, [dispatch, categoryName, location.pathname, location.search])
+    }, [dispatch, categoryName, location.pathname, location.search,])
+
+
+
+    // const fetchData = async () => {
+    //     let newData = products.map((product) => {
+    //         {
+    //             return { ...product, heart: null }
+    //         }
+    //     })
+    //     // console.log(newData);
+    //     setCategoryItems(newData)
+    // }
+
+
+    // console.log(categoryItems);
+
+
+
+    // console.log(newData);
+    // setCategoryItems(newData)
+    // console.log(categoryItems);
+
+
+
+
+    const addToFavorites = async (newFavorite) => {
+        // console.log(newFavorite.id);
+
+        // console.log(favoriteList.length);
+        // if (favoriteList.length > 1) {
+        //     console.log('2nd like');
+        //     const favorited = await favoriteList.some(item => item.id === newFavorite.id)
+        //     if (favorited) {
+        //         deleteFavorite(newFavorite.id)
+        //     } else {
+        //         setFavoriteList([newFavorite, ...favoriteList])
+        //         localStorage.setItem('favorites', JSON.stringify(favoriteList))
+        //     }
+        //     // console.log('musta');
+        //     // setFavoriteList([newFavorite, ...favoriteList])
+        //     // localStorage.setItem('favorites', JSON.stringify(favoriteList))
+
+        // } else {
+        console.log('fist like');
+        setFavoriteList([newFavorite, ...favoriteList])
+        localStorage.setItem('favorites', JSON.stringify(favoriteList))
+        // }
+    }
+
+    const removeFavorite = (id) => {
+        console.log('hello', id);
+        // setFavoriteList(favoriteList.filter((item) => (item.id !== id)))
+        // localStorage.setItem('favorites', JSON.stringify(favoriteList))
+    }
+
+    // console.log(favoriteList);
+
+
+
+
     if (isLoading) {
         return <Spinner />
     }
@@ -107,7 +171,7 @@ function CategoryContent({ path, images, categoryText, changeHeading, location, 
                     <div className="category-products">
                         {products && products.length > 0 ? (
                             products.map((product) => (
-                                <CategoryItem product={product} key={product.id} />
+                                < CategoryItem product={product} key={product.id} addToFavorites={addToFavorites} removeFavorite={removeFavorite} />
                             ))
                         ) : <></>}
 

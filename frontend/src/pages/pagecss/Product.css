@@ -203,4 +203,13 @@
     width: 90%;
     height: 7.3vh;
   }
+
+  .product-header {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+  .decription-text {
+    width: 80vw;
+    margin-bottom: 0.7rem;
+  }
 }

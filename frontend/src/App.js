@@ -17,6 +17,7 @@ import ShoppingBag from './pages/ShoppingBag'
 import Order from './pages/Order'
 import Shipping from './pages/Shipping'
 import Success from './pages/Success'
+import Favorites from './pages/Favorites'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='product/:id' element={<Product />} />
             <Route path='/category/:categoryName' element={<Category />} />
+            <Route path='/favorites' element={<Favorites />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/cart' element={<PrivateRoute />}>
