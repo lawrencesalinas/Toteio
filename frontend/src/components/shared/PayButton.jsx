@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
+import apiUrl from "../../apiConfig";
 
 function PayButton({ orderItems, email }) {
     const user = useSelector((state) => state.auth)
 
     const handleCheckout = () => {
-        axios.post('http://localhost:8000/api/payments', {
+        axios.post(`${apiUrl}/api/payments`, {
             email,
             orderItems,
             name: user.name,
