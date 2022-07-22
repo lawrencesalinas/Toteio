@@ -33,6 +33,7 @@ function Product() {
 
     useEffect(() => {
         dispatch(getProduct(id))
+        dispatch(reset())
     }, [dispatch, id])
 
 
@@ -47,8 +48,14 @@ function Product() {
     }
 
     const addToCartHandler = () => {
-        dispatch(addToShoppingBag({ productId: id }))
-        toast.success('item added to shopping bag')
+
+        if (user !== null) {
+            dispatch(addToShoppingBag({ productId: id }))
+            toast.success('item added to shopping bag')
+        } else {
+            navigate('/cart')
+        }
+
     }
 
     const imageClickHander = (e) => {
