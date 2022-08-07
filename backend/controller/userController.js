@@ -115,11 +115,13 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   /api/users/me
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  // res.status(200).json(req.user)
+  console.log(req.user)
   const user = {
     id: req.user.id,
     email: req.user.email,
     name: req.user.name,
+    phone: req.user.phone,
+    address: req.user.address,
     isAdmin: req.isAdmin,
   }
   res.status(200).json(user)

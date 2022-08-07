@@ -30,6 +30,20 @@ const login = async (userData) => {
 // Logout a user
 const logout = () => localStorage.removeItem('user')
 
+const getUser = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const response = await axios.get(`${API_URL}/profile`, config)
+  console.log(response.data)
+  if (response.data) {
+    localStorage.setItem('user', JSON.stringify(response.data))
+  }
+  return response.data
+}
+
 // Update a user
 const updateUser = async (userData, token) => {
   const config = {
@@ -52,6 +66,7 @@ const authService = {
   login,
   logout,
   updateUser,
+  getUser,
 }
 
 export default authService

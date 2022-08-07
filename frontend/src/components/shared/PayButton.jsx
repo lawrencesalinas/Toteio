@@ -2,7 +2,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import apiUrl from "../../apiConfig";
 
-function PayButton({ orderItems, email }) {
+function PayButton({ orderItems, email, address }) {
     const user = useSelector((state) => state.auth)
 
     const handleCheckout = () => {
@@ -10,6 +10,7 @@ function PayButton({ orderItems, email }) {
             email,
             orderItems,
             name: user.name,
+            address: address,
             userId: user.id
         }).then((res) => {
             if (res.data.url) {

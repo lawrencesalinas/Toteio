@@ -14,7 +14,7 @@ const { protect } = require('../middleware/authMiddleWare')
 
 router.route('/').get(getUsers).post(registerUser).put(protect, updateUser)
 router.post('/login', loginUser)
-router.get('/profile', protect, getUserProfile)
+router.route('/profile').get(protect, getUserProfile)
 
 router.route('/products').get(protect, getUserProducts)
 

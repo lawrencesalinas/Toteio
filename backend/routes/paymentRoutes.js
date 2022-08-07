@@ -4,7 +4,8 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const router = express.Router()
 
 router.post('/', async (req, res) => {
-  const { email, orderItems, name, userId } = req.body
+  const { email, orderItems, name, userId, address } = req.body
+  console.log(address)
 
   try {
     const message = `

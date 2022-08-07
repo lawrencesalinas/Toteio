@@ -140,7 +140,7 @@ function CreateProduct() {
                                     <input type="radio" value="other" checked={category === 'other'} onChange={(e) => setCategory(e.target.value)} />
                                 </div>
                             </div>
-                            {category === 'shoes' || category === 'clothing' ? (
+                            {category === 'shoes' || category === 'clothes' ? (
                                 <div className="category-form-gruop">
                                     <div className="category-radio">
                                         <label htmlFor="men"> Men</label>

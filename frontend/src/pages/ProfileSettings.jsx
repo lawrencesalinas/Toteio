@@ -2,7 +2,7 @@ import SideNav from '../components/layouts/SideNav'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { updateUser, reset } from '../features/auth/authSlice'
+import { updateUser, getUser } from '../features/auth/authSlice'
 import { toast } from 'react-toastify'
 import './pagecss/Profile.css'
 import Modal from 'react-modal'
@@ -37,8 +37,9 @@ function ProfileSettings() {
     const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth)
 
 
+
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const [name, setName] = useState(user.name)
+    const [name, setName] = useState()
 
 
 
@@ -51,9 +52,13 @@ function ProfileSettings() {
         }
         if (isSuccess) {
             toast.success('User info updated')
-            dispatch(reset())
         }
-    }, [isError, isSuccess, user, message, navigate, dispatch])
+    }, [isError, isSuccess, user, message, navigate,])
+
+
+    // useEffect(() => {
+    //     dispatch(getUser())
+    // }, [dispatch, user])
 
 
 
@@ -68,7 +73,6 @@ function ProfileSettings() {
         }
         dispatch(updateUser(userData))
         closeModal()
-
     }
 
     if (isLoading) {

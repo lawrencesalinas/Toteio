@@ -101,34 +101,21 @@ function Product() {
                         <h1 className='product-header'>{product.title}</h1>
                         <p className='decription-text'>{product.brand}</p>
                         <h3>${product.price}</h3>
-
-                        {/* <p className='quantity'>Quantity</p>
-                        <div className="quantity-btn">
-                            <button>-</button>
-                            <p>3</p>
-                            <button>+</button>
-                        </div> */}
-                        {/* {user.id === product.userId ? (
-                            <>
-                                <button className='cart-btn'>Edit </button>
-                                <button className='cart-btn'>Delete </button>
-                            </>
-                        ) : <button className='cart-btn'>Add to Cart</button>} */}
                         <p className="description">Description</p>
                         <p className='decription-text'>{product.description}</p>
-
-
                     </div>
 
                     <div className="product-info-btn">
                         {/* <h3>${product.price}</h3> */}
+                        <h3>${product.price}</h3>
+                        <br />
                         <h3>Condition: {product.condition}</h3>
-                        <p className='quantity'>Quantity</p>
-                        <div className="quantity-btn">
+                        {/* <p className='quantity'>Quantity</p> */}
+                        {/* <div className="quantity-btn">
                             <button>-</button>
                             <p>1</p>
                             <button>+</button>
-                        </div>
+                        </div> */}
                         {user && user.id === product.userId ? (
                             <div className="product-button">
                                 <Link to={`/edit-product/${id}`}>
